@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="180 70 680 430" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style>
+      .nav-glyph {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 16;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .nav-guide {
+        stroke: currentColor;
+        stroke-width: 1.3;
+        opacity: 0.28;
+      }
+      .nav-circle-guide {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.2;
+        opacity: 0.24;
+      }
+      svg:hover .nav-guide { opacity: 0.55; stroke: #e65c00; }
+      svg:hover .nav-circle-guide { opacity: 0.65; stroke: #e65c00; }
+    </style>
+  </defs>
+  <!-- Guides -->
+  <line x1="120" y1="316" x2="904" y2="316" class="nav-guide" />
+  <line x1="360" y1="90" x2="360" y2="542" class="nav-guide" />
+  <line x1="680" y1="80" x2="680" y2="552" class="nav-guide" />
+  <line x1="360" y1="316" x2="680" y2="156" class="nav-guide" />
+  <line x1="360" y1="316" x2="680" y2="476" class="nav-guide" />
+  <circle cx="680" cy="316" r="160" class="nav-circle-guide" />
+  <circle cx="520" cy="316" r="48" class="nav-circle-guide" />
+  <!-- Ink Glyphs OE -->
+  <circle cx="360" cy="316" r="160" class="nav-glyph" />
+  <line x1="200" y1="316" x2="520" y2="316" class="nav-glyph" />
+  <line x1="680" y1="156" x2="680" y2="476" class="nav-glyph" />
+  <path d="M 680,156 A 160 160 0 0 1 840,316" class="nav-glyph" />
+  <line x1="680" y1="316" x2="840" y2="316" class="nav-glyph" />
+  <path d="M 520,316 A 160 160 0 0 0 680,476" class="nav-glyph" />
+</svg>

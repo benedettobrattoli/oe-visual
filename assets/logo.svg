@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 768" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style>
+    .glyph-bg { fill: #ffffff; }
+    .guide-line { stroke: #b8c0c9; stroke-width: 1.4; }
+    .guide-sub { stroke: #dce1e6; stroke-width: 1.1; }
+    .guide-circle { fill: none; stroke: #dce1e6; stroke-width: 1.2; }
+    .glyph-ink { fill: none; stroke: #111215; stroke-width: 15; stroke-linecap: round; stroke-linejoin: round; }
+    .glyph-text { font-family: 'Montserrat', 'Century Gothic', -apple-system, sans-serif; font-size: 88px; font-weight: 500; letter-spacing: 0.32em; fill: #111215; text-anchor: middle; }
+  </style>
+  </defs>
+
+  <!-- ARCHITECTURAL CONSTRUCTION GUIDES -->
+  <g id="drafting-guides">
+    <!-- Horizontal Equator Axis: spans 120 to 904 -->
+    <line x1="120" y1="316" x2="904" y2="316" class="glyph" />
+
+    <!-- Vertical Centerline Left Circle C1 (x=360) -->
+    <line x1="360" y1="90" x2="360" y2="542" class="glyph" />
+
+    <!-- Vertical Centerline Right Shape C2 (x=680) -->
+    <line x1="680" y1="80" x2="680" y2="552" class="glyph" />
+
+    <!-- Top Tangent Guide (y=156) -->
+    <line x1="530" y1="156" x2="880" y2="156" class="glyph" />
+    
+    <!-- Diagonal Ray 1: C1 center (360, 316) to C2 apex (680, 156) -->
+    <line x1="360" y1="316" x2="680" y2="156" class="glyph" />
+
+    <!-- Diagonal Ray 2: C1 center (360, 316) to C2 bottom (680, 476) -->
+    <line x1="360" y1="316" x2="680" y2="476" class="glyph" />
+
+    <!-- 45-degree Ray through C2 -->
+    <line x1="520" y1="476" x2="840" y2="156" class="glyph" />
+
+    <!-- Compass Construction Circle (full C2 ring, r=160) -->
+    <g class="compass-wheel">
+      <circle cx="680" cy="316" r="160" class="glyph" />
+      <circle cx="680" cy="316" r="80" class="glyph" />
+      <!-- Inscribed circle at tangency (520, 316) -->
+      <circle cx="520" cy="316" r="48" class="glyph" />
+    </g>
+  </g>
+
+  <!-- SOLID INK GLYPHS: OE (UNDISTORTED MATHEMATICAL PERFECTION) -->
+  <g id="ink-glyphs">
+    <!-- LEFT GLYPH: 'O' -->
+    <!-- Full Circle: center=(360, 316), radius=160 -->
+    <circle cx="360" cy="316" r="160" class="glyph" />
+    <!-- Horizontal Crossbar of 'O': from (200, 316) to (520, 316) -->
+    <line x1="200" y1="316" x2="520" y2="316" class="glyph"  />
+
+    <!-- RIGHT GLYPH: 'E' -->
+    <!-- Vertical Chord from top (680, 156) to bottom (680, 476) -->
+    <line x1="680" y1="156" x2="680" y2="476" class="glyph"  />
+
+    <!-- Top-Right Arc: Quarter circle from (680, 156) to (840, 316) -->
+    <path d="M 680,156 A 160 160 0 0 1 840,316" class="glyph"  />
+
+    <!-- Mid Horizontal Bar: from (680, 316) to (840, 316) -->
+    <line x1="680" y1="316" x2="840" y2="316" class="glyph"  />
+
+    <!-- Bottom-Left Arc: Quarter circle from (520, 316) to (680, 476) -->
+    <path d="M 520,316 A 160 160 0 0 0 680,476" class="glyph"  />
+  </g>
+
+  <!-- TYPOGRAPHY: VISUAL (EXACT GEOMETRIC ALIGNMENT) -->
+  <text x="532" y="635" class="glyph">VISUAL</text>
+</svg>

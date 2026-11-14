@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OE VISUAL — High-End Architectural Visualization & 3D Animation</title>
+  <meta name="description" content="OE Visual — Rendering 3D fotorealistici, animazioni cinematografiche in loop 4K e studi wireframe per studi di architettura, società di ingegneria e sviluppatori immobiliari.">
+  <meta name="author" content="Arch. Benedetto Brattoli — OE Visual">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Open Graph & Social Cards -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OE VISUAL">
+  <meta property="og:title" content="OE VISUAL — High-End Architectural CGI & Cinematic Motion">
+  <meta property="og:description" content="Vendi il progetto prima che esista. Rendering fotorealistici, animazioni 3D in loop e validazione geometrica da modello BIM.">
+  <meta property="og:image" content="assets/portfolio/masseria-pergola-pool.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="OE VISUAL — Architectural CGI & Motion">
+  <meta name="twitter:description" content="Vendi il progetto prima che esista. Rendering fotorealistici e animazioni 3D in loop.">
+  <meta name="twitter:image" content="assets/portfolio/masseria-pergola-pool.jpg">
+  
+  <!-- Favicons & Web App Manifest -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "OE VISUAL",
+    "description": "Studio specializzato in High-End Architectural Visualization, rendering 3D fotorealistici, animazioni cinematografiche e validazione geometrica per architettura.",
+    "founder": {
+      "@type": "Person",
+      "name": "Arch. Benedetto Brattoli"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Corato",
+      "addressRegion": "BA",
+      "addressCountry": "IT"
+    },
+    "telephone": "+393478631379",
+    "email": "visual@oevisual.it"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <script>
+    (function() {
+      try {
+        var t = localStorage.getItem('oe_visual_theme');
+        if (t === 'dark') {
+          document.documentElement.classList.add('theme-dark');
+          document.documentElement.classList.remove('theme-light');
+        } else {
+          document.documentElement.classList.add('theme-light');
+          document.documentElement.classList.remove('theme-dark');
+        }
+      } catch(e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css?v=2.5">
+</head>
+<body class="theme-light">
+
+  <!-- ======================================================================
+       HEADER: FIXED MINIMALIST (SWISS ARCHITECTURAL STYLE)
+       ====================================================================== -->
+  <header id="site-header" class="site-header">
+    <div class="header-inner">
+      
+      <!-- BRAND LOGO: BENNY'S AUTHENTIC ORIGINAL DRAWING WITH WELDING SPARK ANIMATION -->
+      <a href="#works" class="brand-link" id="brand-link" title="OE Visual — Selected Works">
+        <div class="brand-logo-frame">
+          <img src="assets/logo_original_transparent.png" alt="OE Visual" class="brand-logo-img" width="284" height="246" />
+          <canvas id="header-weld-canvas" class="logo-weld-canvas" width="284" height="246" aria-hidden="true"></canvas>
+        </div>
+      </a>
+
+      <!-- NAVIGATION: WORK (DROPDOWN) / STUDIO / CONTACT -->
+      <nav class="site-nav" id="site-nav">
+        <ul class="nav-links">
+          <li class="nav-dropdown-item" id="nav-work-parent">
+            <a href="#works" class="nav-item nav-item-has-dropdown active" id="nav-work-link" data-target="works">
+              <span>Work</span>
+              <svg class="dropdown-chevron" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </a>
+            <!-- WORK DROPDOWN FLYOUT -->
+            <div class="work-dropdown-menu" id="work-dropdown-menu">
+              <button class="dropdown-item active" data-filter="all">
+                <span class="dropdown-indicator"></span>
+                <span class="dropdown-label">All Selected Works</span>
+                <span class="dropdown-count" id="nav-works-count">22</span>
+              </button>
+              <button class="dropdown-item" data-filter="exterior">
+                <span class="dropdown-indicator"></span>
+                <span class="dropdown-label">Exteriors</span>
+              </button>
+              <button class="dropdown-item" data-filter="interior">
+                <span class="dropdown-indicator"></span>
+                <span class="dropdown-label">Interiors</span>
+              </button>
+              <button class="dropdown-item" data-filter="commercial">
+                <span class="dropdown-indicator"></span>
+                <span class="dropdown-label">Retail & Hospitality</span>
+              </button>
+              <button class="dropdown-item" data-filter="compare">
+                <span class="dropdown-indicator"></span>
+                <span class="dropdown-label">Wireframe / Clay Sliders</span>
+              </button>
+              <button class="dropdown-item" data-filter="video">
+                <span class="dropdown-indicator"></span>
+                <span class="dropdown-label">Cinema Reel (Video)</span>
+                <span class="dropdown-badge">4K Loop</span>
+              </button>
+              <button class="dropdown-item" data-filter="seasons">
+                <span class="dropdown-indicator"></span>
+                <span class="dropdown-label">Studio Bioclimatico</span>
+                <span class="dropdown-badge">4 Stagioni</span>
+              </button>
+            </div>
+          </li>
+          <li><a href="#studio" class="nav-item" data-target="studio">Studio</a></li>
+          <li><a href="#contact" class="nav-item" data-target="contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- RIGHT UTILITIES: THEME TOGGLE -->
+      <div class="header-actions">
+        <button id="theme-toggle" class="icon-btn" aria-label="Cambia tema chiaro/scuro" title="Tema Scuro / Chiaro">
+          <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ======================================================================
+       MAIN CONTENT: FULL-BLEED (ZERO LATERAL VOIDS)
+       ====================================================================== -->
+  <main class="main-content">
+
+    <!-- ======================================================================
+         SECTION: WORKS (RANDOM STREAM: RENDERING, LOOPING VIDEO & WIREFRAME SLIDERS)
+         Full-bleed: zero lateral voids, only thin white lines between photos & edges.
+         Immediate landing: directly shows works as requested by Benny.
+         ====================================================================== -->
+    <section id="works" class="section-works">
+      <!-- FULL-BLEED ARCHITECTURAL GALLERY (JUSTIFIED ROWS WITH 0 LATERAL GAPS) -->
+      <div class="portfolio-fullbleed-grid" id="portfolio-grid">
+        <!-- Injected dynamically via app.js -->
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION: STUDIO / CHI SIAMO & AVATAR INTERATTIVI
+         Source: orangeengineering.it/cosa-facciamo/
+         Interactive Team Avatars with Dialogue, Voice Synthesis & Direct WhatsApp
+         ====================================================================== -->
+    <section id="studio" class="section-studio">
+      
+      <!-- STUDIO MANIFESTO & IDENTITY -->
+      <div class="studio-header-block">
+        <div class="studio-badge-row">
+          <span class="sub-label">02 — CHI SIAMO & COSA FACCIAMO</span>
+          <span class="studio-exp-tag">15+ Anni di Esperienza CGI</span>
+        </div>
+        <h2 class="studio-headline">Saper leggere il progetto: architetti prima che artisti 3D.</h2>
+        <p class="studio-manifesto">
+          Da oltre 15 anni ci occupiamo di Rendering 3D con elevato fotorealismo, animazioni cinematografiche e validazione geometrica per studi di architettura, società di ingegneria, sviluppatori immobiliari e brand d'arredo. Il nostro gruppo di lavoro è composto da architetti e ingegneri: il nostro vero punto di forza consiste nel <strong>saper leggere il tuo progetto</strong>, comprenderne l'orografia, la luce solare e le scelte materiche, per creare un'opera visiva che sappia emozionare e chiudere la trattativa.
+        </p>
+      </div>
+
+      <!-- 4 PILLARS OF ARCHITECTURAL SERVICES (from orangeengineering.it/cosa-facciamo/) -->
+      <div class="studio-services-grid">
+        <div class="service-card">
+          <div class="service-num">01</div>
+          <h3 class="service-title">Rendering 3D Fotorealistico</h3>
+          <p class="service-desc">
+            Viste esterne ed interne ad altissimo impatto per committenze private, concorsi e commercializzazione immobiliare. Modellazione accurata di vegetazione autoctona, caustiche della luce e finiture tattili (pietra a secco, microcemento, essenze lignee, metalli).
+          </p>
+          <ul class="service-bullets">
+            <li>Esterni, ville & complessi residenziali</li>
+            <li>Interior design di lusso & retail</li>
+            <li>Studio fotometrico della luce naturale</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-num">02</div>
+          <h3 class="service-title">Cinema Reel & Video Motion 3D</h3>
+          <p class="service-desc">
+            Animazioni tridimensionali fluide a 60fps con movimenti di camera cinematografici per presentazioni di progetti complessi, bandi di gara, video marketing per investitori internazionali e campagne social d'alta gamma.
+          </p>
+          <ul class="service-bullets">
+            <li>Walkthrough d'interni ed esterni 4K</li>
+            <li>Simulazioni di cantiere & sequenze costruttive</li>
+            <li>Video teaser per landing page e investitori</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-num">03</div>
+          <h3 class="service-title">Validazione Geometrica & Clay Study</h3>
+          <p class="service-desc">
+            Prima del fotorealismo, convalidiamo i volumi attraverso render Clay a contrasto puro. Analizziamo l'orientamento solare, la pulizia dei nodi costruttivi e il corretto rimbalzo della luce indiretta negli ambienti.
+          </p>
+          <ul class="service-bullets">
+            <li>Controllo volumi e nodi prima della posa</li>
+            <li>Studio comparativo Wireframe ↔ Rendering</li>
+            <li>Ottimizzazione geometrie BIM (Revit, IFC, Rhino)</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-num">04</div>
+          <h3 class="service-title">Cataloghi & Set Virtuali per l'Industria</h3>
+          <p class="service-desc">
+            Rendering per aziende ed industrie finalizzati alla stampa di cataloghi, brochure ed e-commerce. Progettiamo gli ambienti e le ambientazioni attorno al prodotto, con una versatilità superiore alla fotografia tradizionale e costi contenuti.
+          </p>
+          <ul class="service-bullets">
+            <li>Arredo bagno, cucine, contract & ufficio</li>
+            <li>Close-up macro su dettagli e finiture</li>
+            <li>Flessibilità totale su varianti colore e texture</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ==================================================================
+           INTERACTIVE TEAM AVATARS: BENNY, MICHELE & MARCO
+           "inserire degli avatar di noi stessi che interagiscano con il visitatore"
+           ================================================================== -->
+      <div class="team-avatars-section" id="team-avatars">
+        <div class="avatars-header">
+          <span class="sub-label">IL TEAM DI OE VISUAL</span>
+          <h3 class="avatars-title">Interagisci con noi.</h3>
+          <p class="avatars-subtitle">Clicca su un avatar per dialogare, porre una domanda di progetto o ascoltare la nostra voce in tempo reale.</p>
+        </div>
+
+        <!-- 3 AVATAR CARDS -->
+        <div class="avatars-grid">
+          
+          <!-- AVATAR 1: BENNY BRATTOLI -->
+          <div class="avatar-card" id="avatar-card-benedetto" data-member="benedetto">
+            <div class="avatar-photo-frame">
+              <img src="assets/team/benedetto.jpg" alt="Arch. Benedetto Brattoli" class="avatar-photo">
+              <span class="avatar-status-dot" title="In Studio · Disponibile"></span>
+            </div>
+            <div class="avatar-header-info">
+              <h4 class="avatar-name">Arch. Benedetto Brattoli</h4>
+              <span class="avatar-role">Founder & Direttore Creativo</span>
+              <span class="avatar-specialty">Art Direction · Architettura · CGI Lead</span>
+            </div>
+            <p class="avatar-quote">
+              "L'immagine non deve solo mostrare i muri: deve far sentire il calore del sole sul tufo e il silenzio dello spazio."
+            </p>
+            <div class="avatar-actions-strip">
+              <button class="avatar-ask-btn" data-member="benedetto" data-q="segreto">
+                <span>💡 Il segreto di un render vincente?</span>
+              </button>
+              <button class="avatar-ask-btn" data-member="benedetto" data-q="tempi">
+                <span>⏱️ In quanto tempo consegnate?</span>
+              </button>
+              <button class="avatar-speak-btn" data-member="benedetto" title="Ascolta voce di Benny">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                </svg>
+                <span>Ascolta</span>
+              </button>
+              <a href="https://wa.me/393478631379?text=Buongiorno%20Arch.%20Brattoli,%20vorrei%20informazioni%20per%20un%20progetto" target="_blank" rel="noopener" class="avatar-wa-btn" title="Scrivi su WhatsApp a Benny">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                  <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.693.078-2.202-.55-1.927-.803-3.148-2.774-3.244-2.902-.097-.129-.778-1.036-.778-1.975 0-.94.492-1.403.667-1.595.175-.193.382-.241.51-.241.127 0 .255.002.366.007.117.006.273-.044.428.328.16.386.549 1.341.597 1.439.049.097.081.211.016.339-.065.129-.098.209-.194.321-.097.113-.205.251-.293.338-.098.097-.201.203-.086.401.114.197.509.841 1.092 1.36.751.67 1.384.877 1.58.974.196.097.311.081.425-.05.114-.131.488-.567.618-.761.13-.194.26-.162.438-.097.178.065 1.134.535 1.329.633.195.097.325.146.374.228.049.081.049.471-.095.876z"/>
+                </svg>
+                <span>WhatsApp</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- AVATAR 2: MICHELE DE PINTO -->
+          <div class="avatar-card" id="avatar-card-michele" data-member="michele">
+            <div class="avatar-photo-frame">
+              <img src="assets/team/michele.jpg" alt="Ing. Michele De Pinto" class="avatar-photo">
+              <span class="avatar-status-dot" title="In Studio / Cantiere"></span>
+            </div>
+            <div class="avatar-header-info">
+              <h4 class="avatar-name">Ing. Michele De Pinto</h4>
+              <span class="avatar-role">Co-Founder & Direttore Tecnico</span>
+              <span class="avatar-specialty">Ingegneria · Coordinamento BIM · 3D Scan</span>
+            </div>
+            <p class="avatar-quote">
+              "La precisione del dato matematico incontra la pulizia visiva: ogni nodo costruttivo e raccordo strutturale è calcolato al millimetro."
+            </p>
+            <div class="avatar-actions-strip">
+              <button class="avatar-ask-btn" data-member="michele" data-q="file">
+                <span>📐 Che file potete ricevere?</span>
+              </button>
+              <button class="avatar-ask-btn" data-member="michele" data-q="video">
+                <span>🏗️ Fate video tecnici di cantiere?</span>
+              </button>
+              <button class="avatar-speak-btn" data-member="michele" title="Ascolta voce di Michele">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                </svg>
+                <span>Ascolta</span>
+              </button>
+              <a href="https://wa.me/393478631379?text=Buongiorno%20Ing.%20De%20Pinto,%20vorrei%20informazioni%20su%20un%20modello%20BIM" target="_blank" rel="noopener" class="avatar-wa-btn" title="Scrivi su WhatsApp">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.693.078-2.202-.55-1.927-.803-3.148-2.774-3.244-2.902-.097-.129-.778-1.036-.778-1.975 0-.94.492-1.403.667-1.595.175-.193.382-.241.51-.241.127 0 .255.002.366.007.117.006.273-.044.428.328.16.386.549 1.341.597 1.439.049.097.081.211.016.339-.065.129-.098.209-.194.321-.097.113-.205.251-.293.338-.098.097-.201.203-.086.401.114.197.509.841 1.092 1.36.751.67 1.384.877 1.58.974.196.097.311.081.425-.05.114-.131.488-.567.618-.761.13-.194.26-.162.438-.097.178.065 1.134.535 1.329.633.195.097.325.146.374.228.049.081.049.471-.095.876z"/></svg>
+                <span>WhatsApp</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- AVATAR 3: MARCO BRUNORI -->
+          <div class="avatar-card" id="avatar-card-marco" data-member="marco">
+            <div class="avatar-photo-frame">
+              <img src="assets/team/marco.jpg" alt="Arch. Marco Brunori" class="avatar-photo">
+              <span class="avatar-status-dot" title="In Studio Design"></span>
+            </div>
+            <div class="avatar-header-info">
+              <h4 class="avatar-name">Arch. Marco Brunori</h4>
+              <span class="avatar-role">Partner & Senior Architect</span>
+              <span class="avatar-specialty">Interior Architecture · Material Styling · Retail</span>
+            </div>
+            <p class="avatar-quote">
+              "L'interior design vive di accostamenti tattili: selezioniamo legni, tessuti e marmi creando un'atmosfera calda e ricercata."
+            </p>
+            <div class="avatar-actions-strip">
+              <button class="avatar-ask-btn" data-member="marco" data-q="arredi">
+                <span>🛋️ Come gestite arredi & luce?</span>
+              </button>
+              <button class="avatar-ask-btn" data-member="marco" data-q="cataloghi">
+                <span>📖 Cataloghi per aziende d'arredo?</span>
+              </button>
+              <button class="avatar-speak-btn" data-member="marco" title="Ascolta voce di Marco">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                </svg>
+                <span>Ascolta</span>
+              </button>
+              <a href="https://wa.me/393478631379?text=Buongiorno%20Arch.%20Brunori,%20vorrei%20informazioni%20su%20un%20progetto%20interni" target="_blank" rel="noopener" class="avatar-wa-btn" title="Scrivi su WhatsApp">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.693.078-2.202-.55-1.927-.803-3.148-2.774-3.244-2.902-.097-.129-.778-1.036-.778-1.975 0-.94.492-1.403.667-1.595.175-.193.382-.241.51-.241.127 0 .255.002.366.007.117.006.273-.044.428.328.16.386.549 1.341.597 1.439.049.097.081.211.016.339-.065.129-.098.209-.194.321-.097.113-.205.251-.293.338-.098.097-.201.203-.086.401.114.197.509.841 1.092 1.36.751.67 1.384.877 1.58.974.196.097.311.081.425-.05.114-.131.488-.567.618-.761.13-.194.26-.162.438-.097.178.065 1.134.535 1.329.633.195.097.325.146.374.228.049.081.049.471-.095.876z"/></svg>
+                <span>WhatsApp</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- DYNAMIC INTERACTIVE DIALOGUE SCREEN -->
+        <div class="avatar-interactive-console" id="avatar-console">
+          <div class="console-speaker-badge">
+            <div class="speaker-avatar-thumb">
+              <img id="console-avatar-img" src="assets/team/benedetto.jpg" alt="Avatar">
+            </div>
+            <div class="speaker-meta">
+              <span class="speaker-name" id="console-speaker-name">Arch. Benedetto Brattoli</span>
+              <span class="speaker-status">
+                <span class="pulse-indicator"></span>
+                <span id="console-speaker-status">In ascolto · Seleziona una domanda o clicca su Ascolta</span>
+              </span>
+            </div>
+            <div class="console-voice-wave" id="voice-wave" title="Onde vocali">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+
+          <div class="console-speech-box">
+            <p id="console-speech-text" class="speech-content">
+              "Benvenuto in OE Visual! Siamo pronti ad affiancarti per valorizzare al massimo il tuo progetto. Clicca su una delle domande sopra per scoprire come lavoriamo o scrivici direttamente su WhatsApp per una valutazione immediata del file."
+            </p>
+          </div>
+
+          <div class="console-actions-bar">
+            <button id="console-read-btn" class="console-btn-audio">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              </svg>
+              <span id="console-audio-label">Ascolta la risposta</span>
+            </button>
+            <a id="console-wa-btn" href="https://wa.me/393478631379?text=Buongiorno,%20ho%20visitato%20OE%20Visual%20e%20vorrei%20maggiori%20informazioni" target="_blank" rel="noopener" class="console-btn-wa">
+              <span>Approfondisci su WhatsApp con noi →</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ======================================================================
+         SECTION: CONTACT (ELEVATED & REFINED ARCHITECTURAL FORM)
+         "In contact fatta un pò meglio la sezione contatto"
+         WhatsApp VIP Direct Channel, Interactive Project Configurator, Dual Studios & NDA
+         ====================================================================== -->
+    <section id="contact" class="section-contact">
+      
+      <div class="contact-elevated-wrap">
+        
+        <!-- SECTION TITLE & LEAD -->
+        <div class="contact-header-block">
+          <span class="sub-label">03 — INIZIAMO UN PROGETTO</span>
+          <h2 class="contact-headline">Il tuo progetto merita di essere visto al massimo.</h2>
+          <p class="contact-lead">
+            Risposta con preventivo dettagliato e tempi di consegna garantiti entro 24 ore. Tutte le revisioni sono incluse nel prezzo pattuito.
+          </p>
+        </div>
+
+        <!-- VIP WHATSAPP DIRECT CHANNEL (ARCH. BENEDETTO BRATTOLI) -->
+        <div class="contact-vip-wa-card">
+          <div class="wa-card-left">
+            <div class="wa-card-avatar">
+              <img src="assets/team/benedetto.jpg" alt="Arch. Benny Brattoli">
+              <span class="wa-dot-live"></span>
+            </div>
+            <div class="wa-card-text">
+              <span class="wa-card-badge">Canale Diretto Prioritario</span>
+              <h4>Hai un'urgenza o vuoi un parere immediato sul tuo progetto?</h4>
+              <p>Invia il link al file o scrivi direttamente all'Arch. Benedetto Brattoli (riscontro garantito entro 2 ore).</p>
+            </div>
+          </div>
+          <div class="wa-card-right">
+            <a href="https://wa.me/393478631379?text=Buongiorno%20Arch.%20Brattoli,%20vorrei%20un%20preventivo%20per%20un%20progetto%20in%20OE%20Visual" target="_blank" rel="noopener" class="wa-direct-btn">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.693.078-2.202-.55-1.927-.803-3.148-2.774-3.244-2.902-.097-.129-.778-1.036-.778-1.975 0-.94.492-1.403.667-1.595.175-.193.382-.241.51-.241.127 0 .255.002.366.007.117.006.273-.044.428.328.16.386.549 1.341.597 1.439.049.097.081.211.016.339-.065.129-.098.209-.194.321-.097.113-.205.251-.293.338-.098.097-.201.203-.086.401.114.197.509.841 1.092 1.36.751.67 1.384.877 1.58.974.196.097.311.081.425-.05.114-.131.488-.567.618-.761.13-.194.26-.162.438-.097.178.065 1.134.535 1.329.633.195.097.325.146.374.228.049.081.049.471-.095.876z"/>
+              </svg>
+              <span>Scrivi su WhatsApp in 1-Click</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- MAIN SPLIT GRID: FORM & STUDIOS INFO -->
+        <div class="contact-grid-duo">
+          
+          <!-- LEFT: INTERACTIVE PROJECT CONFIGURATOR FORM -->
+          <div class="contact-form-panel">
+            <form id="project-inquiry-form" class="inquiry-form">
+              
+              <!-- STEP 1: INTERACTIVE SERVICE SELECTOR -->
+              <div class="form-step-group">
+                <label class="step-label">1. Tipologia di Progetto / Servizio</label>
+                <div class="choice-pills-row" id="service-pills">
+                  <button type="button" class="choice-pill active" data-val="Villa Unifamiliare">Villa Unifamiliare</button>
+                  <button type="button" class="choice-pill" data-val="Residenziale Pluripiano">Residenziale Pluripiano</button>
+                  <button type="button" class="choice-pill" data-val="Interni & Living">Interni & Living</button>
+                  <button type="button" class="choice-pill" data-val="Retail & Hospitality">Retail & Hospitality</button>
+                  <button type="button" class="choice-pill" data-val="Video Animazione 3D">Video Animazione 3D</button>
+                  <button type="button" class="choice-pill" data-val="Bando / Concorso">Bando / Concorso</button>
+                </div>
+              </div>
+
+              <!-- STEP 2: TIMELINE SELECTOR -->
+              <div class="form-step-group">
+                <label class="step-label">2. Tempistiche di Consegna Desiderate</label>
+                <div class="choice-pills-row" id="timeline-pills">
+                  <button type="button" class="choice-pill" data-val="Urgente (< 7 giorni)">⚡ Urgente (&lt; 7 giorni)</button>
+                  <button type="button" class="choice-pill active" data-val="Standard (2-3 settimane)">Standard (2–3 settimane)</button>
+                  <button type="button" class="choice-pill" data-val="In Programmazione">In Programmazione</button>
+                </div>
+              </div>
+
+              <!-- STEP 3: CONTACT FIELDS -->
+              <div class="form-inputs-matrix">
+                <div class="form-row-duo">
+                  <div class="input-block">
+                    <label for="f-name">Nome e Cognome / Studio *</label>
+                    <input type="text" id="f-name" placeholder="Es. Arch. Marco Bianchi" required>
+                  </div>
+                  <div class="input-block">
+                    <label for="f-email">Email Diretta per il Preventivo *</label>
+                    <input type="email" id="f-email" placeholder="architetto@studio.it" required>
+                  </div>
+                </div>
+
+                <div class="form-row-duo">
+                  <div class="input-block">
+                    <label for="f-phone">Telefono / WhatsApp</label>
+                    <input type="tel" id="f-phone" placeholder="+39 340 ...">
+                  </div>
+                  <div class="input-block">
+                    <label for="f-city">Città del Progetto</label>
+                    <input type="text" id="f-city" placeholder="Es. Roma, Milano, Bari...">
+                  </div>
+                </div>
+
+                <div class="input-block full">
+                  <label for="f-notes">Dettagli del Progetto & Link Modelli 3D / DWG</label>
+                  <textarea id="f-notes" rows="4" placeholder="Descrivi brevemente il progetto (numero viste stimate, stile desiderato) oppure incolla il link WeTransfer / Google Drive ai file..."></textarea>
+                </div>
+              </div>
+
+              <!-- SUBMIT BUTTON -->
+              <div class="form-submit-row">
+                <button type="submit" class="submit-inquiry-btn" id="submit-inquiry-btn">
+                  <span>Richiedi Preventivo Dettagliato in 24h</span>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
+                <span class="submit-guarantee-note">🔒 Riservatezza garantita: non condividiamo mai i tuoi dati o disegni.</span>
+              </div>
+            </form>
+
+            <!-- SUBMISSION CONFIRMATION MESSAGE (HIDDEN INITIALLY) -->
+            <div id="form-success-banner" class="form-success-banner" style="display: none;">
+              <div class="success-icon-box">✓</div>
+              <h4>Richiesta Ricevuta con Successo!</h4>
+              <p>Grazie Architetto. Il team di OE Visual ha preso in carico la tua richiesta e ti risponderà con un'offerta economica dettagliata e tempistiche certe entro 24 ore.</p>
+              <a id="success-wa-forward" href="#" target="_blank" rel="noopener" class="success-wa-btn">
+                <span>Invia subito la richiesta anche su WhatsApp a Benny →</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- RIGHT: DUAL HEADQUARTERS & STUDIO DETAILS -->
+          <div class="contact-details-panel">
+            
+            <!-- DIRECT EMAIL WITH COPY BUTTON -->
+            <div class="contact-card-box">
+              <span class="box-tag">Email Diretta Atelier</span>
+              <div class="email-copy-wrapper">
+                <span class="email-address-text" id="studio-email-text">visual@oevisual.it</span>
+                <button type="button" class="copy-email-btn" id="copy-email-btn" title="Copia email negli appunti">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                  <span id="copy-btn-label">Copia</span>
+                </button>
+              </div>
+              <span class="email-subtext">Per invio capitolati, bandi di concorso e perizie tecniche: studio@oevisual.it</span>
+            </div>
+
+            <!-- STUDIO ROMA -->
+            <div class="contact-card-box">
+              <div class="box-header-location">
+                <span class="box-tag">Sede Roma Capitale</span>
+                <span class="location-badge">Centro Italia</span>
+              </div>
+              <h4 class="location-address">Via Casale delle Grazie, 42</h4>
+              <p class="location-city">00066 Manziana (Roma)</p>
+              <div class="location-phone-row">
+                <span class="phone-label">Telefono Diretto:</span>
+                <a href="tel:+393478631379" class="phone-link">+39 347 863 1379</a>
+              </div>
+            </div>
+
+            <!-- STUDIO PUGLIA -->
+            <div class="contact-card-box">
+              <div class="box-header-location">
+                <span class="box-tag">Sede Puglia & Adriatico</span>
+                <span class="location-badge">Sud Italia</span>
+              </div>
+              <h4 class="location-address">Via Mario Pagano, 10</h4>
+              <p class="location-city">70033 Corato (Bari)</p>
+              <div class="location-phone-row">
+                <span class="phone-label">Telefono Ufficio:</span>
+                <a href="tel:+390808725722" class="phone-link">+39 080 872 5722</a>
+              </div>
+            </div>
+
+            <!-- 3 COMMITMENTS / GUARANTEES -->
+            <div class="contact-guarantees-list">
+              <div class="guarantee-item">
+                <span class="guarantee-check">✓</span>
+                <div>
+                  <strong>Preventivo Garantito in 24h</strong>
+                  <p>Prezzo chiaro a corpo, senza voci impreviste.</p>
+                </div>
+              </div>
+              <div class="guarantee-item">
+                <span class="guarantee-check">✓</span>
+                <div>
+                  <strong>Tutte le Revisioni Incluse</strong>
+                  <p>Bozze intermedie di inquadratura e luce fino al tuo OK.</p>
+                </div>
+              </div>
+              <div class="guarantee-item">
+                <span class="guarantee-check">✓</span>
+                <div>
+                  <strong>Accordo di Riservatezza NDA</strong>
+                  <p>I tuoi modelli e brevetti sono tutelati legalmente al 100%.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ======================================================================
+       MUSEUM-GRADE LIGHTBOX / FULLSCREEN VIEWER (A TUTTA PAGINA)
+       Supports Still Renders, Looping Videos, and Wireframe/Render Sliders
+       ====================================================================== -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog">
+    <div class="lightbox-backdrop"></div>
+    <div class="lightbox-container">
+      
+      <!-- TOP BAR: FLOATING GLASS OVERLAY (PURE WHITE ARCHITECTURAL STYLE) -->
+      <div class="lightbox-top-bar">
+        <div class="lightbox-header-left">
+          <button id="lb-brand-back" class="lb-brand-back" title="Torna alla galleria (Esc)" aria-label="Torna alla galleria">
+            <div class="lb-brand-frame">
+              <img src="assets/logo_original_transparent.png" alt="OE Visual" class="lb-brand-logo-img" width="284" height="246" />
+              <canvas id="lb-weld-canvas" class="logo-weld-canvas" width="284" height="246" aria-hidden="true"></canvas>
+            </div>
+          </button>
+          <div class="lightbox-header-divider"></div>
+          <div class="lightbox-title-wrap">
+            <h3 id="lb-title">Project Title</h3>
+            <span id="lb-meta">Category · Location</span>
+          </div>
+        </div>
+        <div class="lightbox-actions">
+          <!-- Audio toggle for videos -->
+          <button id="lb-audio-toggle" class="lb-btn" title="Audio On / Off" style="display: none;">
+            <svg class="audio-unmuted-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            </svg>
+            <svg class="audio-muted-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <line x1="23" y1="9" x2="17" y2="15"></line>
+              <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+          </button>
+          <!-- Theme toggle in Lightbox (Sun / Moon) -->
+          <button id="lb-theme-toggle" class="lb-btn" aria-label="Cambia tema chiaro/scuro" title="Tema Scuro / Chiaro">
+            <svg class="sun-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          <!-- Zoom toggle for renders (Icona identica a quella delle card in homepage) -->
+          <button id="lb-zoom" class="lb-btn" title="Espandi / Riduci vista (Z)">
+            <svg class="zoom-in-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <polyline points="9 21 3 21 3 15"></polyline>
+              <line x1="21" y1="3" x2="14" y2="10"></line>
+              <line x1="3" y1="21" x2="10" y2="14"></line>
+            </svg>
+            <svg class="zoom-out-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+              <polyline points="4 14 10 14 10 20"></polyline>
+              <polyline points="20 10 14 10 14 4"></polyline>
+              <line x1="14" y1="10" x2="21" y2="3"></line>
+              <line x1="10" y1="14" x2="3" y2="21"></line>
+            </svg>
+          </button>
+          <!-- Close -->
+          <button id="lb-close" class="lb-btn" title="Chiudi a tutta pagina (Esc)">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- MAIN STAGE -->
+      <div class="lightbox-stage" id="lightbox-stage">
+        <!-- Fasce laterali ridotte: icone di navigazione circolari identiche all'homepage -->
+        <button id="lb-prev" class="lb-nav-btn prev" aria-label="Precedente" title="Precedente (← o scroll su)">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        
+        <!-- DYNAMIC HORIZONTAL SLIDE TRACK (SIDE-BY-SIDE / AFFIANCATE) -->
+        <div class="lb-stage-track" id="lb-stage-track"></div>
+
+        <button id="lb-next" class="lb-nav-btn next" aria-label="Successivo" title="Successivo (→ o scroll giù)">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <!-- BOTTOM BAR: FLOATING GLASS OVERLAY -->
+      <div class="lightbox-bottom-bar">
+        <div class="lb-desc" id="lb-desc">Descrizione tecnica del progetto.</div>
+        <div class="lb-counter"><span id="lb-current">1</span> / <span id="lb-total">24</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- YOUTUBE REEL MODAL -->
+  <div id="video-modal" class="video-modal" aria-hidden="true">
+    <div class="video-backdrop"></div>
+    <div class="video-container">
+      <button id="video-close" class="video-close-btn" aria-label="Chiudi Video">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="video-frame-wrapper">
+        <iframe id="video-iframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       FOOTER: INDEPENDENT STUDIO FOOTER
+       ====================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo-frame">
+          <img src="assets/logo_original_transparent.png" alt="OE Visual Logo" class="footer-logo-img" width="284" height="246" />
+          <canvas class="logo-weld-canvas" width="284" height="246" aria-hidden="true"></canvas>
+        </div>
+        <p class="footer-tagline">OE Visual · High-End Architectural CGI, Cinematic Motion & 3D Modeling Atelier</p>
+      </div>
+
+      <div class="footer-meta">
+        <div class="footer-links">
+          <a href="#works">Work</a>
+          <a href="#studio">Studio</a>
+          <a href="#contact">Contact</a>
+          <a href="https://wa.me/393478631379" target="_blank" rel="noopener">WhatsApp Atelier</a>
+        </div>
+        <div class="footer-rights">
+          © 2026 OE Visual · Arch. Benedetto Brattoli · Tutti i diritti riservati (L. 633/1941).
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js?v=2.5"></script>
+</body>
+</html>

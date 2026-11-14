@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #fbfbfb; }
+      .guide-line { stroke: #c8ced4; stroke-width: 1.2; stroke-dasharray: none; }
+      .guide-circle { fill: none; stroke: #d5dbe0; stroke-width: 1; }
+      .glyph { fill: none; stroke: #15171a; stroke-width: 12; stroke-linecap: round; stroke-linejoin: round; }
+      .glyph-fill { fill: #15171a; }
+      .brand-text { font-family: 'Montserrat', 'Futura', 'Helvetica Neue', sans-serif; font-size: 78px; font-weight: 500; letter-spacing: 0.32em; fill: #15171a; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- Background for preview -->
+  <rect width="100%" height="100%" class="bg" />
+
+  <!-- Construction / Drafting Geometry (Architectural Soul) -->
+  <g id="drafting-guides" opacity="0.85">
+    <!-- Horizontal Axis extending through -->
+    <line x1="80" y1="210" x2="720" y2="210" class="guide-line" />
+    
+    <!-- Vertical Centerline Left Circle -->
+    <line x1="280" y1="50" x2="280" y2="370" class="guide-line" />
+    
+    <!-- Vertical Centerline Right Circle (passes through vertical glyph chord) -->
+    <line x1="520" y1="50" x2="520" y2="370" class="guide-line" />
+    
+    <!-- Tangent Top Guide Line -->
+    <line x1="120" y1="90" x2="680" y2="90" class="guide-line" />
+    
+    <!-- Tangent Bottom Guide Line -->
+    <line x1="120" y1="330" x2="680" y2="330" class="guide-line" />
+
+    <!-- Diagonal Construction Lines -->
+    <!-- From Left Center to Top of Right Chord -->
+    <line x1="280" y1="210" x2="520" y2="90" class="guide-line" />
+    <!-- From Left Center to Bottom of Right Chord -->
+    <line x1="280" y1="210" x2="520" y2="330" class="guide-line" />
+    <!-- 45-degree angle rays -->
+    <line x1="250" y1="240" x2="550" y2="60" class="guide-line" />
+
+    <!-- Right Circle full ghost outline -->
+    <circle cx="520" cy="210" r="120" class="guide-circle" />
+    <!-- Inner concentric construction circles -->
+    <circle cx="520" cy="210" r="60" class="guide-circle" />
+    <circle cx="400" cy="210" r="45" class="guide-circle" />
+  </g>
+
+  <!-- Main Geometric Monogram Glyphs (Thick Ink Lines) -->
+  <g id="monogram-glyphs">
+    <!-- LEFT SHAPE: O -->
+    <!-- Full Circle (cx=280, cy=210, r=120) -->
+    <circle cx="280" cy="210" r="120" class="glyph" />
+    <!-- Horizontal Diameter Bar -->
+    <line x1="160" y1="210" x2="400" y2="210" class="glyph" />
+
+    <!-- RIGHT SHAPE: E (Avant-Garde Architectural) -->
+    <!-- Vertical Chord from top (12 o'clock) to bottom (6 o'clock): (520, 90) to (520, 330) -->
+    <line x1="520" y1="90" x2="520" y2="330" class="glyph" />
+
+    <!-- Top-Right Arc: Quarter circle from (520, 90) clockwise to (640, 210) -->
+    <path d="M 520,90 A 120 120 0 0 1 640,210" class="glyph" />
+
+    <!-- Midline Horizontal Bar: from (520, 210) to (640, 210) -->
+    <line x1="520" y1="210" x2="640" y2="210" class="glyph" />
+
+    <!-- Bottom-Left Arc: Arc of the right circle from (400, 210) to (520, 330) -->
+    <!-- Notice: at x=400, cy=210, it's dx=-120, dy=0 (9 o'clock) to dx=0, dy=+120 (6 o'clock) -->
+    <path d="M 400,210 A 120 120 0 0 0 520,330" class="glyph" />
+  </g>
+
+  <!-- Typography: VISUAL -->
+  <text x="415" y="450" class="brand-text">VISUAL</text>
+</svg>
