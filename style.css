@@ -1772,8 +1772,9 @@ body.theme-dark .reel-featured-card:hover .play-circle svg polygon {
 
 .avatars-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  column-gap: 1.5rem;
+  row-gap: 7.2rem;
   margin-top: 6.8rem; /* Breathing room for perched 3D miniature figures */
   margin-bottom: 2.5rem;
 }
@@ -1841,6 +1842,19 @@ body.theme-dark .reel-featured-card:hover .play-circle svg polygon {
   width: 106px;
 }
 
+/* ANGELO: Sitting on top border holding glowing 3D wireframe polygon (v3.3) */
+#avatar-card-angelo .avatar-card-perch {
+  top: -72px;
+  right: 125px;
+  animation: figureIdleAngelo 5s ease-in-out infinite 1.8s;
+}
+#avatar-card-angelo .avatar-perch-img {
+  width: 96px;
+}
+#avatar-card-angelo .avatar-photo {
+  object-position: center 25%;
+}
+
 /* Idle Floating / Breathing Animations */
 @keyframes figureIdleBenny {
   0%, 100% { transform: translateY(0) rotate(0deg); }
@@ -1855,6 +1869,11 @@ body.theme-dark .reel-featured-card:hover .play-circle svg polygon {
 @keyframes figureIdleMarco {
   0%, 100% { transform: translateY(0) rotate(0deg); }
   50% { transform: translateY(-3.5px) rotate(0.6deg); }
+}
+
+@keyframes figureIdleAngelo {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-3.5px) rotate(0.5deg); }
 }
 
 /* Card Hover Reactions: Figure stands to attention and leans toward visitor */
@@ -3841,7 +3860,8 @@ body.theme-dark .lb-slide-seasons .lb-season-progress {
 
   .avatars-grid {
     margin-top: 5.5rem;
-    gap: 4.8rem;
+    column-gap: 1.5rem;
+    row-gap: 6.5rem;
   }
 
   .avatar-card-perch {

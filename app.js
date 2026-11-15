@@ -1699,7 +1699,7 @@ function setupScrollSpy() {
 }
 
 /* ==========================================================================
-   INTERACTIVE TEAM AVATARS: BENNY, MICHELE & MARCO
+   INTERACTIVE TEAM AVATARS: BENNY, MICHELE, MARCO & ANGELO (v3.3)
    Axiom Compliant: €0.00 cost, Local Web Speech API Voice Synthesis, Real Q&A
    ========================================================================== */
 const teamAvatarData = {
@@ -1707,7 +1707,7 @@ const teamAvatarData = {
     name: "Arch. Benedetto Brattoli",
     role: "Founder & Direttore Creativo",
     status: "In Studio · Disponibile al dialogo",
-    photo: "assets/team/benedetto_frontal.jpg?v=3.2",
+    photo: "assets/team/benedetto_frontal.jpg?v=3.3",
     waPhone: "393478631379",
     voicePitch: 1.0,
     voiceRate: 0.98,
@@ -1721,7 +1721,7 @@ const teamAvatarData = {
     name: "Ing. Michele De Pinto",
     role: "Co-Founder & Direttore Tecnico",
     status: "In Studio / Coordinamento BIM",
-    photo: "assets/team/michele.jpg?v=3.2",
+    photo: "assets/team/michele.jpg?v=3.3",
     waPhone: "393478631379",
     voicePitch: 0.94,
     voiceRate: 1.0,
@@ -1735,7 +1735,7 @@ const teamAvatarData = {
     name: "Arch. Marco Brunori",
     role: "Co-Founder & Senior Architect",
     status: "In Studio Design & Styling",
-    photo: "assets/team/marco.jpg?v=3.2",
+    photo: "assets/team/marco.jpg?v=3.3",
     waPhone: "393478631379",
     voicePitch: 1.06,
     voiceRate: 0.98,
@@ -1743,6 +1743,20 @@ const teamAvatarData = {
     answers: {
       arredi: "Lavoriamo a stretto contatto con il moodboard del tuo progetto. Inseriamo complementi d'arredo dei più prestigiosi brand internazionali di design contemporaneo, oppure modelliamo da schede tecniche fornite dal committente ogni singolo mobile custom, illuminazione decorativa e tessuto artigianale.",
       cataloghi: "Creiamo cataloghi fotografici virtuali per brand d'arredo, cucine e rivestimenti industriali. Il render sostituisce i costosi set fotografici tradizionali: permette di variare all'infinito legni, laccature, marmi o inquadrature con una flessibilità totale e costi certi e contenuti."
+    }
+  },
+  angelo: {
+    name: "Angelo Croce",
+    role: "3D Visualizer & Senior Modeler",
+    status: "In Studio 3D · Modellazione & Lighting",
+    photo: "assets/team/angelo.jpg?v=3.3",
+    waPhone: "393478631379",
+    voicePitch: 1.02,
+    voiceRate: 1.0,
+    intro: "Ciao! Sono Angelo Croce, 3D Modeler & Visualizer di OE Visual. Mi occupo di trasformare disegni e concept in modelli tridimensionali ricchi di dettaglio e rendering fotorealistici. Clicca sui quesiti per scoprire il nostro processo.",
+    answers: {
+      modellazione: "Partiamo da schizzi concettuali, rilievi fotografici o file CAD bidimensionali: costruiamo il modello poligonale con topologia pulita, pronto sia per rendering statici ad altissima risoluzione che per animazioni fluide.",
+      materiali: "Utilizziamo shader fisicamente corretti (PBR) con mappe personalizzate di rugosità, bump e riflessione per riprodurre fedelmente la tattilità di ogni materiale: dal marmo venato al legno spazzolato, dai metalli satinati ai tessuti d'arredo."
     }
   }
 };
