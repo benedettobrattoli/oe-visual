@@ -1721,7 +1721,7 @@ const teamAvatarData = {
   },
   marco: {
     name: "Arch. Marco Brunori",
-    role: "Partner & Senior Architect",
+    role: "Co-Founder & Senior Architect",
     status: "In Studio Design & Styling",
     photo: "assets/team/marco.jpg",
     waPhone: "393478631379",
