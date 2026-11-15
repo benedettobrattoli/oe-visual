@@ -285,6 +285,18 @@ const portfolioData = [
     image: "assets/portfolio/villa-rain-pool-poster.jpg",
     flex: 1.45,
     desc: "Simulazione cinematico-ambientale con pioggia battente, increspature dinamiche sull'acqua della piscina, deck in legno bagnato e calde luci interne a contrasto."
+  },
+  {
+    id: 25,
+    type: 'video',
+    title: "Catalogo Soluzioni d'Arredo — Editorial Motion Reel",
+    category: "interior",
+    location: "OE Atelier & Editorial Design",
+    videoSrc: "assets/videos/editorial-catalog-motion.mp4",
+    poster: "assets/portfolio/editorial-catalog-poster.jpg",
+    image: "assets/portfolio/editorial-catalog-poster.jpg",
+    flex: 1.45,
+    desc: "Motion reel editoriale: sfogliando il catalogo d'arredo tra render d'interni fotorealistici, moodboard materici, campionari tessili e finiture opache di design."
   }
 ];
 
