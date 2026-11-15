@@ -1791,99 +1791,176 @@ body.theme-dark .reel-featured-card:hover .play-circle svg polygon {
 }
 
 /* ==========================================================================
-   MINIATURE FOUNDER FIGURES PERCHED ON AVATAR CARDS (v3.2)
-   "animazione dei nostri tre avatar con le nostre sembianze che interagiscono"
+   MINIATURE FOUNDER FIGURES PERCHED ON AVATAR CARDS (v3.4)
+   "Io cammini sulla linea, l'ingegner De Pinto stia seduto e apra i disegni,
+    Marco Brunori si muova sulla linea, Angelo Croce con modellino 3D"
    ========================================================================== */
 .avatar-card-perch {
   position: absolute;
   z-index: 15;
   cursor: pointer;
   pointer-events: auto;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease;
   user-select: none;
   -webkit-user-drag: none;
+  transform-origin: bottom center;
 }
 
 .avatar-perch-img {
   display: block;
+  width: 100%;
   height: auto;
   filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.16));
-  transition: filter 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: filter 0.35s ease;
   pointer-events: none;
 }
 
-/* BENNY: Walking along top border with tablet & stylus */
+.avatar-perch-img.frame-1 {
+  position: relative;
+  z-index: 1;
+}
+
+.avatar-perch-img.frame-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 2;
+}
+
+/* 1. BENNY: Walking back and forth along the top border line */
 #avatar-card-benedetto .avatar-card-perch {
-  top: -114px;
-  right: 38px;
-  animation: figureIdleBenny 4.6s ease-in-out infinite;
-}
-#avatar-card-benedetto .avatar-perch-img {
   width: 84px;
+  bottom: 100%;
+  margin-bottom: -1px;
+  left: 18px;
+  top: auto;
+  right: auto;
+  animation: bennyWalkLine 14s linear infinite;
+}
+#avatar-card-benedetto .avatar-perch-img.frame-1 {
+  animation: spriteStepF1 0.68s steps(1, end) infinite;
+}
+#avatar-card-benedetto .avatar-perch-img.frame-2 {
+  animation: spriteStepF2 0.68s steps(1, end) infinite;
 }
 
-/* MICHELE: Sitting on top border with blueprints & legs dangling down into card */
+/* 2. MICHELE: Seated directly on the top border line, unrolling & reading CAD blueprints */
 #avatar-card-michele .avatar-card-perch {
-  top: -72px;
-  right: 132px;
-  animation: figureIdleMichele 5.2s ease-in-out infinite 1.2s;
+  width: 92px;
+  bottom: 100%;
+  margin-bottom: -39px;
+  right: 118px;
+  top: auto;
+  animation: micheleSeatedIdle 5.2s ease-in-out infinite;
 }
-#avatar-card-michele .avatar-perch-img {
-  width: 90px;
+#avatar-card-michele .avatar-perch-img.frame-1 {
+  animation: blueprintRollF1 5.2s ease-in-out infinite;
+}
+#avatar-card-michele .avatar-perch-img.frame-2 {
+  animation: blueprintOpenF2 5.2s ease-in-out infinite;
 }
 
-/* MARCO: Crouching on top border inspecting material swatches & tape measure */
+/* 3. MARCO: Moving along the top border line while measuring & checking swatches */
 #avatar-card-marco .avatar-card-perch {
-  top: -94px;
-  right: 34px;
-  animation: figureIdleMarco 4.8s ease-in-out infinite 2.4s;
+  width: 104px;
+  bottom: 100%;
+  margin-bottom: -1px;
+  right: 22px;
+  top: auto;
+  animation: marcoMoveLine 9.5s ease-in-out infinite;
 }
-#avatar-card-marco .avatar-perch-img {
-  width: 106px;
+#avatar-card-marco .avatar-perch-img.frame-1 {
+  animation: marcoTapeF1 3.2s ease-in-out infinite;
+}
+#avatar-card-marco .avatar-perch-img.frame-2 {
+  animation: marcoTapeF2 3.2s ease-in-out infinite;
 }
 
-/* ANGELO: Sitting on top border holding glowing 3D wireframe polygon (v3.3) */
+/* 4. ANGELO: Walking along the top border line holding a 3D Architectural Villa Model */
 #avatar-card-angelo .avatar-card-perch {
-  top: -72px;
-  right: 125px;
-  animation: figureIdleAngelo 5s ease-in-out infinite 1.8s;
+  width: 84px;
+  bottom: 100%;
+  margin-bottom: -1px;
+  right: 18px;
+  top: auto;
+  animation: angeloWalkLine 13s linear infinite;
 }
-#avatar-card-angelo .avatar-perch-img {
-  width: 96px;
+#avatar-card-angelo .avatar-perch-img.frame-1 {
+  animation: spriteStepF1 0.72s steps(1, end) infinite;
+}
+#avatar-card-angelo .avatar-perch-img.frame-2 {
+  animation: spriteStepF2 0.72s steps(1, end) infinite;
 }
 #avatar-card-angelo .avatar-photo {
-  object-position: center 25%;
+  object-position: center 18%;
 }
 
-/* Idle Floating / Breathing Animations */
-@keyframes figureIdleBenny {
+/* Two-Frame Walking Stride Alternation (Benny & Angelo) */
+@keyframes spriteStepF1 {
+  0%, 49.9% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+@keyframes spriteStepF2 {
+  0%, 49.9% { opacity: 0; }
+  50%, 100% { opacity: 1; }
+}
+
+/* Benny Horizontal Line Walk (left -> right -> turn -> left) */
+@keyframes bennyWalkLine {
+  0%    { transform: translateX(0px) scaleX(1); }
+  45%   { transform: translateX(148px) scaleX(1); }
+  50%   { transform: translateX(148px) scaleX(-1); }
+  95%   { transform: translateX(0px) scaleX(-1); }
+  100%  { transform: translateX(0px) scaleX(1); }
+}
+
+/* Michele Seated Subtle Breathing + Blueprint Unrolling Cycle */
+@keyframes micheleSeatedIdle {
   0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-4px) rotate(0.6deg); }
+  50%      { transform: translateY(-2px) rotate(-0.4deg); }
+}
+@keyframes blueprintRollF1 {
+  0%, 24%   { opacity: 1; }
+  32%, 78%  { opacity: 0; }
+  86%, 100% { opacity: 1; }
+}
+@keyframes blueprintOpenF2 {
+  0%, 24%   { opacity: 0; }
+  32%, 78%  { opacity: 1; }
+  86%, 100% { opacity: 0; }
 }
 
-@keyframes figureIdleMichele {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-3.5px) rotate(-0.5deg); }
+/* Marco Line Movement + Extending Tape Measure */
+@keyframes marcoMoveLine {
+  0%, 100% { transform: translateX(0px); }
+  35%      { transform: translateX(-54px); }
+  65%      { transform: translateX(-24px); }
+}
+@keyframes marcoTapeF1 {
+  0%, 35%   { opacity: 1; }
+  45%, 80%  { opacity: 0; }
+  90%, 100% { opacity: 1; }
+}
+@keyframes marcoTapeF2 {
+  0%, 35%   { opacity: 0; }
+  45%, 80%  { opacity: 1; }
+  90%, 100% { opacity: 0; }
 }
 
-@keyframes figureIdleMarco {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-3.5px) rotate(0.6deg); }
+/* Angelo Horizontal Line Walk (right -> left -> turn -> right) */
+@keyframes angeloWalkLine {
+  0%    { transform: translateX(0px) scaleX(1); }
+  45%   { transform: translateX(-142px) scaleX(1); }
+  50%   { transform: translateX(-142px) scaleX(-1); }
+  95%   { transform: translateX(0px) scaleX(-1); }
+  100%  { transform: translateX(0px) scaleX(1); }
 }
 
-@keyframes figureIdleAngelo {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-3.5px) rotate(0.5deg); }
-}
-
-/* Card Hover Reactions: Figure stands to attention and leans toward visitor */
-.avatar-card:hover .avatar-card-perch,
-.avatar-card-perch:hover {
-  transform: translateY(-8px) scale(1.06);
-}
+/* Card Hover Reactions */
 .avatar-card:hover .avatar-perch-img,
 .avatar-card-perch:hover .avatar-perch-img {
-  filter: drop-shadow(0 14px 20px rgba(0, 0, 0, 0.22)) drop-shadow(0 2px 4px rgba(224, 90, 43, 0.2));
+  filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.22)) drop-shadow(0 2px 5px rgba(224, 90, 43, 0.24));
 }
 
 /* Active Speaker State: Expressive Speaking / Gesturing Animation */
@@ -3864,9 +3941,17 @@ body.theme-dark .lb-slide-seasons .lb-season-progress {
     row-gap: 6.5rem;
   }
 
-  .avatar-card-perch {
-    transform: scale(0.85);
-    transform-origin: bottom right;
+  #avatar-card-benedetto .avatar-card-perch,
+  #avatar-card-angelo .avatar-card-perch {
+    width: 72px;
+  }
+  #avatar-card-michele .avatar-card-perch {
+    width: 78px;
+    margin-bottom: -33px;
+    right: 98px;
+  }
+  #avatar-card-marco .avatar-card-perch {
+    width: 88px;
   }
 
   .avatar-card {
