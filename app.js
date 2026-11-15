@@ -1707,7 +1707,7 @@ const teamAvatarData = {
     name: "Arch. Benedetto Brattoli",
     role: "Founder & Direttore Creativo",
     status: "In Studio · Disponibile al dialogo",
-    photo: "assets/team/benedetto.jpg?v=3.1",
+    photo: "assets/team/benedetto_frontal.jpg?v=3.2",
     waPhone: "393478631379",
     voicePitch: 1.0,
     voiceRate: 0.98,
@@ -1721,7 +1721,7 @@ const teamAvatarData = {
     name: "Ing. Michele De Pinto",
     role: "Co-Founder & Direttore Tecnico",
     status: "In Studio / Coordinamento BIM",
-    photo: "assets/team/michele.jpg?v=3.1",
+    photo: "assets/team/michele.jpg?v=3.2",
     waPhone: "393478631379",
     voicePitch: 0.94,
     voiceRate: 1.0,
@@ -1735,7 +1735,7 @@ const teamAvatarData = {
     name: "Arch. Marco Brunori",
     role: "Co-Founder & Senior Architect",
     status: "In Studio Design & Styling",
-    photo: "assets/team/marco.jpg?v=3.1",
+    photo: "assets/team/marco.jpg?v=3.2",
     waPhone: "393478631379",
     voicePitch: 1.06,
     voiceRate: 0.98,
@@ -1782,6 +1782,18 @@ function setupTeamAvatars() {
       const question = btn.getAttribute('data-q');
       if (member && question) {
         activateAvatarSpeaker(member, question, false);
+      }
+    });
+  });
+
+  // Perched interactive miniature figures click (v3.2)
+  const perchFigures = document.querySelectorAll('.avatar-card-perch');
+  perchFigures.forEach(perch => {
+    perch.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const member = perch.getAttribute('data-member');
+      if (member) {
+        activateAvatarSpeaker(member, null, true);
       }
     });
   });

@@ -1774,6 +1774,7 @@ body.theme-dark .reel-featured-card:hover .play-circle svg polygon {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.5rem;
+  margin-top: 6.8rem; /* Breathing room for perched 3D miniature figures */
   margin-bottom: 2.5rem;
 }
 
@@ -1786,6 +1787,101 @@ body.theme-dark .reel-featured-card:hover .play-circle svg polygon {
   flex-direction: column;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
   position: relative;
+}
+
+/* ==========================================================================
+   MINIATURE FOUNDER FIGURES PERCHED ON AVATAR CARDS (v3.2)
+   "animazione dei nostri tre avatar con le nostre sembianze che interagiscono"
+   ========================================================================== */
+.avatar-card-perch {
+  position: absolute;
+  z-index: 15;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.avatar-perch-img {
+  display: block;
+  height: auto;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.16));
+  transition: filter 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+/* BENNY: Walking along top border with tablet & stylus */
+#avatar-card-benedetto .avatar-card-perch {
+  top: -114px;
+  right: 38px;
+  animation: figureIdleBenny 4.6s ease-in-out infinite;
+}
+#avatar-card-benedetto .avatar-perch-img {
+  width: 84px;
+}
+
+/* MICHELE: Sitting on top border with blueprints & legs dangling down into card */
+#avatar-card-michele .avatar-card-perch {
+  top: -72px;
+  right: 132px;
+  animation: figureIdleMichele 5.2s ease-in-out infinite 1.2s;
+}
+#avatar-card-michele .avatar-perch-img {
+  width: 90px;
+}
+
+/* MARCO: Crouching on top border inspecting material swatches & tape measure */
+#avatar-card-marco .avatar-card-perch {
+  top: -94px;
+  right: 34px;
+  animation: figureIdleMarco 4.8s ease-in-out infinite 2.4s;
+}
+#avatar-card-marco .avatar-perch-img {
+  width: 106px;
+}
+
+/* Idle Floating / Breathing Animations */
+@keyframes figureIdleBenny {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-4px) rotate(0.6deg); }
+}
+
+@keyframes figureIdleMichele {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-3.5px) rotate(-0.5deg); }
+}
+
+@keyframes figureIdleMarco {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-3.5px) rotate(0.6deg); }
+}
+
+/* Card Hover Reactions: Figure stands to attention and leans toward visitor */
+.avatar-card:hover .avatar-card-perch,
+.avatar-card-perch:hover {
+  transform: translateY(-8px) scale(1.06);
+}
+.avatar-card:hover .avatar-perch-img,
+.avatar-card-perch:hover .avatar-perch-img {
+  filter: drop-shadow(0 14px 20px rgba(0, 0, 0, 0.22)) drop-shadow(0 2px 4px rgba(224, 90, 43, 0.2));
+}
+
+/* Active Speaker State: Expressive Speaking / Gesturing Animation */
+.avatar-card.active-speaker .avatar-card-perch {
+  animation: figureActiveSpeaking 1.6s ease-in-out infinite alternate !important;
+  transform: translateY(-8px) scale(1.08);
+}
+.avatar-card.active-speaker .avatar-perch-img {
+  filter: drop-shadow(0 14px 24px rgba(224, 90, 43, 0.38)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
+}
+
+@keyframes figureActiveSpeaking {
+  0% { transform: translateY(-7px) scale(1.08) rotate(0deg); }
+  25% { transform: translateY(-11px) scale(1.09) rotate(1.4deg); }
+  50% { transform: translateY(-6px) scale(1.07) rotate(-0.8deg); }
+  75% { transform: translateY(-10px) scale(1.09) rotate(0.8deg); }
+  100% { transform: translateY(-7px) scale(1.08) rotate(0deg); }
 }
 
 .avatar-card:hover {
@@ -1862,7 +1958,7 @@ body.theme-dark .reel-featured-card:hover .play-circle svg polygon {
 }
 
 #avatar-card-benedetto .avatar-photo {
-  object-position: center 20%;
+  object-position: center 25%;
 }
 
 #avatar-card-michele .avatar-photo {
@@ -3741,6 +3837,16 @@ body.theme-dark .lb-slide-seasons .lb-season-progress {
   .wa-direct-btn {
     width: 100%;
     justify-content: center;
+  }
+
+  .avatars-grid {
+    margin-top: 5.5rem;
+    gap: 4.8rem;
+  }
+
+  .avatar-card-perch {
+    transform: scale(0.85);
+    transform-origin: bottom right;
   }
 
   .avatar-card {
