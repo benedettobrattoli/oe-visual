@@ -4,7 +4,7 @@
  * Axiom Compliant: 100% Local, €0.00 cost, Pure Vanilla JS
  */
 
-// PORTFOLIO DATASET (24 Curated Local Assets: Renders, Looping Videos, Wireframe Sliders)
+// PORTFOLIO DATASET (26 Curated Local Assets: Renders, Looping Videos, Wireframe Sliders)
 const portfolioData = [
   {
     id: 1,
@@ -297,6 +297,18 @@ const portfolioData = [
     image: "assets/portfolio/editorial-catalog-poster.jpg",
     flex: 1.45,
     desc: "Motion reel editoriale: sfogliando il catalogo d'arredo tra render d'interni fotorealistici, moodboard materici, campionari tessili e finiture opache di design."
+  },
+  {
+    id: 26,
+    type: 'video',
+    title: "Corporate Lounge & Acoustic Pods — Motion Reel",
+    category: "commercial",
+    location: "Milano Financial District",
+    videoSrc: "assets/videos/corporate-lounge-pods-motion.mp4",
+    poster: "assets/portfolio/corporate-lounge-pods-poster.jpg",
+    image: "assets/portfolio/corporate-lounge-pods-poster.jpg",
+    flex: 1.75,
+    desc: "Spazio lounge direzionale e hub di incontro con capsule meeting acustiche in legno e tessuto imbottito, illuminazione architetturale lineare e palette cromatica contemporanea."
   }
 ];
 
