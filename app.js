@@ -1840,6 +1840,97 @@ function setupTeamAvatars() {
       // Voices loaded
     };
   }
+
+  // Initialize 60fps Biomechanical Canvas Rig for Benny (v3.5)
+  initBennyBiomechanicalRig();
+}
+
+/**
+ * 60fps Biomechanical 10-Frame Walk + Tablet-Reading Idle Engine for Arch. Benedetto Brattoli
+ * Frames 0..7: 8-phase articulated gait cycle (hip, knee & ankle-compensated suede shoes)
+ * Frame 8: Natural standing pose (feet planted flat on the border line)
+ * Frame 9: Standing tablet-tapping / head-nodding interaction pose
+ */
+function initBennyBiomechanicalRig() {
+  const canvas = document.getElementById('benny-perch-canvas');
+  const perch = document.getElementById('benny-perch-rig');
+  if (!canvas || !perch) return;
+
+  const ctx = canvas.getContext('2d');
+  const atlas = new Image();
+  atlas.src = 'assets/team/figures/benny-walk-atlas.png?v=3.5';
+
+  let state = 'WALK_RIGHT'; // WALK_RIGHT -> PAUSE_RIGHT -> WALK_LEFT -> PAUSE_LEFT
+  let posX = 0;
+  const maxPosX = 144;
+  const walkSpeed = 28; // px per second — synchronized with 8-frame stride length
+  const frameRate = 8.8; // walk frames per second
+  let walkCyclePos = 0;
+  let pauseElapsed = 0;
+  let facingDir = 1;
+  let lastTime = performance.now();
+
+  function renderFrame(frameIdx) {
+    ctx.clearRect(0, 0, 100, 114);
+    const sx = Math.max(0, Math.min(9, Math.floor(frameIdx))) * 100;
+    ctx.drawImage(atlas, sx, 0, 100, 114, 0, 0, 100, 114);
+  }
+
+  function tick(now) {
+    const dt = Math.min(0.05, (now - lastTime) / 1000);
+    lastTime = now;
+
+    if (state === 'WALK_RIGHT') {
+      facingDir = 1;
+      posX += walkSpeed * dt;
+      walkCyclePos = (walkCyclePos + frameRate * dt) % 8;
+      renderFrame(walkCyclePos);
+      if (posX >= maxPosX) {
+        posX = maxPosX;
+        state = 'PAUSE_RIGHT';
+        pauseElapsed = 0;
+      }
+    } else if (state === 'PAUSE_RIGHT') {
+      pauseElapsed += dt;
+      // Stand naturally on both feet (frame 8) and tap tablet twice with stylus (frame 9)
+      const isTapping = (pauseElapsed > 0.6 && pauseElapsed < 1.0) || (pauseElapsed > 1.5 && pauseElapsed < 1.9);
+      renderFrame(isTapping ? 9 : 8);
+      // Turn toward left while standing at 2.2s, then start walking at 2.6s
+      if (pauseElapsed > 2.25) facingDir = -1;
+      if (pauseElapsed >= 2.65) {
+        state = 'WALK_LEFT';
+        walkCyclePos = 0;
+      }
+    } else if (state === 'WALK_LEFT') {
+      facingDir = -1;
+      posX -= walkSpeed * dt;
+      walkCyclePos = (walkCyclePos + frameRate * dt) % 8;
+      renderFrame(walkCyclePos);
+      if (posX <= 0) {
+        posX = 0;
+        state = 'PAUSE_LEFT';
+        pauseElapsed = 0;
+      }
+    } else if (state === 'PAUSE_LEFT') {
+      pauseElapsed += dt;
+      const isTapping = (pauseElapsed > 0.5 && pauseElapsed < 0.9) || (pauseElapsed > 1.4 && pauseElapsed < 1.8);
+      renderFrame(isTapping ? 9 : 8);
+      if (pauseElapsed > 2.1) facingDir = 1;
+      if (pauseElapsed >= 2.5) {
+        state = 'WALK_RIGHT';
+        walkCyclePos = 0;
+      }
+    }
+
+    perch.style.transform = `translateX(${posX.toFixed(1)}px) scaleX(${facingDir})`;
+    requestAnimationFrame(tick);
+  }
+
+  atlas.onload = () => {
+    renderFrame(8);
+    lastTime = performance.now();
+    requestAnimationFrame(tick);
+  };
 }
 
 /**

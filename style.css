@@ -1805,7 +1805,8 @@ body.theme-dark .reel-featured-card:hover .play-circle svg polygon {
   transform-origin: bottom center;
 }
 
-.avatar-perch-img {
+.avatar-perch-img,
+.avatar-perch-canvas {
   display: block;
   width: 100%;
   height: auto;
@@ -1828,21 +1829,15 @@ body.theme-dark .reel-featured-card:hover .play-circle svg polygon {
   z-index: 2;
 }
 
-/* 1. BENNY: Walking back and forth along the top border line */
+/* 1. BENNY: 60fps Biomechanical Canvas Rig walking & pausing along the top border line */
 #avatar-card-benedetto .avatar-card-perch {
   width: 84px;
   bottom: 100%;
   margin-bottom: -1px;
-  left: 18px;
+  left: 16px;
   top: auto;
   right: auto;
-  animation: bennyWalkLine 14s linear infinite;
-}
-#avatar-card-benedetto .avatar-perch-img.frame-1 {
-  animation: spriteStepF1 0.68s steps(1, end) infinite;
-}
-#avatar-card-benedetto .avatar-perch-img.frame-2 {
-  animation: spriteStepF2 0.68s steps(1, end) infinite;
+  will-change: transform;
 }
 
 /* 2. MICHELE: Seated directly on the top border line, unrolling & reading CAD blueprints */
