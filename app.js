@@ -106,13 +106,15 @@ const portfolioData = [
   },
   {
     id: 10,
-    type: 'render',
-    title: "Villa Monolitica in Pietra",
+    type: 'video',
+    title: "Villa Corten & Scala Vetrata — Dal CAD al 4K",
     category: "exterior",
-    location: "Trani, Costa Adriatica",
-    image: "assets/portfolio/villa-trani.jpg?v=8.1",
-    flex: 1.2,
-    desc: "Residenza privata unifamiliare con setti murari in pietra di Trani bocciardata e terrazzamenti solarium a sbalzo affacciati sul litorale adriatico."
+    location: "Murgia Pugliese, Puglia",
+    videoSrc: "assets/videos/villa-corten-cad-reel.mp4?v=8.2",
+    poster: "assets/portfolio/villa-trani.jpg?v=8.2",
+    image: "assets/portfolio/villa-trani.jpg?v=8.2",
+    flex: 1.5,
+    desc: "Presentazione completa per studio di architettura: dalle piante e sezioni CAD 1:100 animate fino ai master 4K tra corten ossidato, cilindro vetrato, piscina e interni."
   },
   {
     id: 11,
@@ -315,7 +317,7 @@ const portfolioData = [
 
 // B2B TARGET TAGS (Cataloghi/Product & Ingegneria/BIM)
 const PORTFOLIO_TARGETS = {
-  engineering: [1, 2, 3, 4, 17, 26],
+  engineering: [1, 2, 3, 4, 10, 17, 26],
   catalog: [7, 13, 16, 25, 26]
 };
 
@@ -330,7 +332,7 @@ const PORTFOLIO_EN = {
   7: { title: "Royal Avenue Luxury Penthouse", location: "London, Kensington", desc: "High-profile residential interior featuring fluted wood paneling, honed Calacatta marble, and balanced daylighting." },
   8: { title: "Panoramic Seafront Penthouse", location: "Bari Waterfront", desc: "Bespoke interior styling with smoked oak chevron flooring, custom millwork, and grazing linear lighting." },
   9: { title: "Bistro Lounge & Speakeasy Bar", location: "Rome Historic Center", desc: "Dramatic 2200K evening hospitality lighting over brushed brass, green marble, and velvet seating." },
-  10: { title: "Monolithic Stone Villa", location: "Trani, Adriatic Coast", desc: "Private monolithic residence in bush-hammered Trani stone with cantilevered coastal sundeck terraces." },
+  10: { title: "Corten Villa & Glass Staircase — From CAD to 4K", location: "Murgia, Puglia", desc: "Full commission for an architectural studio: animated 1:100 CAD plans and sections transitioning seamlessly into 4K exteriors, pool courtyard, and open-plan interiors." },
   11: { title: "Industrial Design Penthouse", location: "Milan, Tortona", desc: "Double-height open-space loft with exposed steel trusses, iconic design pieces, and crisp zenithal daylight." },
   12: { title: "Minimalist Terraced Villa", location: "Costa Smeralda, Sardinia", desc: "Interlocking white stereometric volumes tailored to rocky coastal topography with pocket glass walls." },
   13: { title: "Seaside Penthouse — Living & Panoramic Dining", location: "Polignano a Mare, Italy", desc: "Open-plan sea-view living with sculptural circular columns, natural oak, linen furniture, and continuous glazing." },
@@ -468,7 +470,7 @@ function shuffleAndDisplay() {
     const used = new Set();
     // Row 1-2 curated flagship diversity (architecture motion, 4K masseria hover, wireframe/BIM slider, hospitality/catalog)
     const anchors = [
-      pickOne([4, 3, 26], used),
+      pickOne([10, 4, 3, 26], used),
       pickOne([18], used),
       pickOne([1, 2], used),
       pickOne([5, 7, 13, 25], used),
