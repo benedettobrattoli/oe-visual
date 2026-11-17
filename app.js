@@ -241,7 +241,7 @@ const portfolioData = [
     title: "Viale dei Cipressi & Lavanda — Stato di Fatto → Restauro 4K",
     category: "exterior",
     location: "Monopoli, Puglia",
-    videoSrc: "assets/videos/masseria-viale-aging.mp4?v=8.7",
+    videoSrc: "assets/videos/masseria-viale-aging.mp4?v=8.8",
     poster: "assets/portfolio/masseria-viale-accesso.jpg?v=8.1",
     image: "assets/portfolio/masseria-viale-accesso.jpg?v=8.1",
     flex: 1.45,
@@ -582,14 +582,37 @@ function groupItemsIntoRows(items) {
 function attachHoverVideoBehaviour(card) {
   const hoverVideo = card.querySelector('.card-hover-video');
   if (!hoverVideo) return;
+  let resetTimer = null;
+  let isInside = false;
+
+  const activate = () => {
+    if (isInside) card.classList.add('is-hover-playing');
+  };
+
   card.addEventListener('mouseenter', () => {
-    card.classList.add('is-hover-playing');
-    hoverVideo.play().catch(() => {});
+    isInside = true;
+    if (resetTimer) {
+      clearTimeout(resetTimer);
+      resetTimer = null;
+    }
+    const p = hoverVideo.play();
+    if (hoverVideo.readyState >= 2) {
+      activate();
+    } else {
+      hoverVideo.addEventListener('canplay', activate, { once: true });
+    }
+    if (p && typeof p.catch === 'function') p.catch(() => {});
   });
+
   card.addEventListener('mouseleave', () => {
+    isInside = false;
     card.classList.remove('is-hover-playing');
-    hoverVideo.pause();
-    hoverVideo.currentTime = 0;
+    resetTimer = setTimeout(() => {
+      if (!isInside) {
+        hoverVideo.pause();
+        hoverVideo.currentTime = 0;
+      }
+    }, 720);
   });
 }
 
@@ -612,7 +635,7 @@ function createCardElement(rawItem, index) {
       <div class="render-img-wrapper">
         ${isHoverPlay
           ? `<img src="${item.poster || item.image || ''}" alt="${item.title}" class="render-img card-hover-poster" loading="lazy">
-             <video class="card-video card-hover-video" src="${item.videoSrc}" poster="${item.poster || ''}" loop muted playsinline preload="metadata"></video>`
+             <video class="card-video card-hover-video" src="${item.videoSrc}" poster="${item.poster || ''}" loop muted playsinline preload="auto"></video>`
           : `<video class="card-video" src="${item.videoSrc}" poster="${item.poster || ''}" autoplay loop muted playsinline preload="auto"></video>`
         }
       </div>
