@@ -16,50 +16,33 @@ class Team3DStudio {
     this.isVisible = true;
     this.clock = new THREE.Clock();
 
-    // Single shared high-DPI WebGLRenderer (avoids browser WebGL context limits)
-    this.renderer = new THREE.WebGLRenderer({
-      alpha: true,
-      antialias: true,
-      powerPreference: 'high-performance',
-      premultipliedAlpha: false
-    });
-    this.renderer.setSize(RENDER_W, RENDER_H, false);
-    this.renderer.setPixelRatio(1);
-    this.renderer.outputColorSpace = THREE.SRGBColorSpace;
-    this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    this.renderer.toneMappingExposure = 1.12;
-
-    this.scene = new THREE.Scene();
-
-    // Architectural studio camera (3/4 eye-level perspective)
-    this.camera = new THREE.PerspectiveCamera(26, RENDER_W / RENDER_H, 0.1, 20);
-    this.camera.position.set(0, 1.02, 4.35);
-    this.camera.lookAt(0, 0.90, 0);
-
-    this.setupLighting();
     this.loader = new GLTFLoader();
     this.bindEvents();
     this.initAllCharacters();
   }
 
-  setupLighting() {
-    const hemi = new THREE.HemisphereLight(0xffffff, 0xd8d2c8, 1.35);
-    this.scene.add(hemi);
+  createSceneAndCamera() {
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(26, RENDER_W / RENDER_H, 0.1, 20);
+    camera.position.set(0, 1.02, 4.35);
+    camera.lookAt(0, 0.90, 0);
 
-    // Warm key sun light
+    const hemi = new THREE.HemisphereLight(0xffffff, 0xd8d2c8, 1.35);
+    scene.add(hemi);
+
     const keyLight = new THREE.DirectionalLight(0xfff7ed, 2.1);
     keyLight.position.set(2.4, 3.8, 3.2);
-    this.scene.add(keyLight);
+    scene.add(keyLight);
 
-    // Cool studio fill light
     const fillLight = new THREE.DirectionalLight(0xdbeafe, 0.95);
     fillLight.position.set(-2.8, 2.0, 2.2);
-    this.scene.add(fillLight);
+    scene.add(fillLight);
 
-    // Signature OE Visual orange architectural rim light
     const rimLight = new THREE.DirectionalLight(0xe85d04, 0.85);
     rimLight.position.set(-1.5, 2.4, -3.0);
-    this.scene.add(rimLight);
+    scene.add(rimLight);
+
+    return { scene, camera };
   }
 
   bindEvents() {
@@ -67,14 +50,6 @@ class Team3DStudio {
       this.mouseNDC.x = (e.clientX / window.innerWidth) * 2 - 1;
       this.mouseNDC.y = -(e.clientY / window.innerHeight) * 2 + 1;
     }, { passive: true });
-
-    const section = document.getElementById('team-avatars');
-    if (section && 'IntersectionObserver' in window) {
-      const obs = new IntersectionObserver((entries) => {
-        this.isVisible = entries[0]?.isIntersecting ?? true;
-      }, { rootMargin: '200px' });
-      obs.observe(section);
-    }
   }
 
   initAllCharacters() {
@@ -128,13 +103,29 @@ class Team3DStudio {
 
       canvas.width = RENDER_W;
       canvas.height = RENDER_H;
-      const ctx2d = canvas.getContext('2d');
+
+      const renderer = new THREE.WebGLRenderer({
+        canvas,
+        alpha: true,
+        antialias: true,
+        powerPreference: 'high-performance'
+      });
+      renderer.setSize(RENDER_W, RENDER_H, false);
+      renderer.setPixelRatio(1);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.12;
+      renderer.setClearColor(0x000000, 0);
+
+      const { scene, camera } = this.createSceneAndCamera();
 
       const entry = {
         ...cfg,
         perch,
         canvas,
-        ctx2d,
+        renderer,
+        scene,
+        camera,
         group: null,
         bones: {},
         propGroup: null,
@@ -182,8 +173,7 @@ class Team3DStudio {
           rootGroup.add(shadowMesh);
 
           rootGroup.add(model);
-          rootGroup.visible = false;
-          this.scene.add(rootGroup);
+          entry.scene.add(rootGroup);
 
           entry.group = rootGroup;
           entry.model = model;
@@ -435,7 +425,7 @@ class Team3DStudio {
 
   animate() {
     requestAnimationFrame(() => this.animate());
-    if (!this.isVisible || this.characters.length === 0) return;
+    if (this.characters.length === 0) return;
 
     const dt = Math.min(0.05, this.clock.getDelta());
     const elapsed = this.clock.elapsedTime;
@@ -443,13 +433,7 @@ class Team3DStudio {
     for (const entry of this.characters) {
       if (!entry.group) continue;
       this.updatePose(entry, dt, elapsed);
-
-      entry.group.visible = true;
-      this.renderer.clear();
-      this.renderer.render(this.scene, this.camera);
-      entry.ctx2d.clearRect(0, 0, RENDER_W, RENDER_H);
-      entry.ctx2d.drawImage(this.renderer.domElement, 0, 0, RENDER_W, RENDER_H);
-      entry.group.visible = false;
+      entry.renderer.render(entry.scene, entry.camera);
     }
   }
 }
