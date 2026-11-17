@@ -11,7 +11,7 @@
   if (!perches.length) return;
 
   const SPEED_PROFILE = {
-    benedetto: { idle: 0.38, hover: 0.55, active: 0.72 },
+    benedetto: { idle: 1.05, hover: 1.30, active: 1.60 },
     michele:   { idle: 1.05, hover: 1.30, active: 1.60 },
     marco:     { idle: 1.05, hover: 1.30, active: 1.60 },
     angelo:    { idle: 1.05, hover: 1.30, active: 1.60 }
