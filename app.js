@@ -227,13 +227,16 @@ const portfolioData = [
   },
   {
     id: 19,
-    type: 'render',
+    type: 'video',
+    hoverOnly: true,
     title: "Tenuta Pugliese — Traditional Estate & Pool",
     category: "exterior",
     location: "Ostuni, Puglia",
+    videoSrc: "assets/videos/tenuta-pugliese-rain.mp4?v=9.0",
+    poster: "assets/portfolio/masseria-pugliese-estate.jpg?v=8.1",
     image: "assets/portfolio/masseria-pugliese-estate.jpg?v=8.1",
     flex: 1.4,
-    desc: "Architettura rurale pugliese di pregio: intonaco bianco a calce viva, infissi tradizionali verde salvia, ulivi secolari e calcolo fotometrico delle ombre pomeridiane."
+    desc: "Architettura rurale pugliese di pregio 4K: al passaggio del mouse il cielo si rannuvola, inizia a piovere sulla piscina e un ospite rientra nella masseria tra riflessi bagnati e luci calde interne."
   },
   {
     id: 20,
@@ -246,18 +249,6 @@ const portfolioData = [
     image: "assets/portfolio/masseria-viale-accesso.jpg?v=8.1",
     flex: 1.45,
     desc: "Metamorfosi architettonica fluida su inquadratura fissa: dallo stato originale degradato alla riqualificazione 4K tra volumi, tompagno, calce bianca e viale in chianche fiorito."
-  },
-  {
-    id: 21,
-    type: 'video',
-    title: "Cinematic Motion Reel — Masseria al Sole",
-    category: "exterior",
-    location: "Puglia Luxury Estate",
-    videoSrc: "assets/videos/masseria-cinematic-loop.mp4",
-    poster: "assets/portfolio/masseria-cinematic-poster.jpg?v=8.1",
-    image: "assets/portfolio/masseria-cinematic-poster.jpg?v=8.1",
-    flex: 1.5,
-    desc: "Animazione cinematografica in loop 4K: simulazione dinamica delle increspature dell'acqua in piscina, fronde degli ulivi mosse dal vento e riflessi solari in tempo reale."
   },
   {
     id: 22,
@@ -343,9 +334,8 @@ const PORTFOLIO_EN = {
   16: { title: "Contemporary Residence — Sliding Glass & Dining", location: "Bari Coast, Puglia", desc: "Night architectural framing across flush sliding glass, teak deck, solid-wood dining table, and backlit feature wall." },
   17: { title: "Green Terraces Residence — Four Seasons Study", location: "Milan, Porta Nuova", desc: "Photometric and bioclimatic cross-fade study across Spring, Summer, Autumn foliage, and Winter snow." },
   18: { title: "Masseria San Nicola — Pergola & Pool Lounge", location: "Fasano, Valle d'Itria", desc: "Photorealistic Mediterranean zenithal study: whitewashed wood pergola, terracotta amphorae, and infinity pool." },
-  19: { title: "Puglian Estate — Traditional Farmhouse & Pool", location: "Ostuni, Puglia", desc: "Heritage rural architecture with limewashed masonry, sage shutters, centuries-old olive trees, and warm shadows." },
+  19: { title: "Puglian Estate — Traditional Farmhouse & Pool", location: "Ostuni, Puglia", desc: "4K Puglian rural architecture: hover to reveal an overcast rainstorm rippling across the pool as a guest walks indoors amidst wet limestone reflections and warm interior light." },
   20: { title: "Cypress & Lavender Avenue — Before State to 4K Restoration", location: "Monopoli, Puglia", desc: "Locked-axis fluid architectural metamorphosis: seamlessly evolving from the original weathered farmhouse to the restored limewashed 4K estate, infill masonry, stone paving, and blooming lavender." },
-  21: { title: "Cinematic Motion Reel — Masseria Rain & Sun", location: "Puglia Luxury Estate", desc: "Cinematic atmospheric loop with rain droplets, dynamic water ripples, and warm interior contrast." },
   22: { title: "Mediterranean Villa — Pure Volumes & Summer Light", location: "Bari Coast, Italy", desc: "Minimalist cylindrical and stereometric limewashed volumes under crisp midday Mediterranean sun." },
   23: { title: "Material Residence — Rain, Corten & Concrete", location: "Valle d'Itria, Puglia", desc: "Complex wet-surface storm lighting with specular reflections on board-formed concrete and weathered Corten." },
   24: { title: "Rain Pool Villa — Cinematic Motion Reel", location: "Monopoli, Puglia", desc: "Dynamic rain simulation with animated pool ripples, wet timber decking, and glowing warm interiors." },
@@ -473,10 +463,10 @@ function shuffleAndDisplay() {
     // Row 1-2 curated flagship diversity (architecture motion, 4K masseria hover, wireframe/BIM slider, hospitality/catalog)
     const anchors = [
       pickOne([10, 4, 3, 26], used),
-      pickOne([18, 20], used),
+      pickOne([19, 18, 20], used),
       pickOne([1, 2], used),
       pickOne([5, 7, 13, 25], used),
-      pickOne([20, 24, 15, 21], used),
+      pickOne([20, 19, 24, 15], used),
       pickOne([25, 22, 23, 8], used)
     ].filter(Boolean);
 
@@ -487,7 +477,7 @@ function shuffleAndDisplay() {
   }
 
   // Pick up to 2 flagship video items at random to autoplay cleanly on load; all other animated items load static & play on hover
-  const videoItems = ordered.filter(i => i.type === 'video');
+  const videoItems = ordered.filter(i => i.type === 'video' && !i.hoverOnly);
   const earlyPriority = videoItems.slice(0, Math.min(4, videoItems.length));
   const autoCount = Math.min(2, videoItems.length);
   const pickedAuto = new Set(shuffleArray(earlyPriority).slice(0, autoCount).map(i => i.id));
@@ -497,7 +487,7 @@ function shuffleAndDisplay() {
     });
   }
   ordered.forEach(item => {
-    item._runtimeAutoplay = item.type === 'video' && pickedAuto.has(item.id);
+    item._runtimeAutoplay = item.type === 'video' && !item.hoverOnly && pickedAuto.has(item.id);
   });
 
   displayedItems = ordered;
