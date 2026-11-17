@@ -1806,69 +1806,70 @@ body.theme-dark .reel-featured-card:hover .play-circle svg polygon {
 }
 
 .avatar-perch-img,
-.avatar-perch-canvas {
+.avatar-perch-canvas,
+.avatar-perch-video {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom center;
   filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.16));
   transition: filter 0.35s ease;
   pointer-events: none;
 }
 
-.avatar-perch-img.frame-1 {
-  position: relative;
-  z-index: 1;
+.avatar-perch-fallback {
+  display: none;
 }
 
-.avatar-perch-img.frame-2 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
-  z-index: 2;
+.avatar-card-perch.is-fallback .avatar-perch-video {
+  display: none;
 }
 
-/* 1. BENNY: Real-Time 3D WebGL Model walking & pausing along top border line (v4.0) */
+.avatar-card-perch.is-fallback .avatar-perch-fallback {
+  display: block;
+}
+
+/* 1. BENNY: Photorealistic Transparent Loop walking with tablet along top border line (v5.0) */
 #avatar-card-benedetto .avatar-card-perch {
-  width: 112px;
-  height: 136px;
+  width: 114px;
+  height: 152px;
   bottom: 100%;
-  margin-bottom: -7px;
+  margin-bottom: -18px;
   left: 10px;
   top: auto;
   right: auto;
   will-change: transform;
 }
 
-/* 2. MICHELE: Real-Time 3D WebGL Model seated directly on top border line with blueprint */
+/* 2. MICHELE: Photorealistic Transparent Loop seated on top border line with blueprint (v5.0) */
 #avatar-card-michele .avatar-card-perch {
-  width: 112px;
-  height: 136px;
+  width: 114px;
+  height: 152px;
   bottom: 100%;
-  margin-bottom: -41px;
+  margin-bottom: -58px;
   right: 112px;
   top: auto;
   will-change: transform;
 }
 
-/* 3. MARCO: Real-Time 3D WebGL Model inspecting material swatches along the line */
+/* 3. MARCO: Photorealistic Transparent Loop inspecting material swatches (v5.0) */
 #avatar-card-marco .avatar-card-perch {
-  width: 112px;
-  height: 136px;
+  width: 114px;
+  height: 152px;
   bottom: 100%;
-  margin-bottom: -7px;
+  margin-bottom: -18px;
   right: 16px;
   top: auto;
   will-change: transform;
 }
 
-/* 4. ANGELO: Real-Time 3D WebGL Model walking with 3D Architectural Villa Maquette */
+/* 4. ANGELO: Photorealistic Transparent Loop with 3D Architectural Villa Maquette (v5.0) */
 #avatar-card-angelo .avatar-card-perch {
-  width: 112px;
-  height: 136px;
+  width: 114px;
+  height: 152px;
   bottom: 100%;
-  margin-bottom: -7px;
+  margin-bottom: -18px;
   right: 12px;
   top: auto;
   will-change: transform;

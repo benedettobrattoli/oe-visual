@@ -8,16 +8,6 @@
   <meta name="author" content="Arch. Benedetto Brattoli — OE Visual">
   <meta name="theme-color" content="#ffffff">
 
-  <!-- Three.js Local Import Map (v4.0 — Real-Time 3D WebGL Team Models) -->
-  <script type="importmap">
-  {
-    "imports": {
-      "three": "./assets/vendor/three.module.min.js",
-      "three/addons/": "./assets/vendor/"
-    }
-  }
-  </script>
-
   <!-- Open Graph & Social Cards -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="OE VISUAL">
@@ -77,7 +67,7 @@
       } catch(e) {}
     })();
   </script>
-  <link rel="stylesheet" href="style.css?v=4.3">
+  <link rel="stylesheet" href="style.css?v=5.0">
 </head>
 <body class="theme-light">
 
@@ -273,8 +263,11 @@
           <!-- AVATAR 1: BENNY BRATTOLI -->
           <div class="avatar-card" id="avatar-card-benedetto" data-member="benedetto">
             <!-- 3D WEBGL RIGGED MODEL: WALKING & INTERACTING ON THE LINE (v4.0) -->
-            <div class="avatar-card-perch" id="perch-3d-benedetto" data-member="benedetto" title="Arch. Benedetto Brattoli — Modello 3D Interattivo">
-              <canvas id="canvas-3d-benedetto" class="avatar-perch-canvas" width="280" height="340"></canvas>
+            <div class="avatar-card-perch" id="perch-3d-benedetto" data-member="benedetto" title="Arch. Benedetto Brattoli — Founder &amp; Direttore Creativo">
+              <video class="avatar-perch-video" autoplay loop muted playsinline preload="auto" aria-hidden="true">
+                <source src="assets/team/loops/benedetto.webm" type="video/webm">
+              </video>
+              <img class="avatar-perch-img avatar-perch-fallback" src="assets/team/loops/benedetto.webp" alt="Arch. Benedetto Brattoli" loading="eager">
             </div>
             <div class="avatar-card-header">
               <div class="avatar-header-info">
@@ -316,8 +309,11 @@
           <!-- AVATAR 2: MICHELE DE PINTO -->
           <div class="avatar-card" id="avatar-card-michele" data-member="michele">
             <!-- 3D WEBGL RIGGED MODEL: SEATED & OPENING CAD BLUEPRINT ON THE LINE (v4.0) -->
-            <div class="avatar-card-perch" id="perch-3d-michele" data-member="michele" title="Ing. Michele De Pinto — Modello 3D Interattivo">
-              <canvas id="canvas-3d-michele" class="avatar-perch-canvas" width="280" height="340"></canvas>
+            <div class="avatar-card-perch" id="perch-3d-michele" data-member="michele" title="Ing. Michele De Pinto — Co-Founder &amp; Direttore Tecnico">
+              <video class="avatar-perch-video" autoplay loop muted playsinline preload="auto" aria-hidden="true">
+                <source src="assets/team/loops/michele.webm" type="video/webm">
+              </video>
+              <img class="avatar-perch-img avatar-perch-fallback" src="assets/team/loops/michele.webp" alt="Ing. Michele De Pinto" loading="eager">
             </div>
             <div class="avatar-card-header">
               <div class="avatar-header-info">
@@ -357,8 +353,11 @@
           <!-- AVATAR 3: MARCO BRUNORI -->
           <div class="avatar-card" id="avatar-card-marco" data-member="marco">
             <!-- 3D WEBGL RIGGED MODEL: INSPECTING MATERIALS ON THE LINE (v4.0) -->
-            <div class="avatar-card-perch" id="perch-3d-marco" data-member="marco" title="Arch. Marco Brunori — Modello 3D Interattivo">
-              <canvas id="canvas-3d-marco" class="avatar-perch-canvas" width="280" height="340"></canvas>
+            <div class="avatar-card-perch" id="perch-3d-marco" data-member="marco" title="Arch. Marco Brunori — Co-Founder &amp; Senior Architect">
+              <video class="avatar-perch-video" autoplay loop muted playsinline preload="auto" aria-hidden="true">
+                <source src="assets/team/loops/marco.webm" type="video/webm">
+              </video>
+              <img class="avatar-perch-img avatar-perch-fallback" src="assets/team/loops/marco.webp" alt="Arch. Marco Brunori" loading="eager">
             </div>
             <div class="avatar-card-header">
               <div class="avatar-header-info">
@@ -398,8 +397,11 @@
           <!-- AVATAR 4: ANGELO CROCE -->
           <div class="avatar-card" id="avatar-card-angelo" data-member="angelo">
             <!-- 3D WEBGL RIGGED MODEL: WALKING WITH 3D ARCHITECTURAL VILLA MAQUETTE (v4.0) -->
-            <div class="avatar-card-perch" id="perch-3d-angelo" data-member="angelo" title="Angelo Croce — Modello 3D Interattivo">
-              <canvas id="canvas-3d-angelo" class="avatar-perch-canvas" width="280" height="340"></canvas>
+            <div class="avatar-card-perch" id="perch-3d-angelo" data-member="angelo" title="Angelo Croce — 3D Visualizer &amp; Senior Modeler">
+              <video class="avatar-perch-video" autoplay loop muted playsinline preload="auto" aria-hidden="true">
+                <source src="assets/team/loops/angelo.webm" type="video/webm">
+              </video>
+              <img class="avatar-perch-img avatar-perch-fallback" src="assets/team/loops/angelo.webp" alt="Angelo Croce" loading="eager">
             </div>
             <div class="avatar-card-header">
               <div class="avatar-header-info">
@@ -833,6 +835,6 @@
   </footer>
 
   <script src="app.js?v=4.4"></script>
-  <script type="module" src="team3d.js?v=4.4"></script>
+  <script src="team3d.js?v=5.0"></script>
 </body>
 </html>
