@@ -237,13 +237,15 @@ const portfolioData = [
   },
   {
     id: 20,
-    type: 'render',
-    title: "Viale dei Cipressi & Lavanda — Masseria Entryway",
+    type: 'video',
+    title: "Viale dei Cipressi & Lavanda — Restauro 4K & Stato di Fatto",
     category: "exterior",
     location: "Monopoli, Puglia",
+    videoSrc: "assets/videos/masseria-viale-aging.mp4?v=8.5",
+    poster: "assets/portfolio/masseria-viale-accesso.jpg?v=8.1",
     image: "assets/portfolio/masseria-viale-accesso.jpg?v=8.1",
-    flex: 1.35,
-    desc: "Prospettiva assiale monumentale con pavimentazione in chianche antiche bocciardate, aiuole di lavanda autoctona e maestoso portale con arco d'ingresso."
+    flex: 1.45,
+    desc: "Sequenza cinematografica su inquadratura fissa: dalla Masseria riqualificata in 4K all'invecchiamento progressivo fino allo stato originale tra intonaci, tompagno e viale."
   },
   {
     id: 21,
@@ -317,7 +319,7 @@ const portfolioData = [
 
 // B2B TARGET TAGS (Cataloghi/Product & Ingegneria/BIM)
 const PORTFOLIO_TARGETS = {
-  engineering: [1, 2, 3, 4, 10, 17, 26],
+  engineering: [1, 2, 3, 4, 10, 17, 20, 26],
   catalog: [7, 13, 16, 25, 26]
 };
 
@@ -342,7 +344,7 @@ const PORTFOLIO_EN = {
   17: { title: "Green Terraces Residence — Four Seasons Study", location: "Milan, Porta Nuova", desc: "Photometric and bioclimatic cross-fade study across Spring, Summer, Autumn foliage, and Winter snow." },
   18: { title: "Masseria San Nicola — Pergola & Pool Lounge", location: "Fasano, Valle d'Itria", desc: "Photorealistic Mediterranean zenithal study: whitewashed wood pergola, terracotta amphorae, and infinity pool." },
   19: { title: "Puglian Estate — Traditional Farmhouse & Pool", location: "Ostuni, Puglia", desc: "Heritage rural architecture with limewashed masonry, sage shutters, centuries-old olive trees, and warm shadows." },
-  20: { title: "Cypress & Lavender Avenue — Masseria Entryway", location: "Monopoli, Puglia", desc: "Axial perspective over ancient chianche limestone paving, native lavender borders, and vaulted portal arch." },
+  20: { title: "Cypress & Lavender Avenue — 4K Restoration & Aging Time-Lapse", location: "Monopoli, Puglia", desc: "Continuous single-frame cinematic time-lapse from the restored 4K Masseria aging back to its original pre-renovation masonry, infill balcony wall, and courtyard." },
   21: { title: "Cinematic Motion Reel — Masseria Rain & Sun", location: "Puglia Luxury Estate", desc: "Cinematic atmospheric loop with rain droplets, dynamic water ripples, and warm interior contrast." },
   22: { title: "Mediterranean Villa — Pure Volumes & Summer Light", location: "Bari Coast, Italy", desc: "Minimalist cylindrical and stereometric limewashed volumes under crisp midday Mediterranean sun." },
   23: { title: "Material Residence — Rain, Corten & Concrete", location: "Valle d'Itria, Puglia", desc: "Complex wet-surface storm lighting with specular reflections on board-formed concrete and weathered Corten." },
@@ -471,10 +473,10 @@ function shuffleAndDisplay() {
     // Row 1-2 curated flagship diversity (architecture motion, 4K masseria hover, wireframe/BIM slider, hospitality/catalog)
     const anchors = [
       pickOne([10, 4, 3, 26], used),
-      pickOne([18], used),
+      pickOne([18, 20], used),
       pickOne([1, 2], used),
       pickOne([5, 7, 13, 25], used),
-      pickOne([24, 15, 21], used),
+      pickOne([20, 24, 15, 21], used),
       pickOne([25, 22, 23, 8], used)
     ].filter(Boolean);
 
