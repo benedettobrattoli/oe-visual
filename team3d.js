@@ -1,8 +1,8 @@
 /**
- * OE VISUAL — Photorealistic Living Studio Loops (v6.4)
- * Uses the full-body Talking loop for each member:
- * - Calm micro-breathing idle (0.22x) in the exact same pose
- * - Resumes from current pose at natural speaking speed (1.05x) when speaking
+ * OE VISUAL — Photorealistic Living Studio Loops (v6.5)
+ * Seamless Turn-to-Camera Continuity:
+ * - At rest: holds cleanly at Frame 0 (working pose on tablet/blueprint/swatches/3D model, zero flicker)
+ * - When clicked/speaking: starts smoothly from Frame 0, turns toward camera and speaks naturally!
  */
 (() => {
   'use strict';
@@ -10,9 +10,6 @@
   const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
   const perches = document.querySelectorAll('.avatar-card-perch');
   if (!perches.length) return;
-
-  const IDLE_RATE = 0.22;
-  const ACTIVE_RATE = 1.05;
 
   perches.forEach((perch) => {
     const video = perch.querySelector('.avatar-perch-video');
@@ -25,42 +22,31 @@
       return;
     }
 
-    video.playbackRate = IDLE_RATE;
+    video.removeAttribute('autoplay');
+    video.playbackRate = 1.0;
 
     video.addEventListener('error', () => {
       perch.classList.add('is-fallback');
     });
 
-    const syncRate = () => {
+    const syncState = () => {
       const isTalking = card && card.classList.contains('is-talking');
-      video.playbackRate = isTalking ? ACTIVE_RATE : IDLE_RATE;
-    };
-
-    const tryPlay = () => {
-      syncRate();
-      if (video.paused) {
-        video.play().catch(() => perch.classList.add('is-fallback'));
+      if (isTalking) {
+        if (video.paused) {
+          video.currentTime = 0;
+          video.play().catch(() => perch.classList.add('is-fallback'));
+        }
+      } else {
+        if (!video.paused) video.pause();
+        try { video.currentTime = 0; } catch (_) {}
       }
     };
 
-    if (card) {
-      const mo = new MutationObserver(syncRate);
-      mo.observe(card, { attributes: true, attributeFilter: ['class'] });
-    }
+    video.addEventListener('loadeddata', syncState, { once: true });
 
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            tryPlay();
-          } else if (!video.paused) {
-            video.pause();
-          }
-        });
-      }, { rootMargin: '120px' });
-      io.observe(perch);
-    } else {
-      tryPlay();
+    if (card) {
+      const mo = new MutationObserver(syncState);
+      mo.observe(card, { attributes: true, attributeFilter: ['class'] });
     }
   });
 })();
