@@ -60,9 +60,9 @@ const portfolioData = [
     title: "Riva Rivarama — Nautical Yacht Spot 4K",
     category: "commercial",
     location: "Polignano Coastal Bay · Product Design",
-    videoSrc: "assets/videos/rivarama-yacht-spot.mp4?v=9.3",
-    poster: "assets/portfolio/rivarama-spot-poster.jpg?v=9.3",
-    image: "assets/portfolio/rivarama-spot-poster.jpg?v=9.3",
+    videoSrc: "assets/videos/rivarama-yacht-spot.mp4?v=9.4",
+    poster: "assets/portfolio/rivarama-spot-poster.jpg?v=9.4",
+    image: "assets/portfolio/rivarama-spot-poster.jpg?v=9.4",
     flex: 1.5,
     desc: "Spot televisivo 3D dedicato al motoscafo di lusso Riva Rivarama: lenta arretrata panoramica dalle scogliere al crepuscolo per agganciare lo yacht da poppa e affiancarlo con elegante carrellata laterale in planata sul mare, esaltando mogano lucido, acciai e plancia illuminata."
   },
