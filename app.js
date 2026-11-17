@@ -1779,14 +1779,14 @@ function setupTeamAvatars() {
   // Activate Benny by default
   activateAvatarSpeaker('benedetto', null, false);
 
-  // Click on avatar card triggers intro
+  // Click on avatar card triggers intro & speaks directly
   avatarCards.forEach(card => {
     card.addEventListener('click', (e) => {
       if (e.target.closest('.avatar-ask-btn') || e.target.closest('.avatar-speak-btn') || e.target.closest('.avatar-wa-btn')) {
         return;
       }
       const member = card.getAttribute('data-member');
-      if (member) activateAvatarSpeaker(member, null, false);
+      if (member) activateAvatarSpeaker(member, null, true);
     });
   });
 
