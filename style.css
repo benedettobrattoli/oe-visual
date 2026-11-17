@@ -1813,9 +1813,29 @@ body.theme-dark .reel-featured-card:hover .play-circle svg polygon {
   height: 100%;
   object-fit: contain;
   object-position: bottom center;
+  transform-origin: bottom center;
   filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.16));
-  transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1), filter 0.35s ease;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1), filter 0.35s ease;
   pointer-events: none;
+}
+
+@keyframes avatarIdleBreath {
+  0%, 100% { transform: scale3d(1, 1, 1); }
+  50%      { transform: scale3d(1.004, 1.012, 1); }
+}
+
+@keyframes avatarSpeakPresence {
+  0%, 100% { transform: scale3d(1.025, 1.028, 1); }
+  50%      { transform: scale3d(1.032, 1.038, 1); }
+}
+
+.avatar-perch-img {
+  animation: avatarIdleBreath 5.4s ease-in-out infinite;
+}
+
+.avatar-card.is-talking .avatar-perch-img {
+  animation: avatarSpeakPresence 1.7s ease-in-out infinite;
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.22));
 }
 
 .avatar-perch-fallback {
