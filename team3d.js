@@ -1,7 +1,8 @@
 /**
- * OE VISUAL — Photorealistic Living Studio Loops (v6.3)
- * Single seamless video per member: continues smoothly from exact current pose (zero jump, zero ghosting).
- * Calm slow idle (0.4x) -> natural active motion (1.15x) when speaking.
+ * OE VISUAL — Photorealistic Living Studio Loops (v6.4)
+ * Uses the full-body Talking loop for each member:
+ * - Calm micro-breathing idle (0.22x) in the exact same pose
+ * - Resumes from current pose at natural speaking speed (1.05x) when speaking
  */
 (() => {
   'use strict';
@@ -10,8 +11,8 @@
   const perches = document.querySelectorAll('.avatar-card-perch');
   if (!perches.length) return;
 
-  const IDLE_RATE = 0.42;
-  const ACTIVE_RATE = 1.15;
+  const IDLE_RATE = 0.22;
+  const ACTIVE_RATE = 1.05;
 
   perches.forEach((perch) => {
     const video = perch.querySelector('.avatar-perch-video');

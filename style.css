@@ -1818,13 +1818,6 @@ body.theme-dark .reel-featured-card:hover .play-circle svg polygon {
   pointer-events: none;
 }
 
-.avatar-perch-video.is-talk,
-.avatar-perch-fallback.is-talk {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-}
-
 .avatar-perch-fallback {
   display: none;
 }
@@ -1835,16 +1828,6 @@ body.theme-dark .reel-featured-card:hover .play-circle svg polygon {
 
 .avatar-card-perch.is-fallback .avatar-perch-fallback {
   display: block;
-}
-
-.avatar-card.is-talking .avatar-perch-video.is-idle,
-.avatar-card.is-talking .avatar-card-perch.is-fallback .avatar-perch-fallback.is-idle {
-  opacity: 0;
-}
-
-.avatar-card.is-talking .avatar-perch-video.is-talk,
-.avatar-card.is-talking .avatar-card-perch.is-fallback .avatar-perch-fallback.is-talk {
-  opacity: 1;
 }
 
 /* Tall Pop-Out 3D Figures: feet reach right above the white QA buttons, head pops out top (v6.2) */
