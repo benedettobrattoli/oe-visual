@@ -454,10 +454,16 @@ class Team3DStudio {
   }
 }
 
-window.addEventListener('DOMContentLoaded', () => {
+function bootTeam3D() {
   try {
     new Team3DStudio();
   } catch (err) {
     console.warn('[Team3D] WebGL fallback:', err);
   }
-});
+}
+
+if (document.readyState === 'loading') {
+  window.addEventListener('DOMContentLoaded', bootTeam3D);
+} else {
+  bootTeam3D();
+}
