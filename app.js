@@ -56,13 +56,15 @@ const portfolioData = [
   },
   {
     id: 5,
-    type: 'render',
-    title: "Grand Resort & Wellness Spa",
+    type: 'video',
+    title: "Riva Rivarama — Nautical Yacht Spot 4K",
     category: "commercial",
-    location: "Polignano a Mare, Puglia",
-    image: "assets/portfolio/hotel-resort.jpg?v=8.1",
-    flex: 1.1,
-    desc: "Visualizzazione ad altissimo impatto per resort di lusso a picco sul mare. Modellazione dettagliata di vegetazione autoctona foglia per foglia e rifrazione caustica dell'acqua marina."
+    location: "Polignano Coastal Bay · Product Design",
+    videoSrc: "assets/videos/rivarama-yacht-spot.mp4?v=9.1",
+    poster: "assets/portfolio/rivarama-spot-poster.jpg?v=9.1",
+    image: "assets/portfolio/rivarama-spot-poster.jpg?v=9.1",
+    flex: 1.5,
+    desc: "Spot cinematografico per la presentazione 3D del motoscafo di lusso Riva Rivarama: dalle scogliere al crepuscolo alla planata ravvicinata sul mare, esaltando mogano lucido, acciai, cuscineria trapuntata e plancia illuminata."
   },
   {
     id: 6,
@@ -311,7 +313,7 @@ const portfolioData = [
 // B2B TARGET TAGS (Cataloghi/Product & Ingegneria/BIM)
 const PORTFOLIO_TARGETS = {
   engineering: [1, 2, 3, 4, 10, 17, 20, 26],
-  catalog: [7, 13, 16, 25, 26]
+  catalog: [5, 7, 13, 16, 25, 26]
 };
 
 // ENGLISH DICTIONARY FOR BILINGUAL PORTFOLIO ITEMS
@@ -320,7 +322,7 @@ const PORTFOLIO_EN = {
   2: { title: "Modern Living — Mesh & Light Study", location: "Turin Hills, Italy", desc: "Geometric and indirect light bounce validation in Clay before final material sampling of textiles, timber, and metals." },
   3: { title: "Executive Tower at Dusk — Motion Reel", location: "Rome Business District", desc: "Looping 3D architectural film with volumetric twilight lighting across curtain-wall executive towers." },
   4: { title: "Green Terraces Residence — Architectural Motion", location: "Milan, Porta Nuova", desc: "Cinematic walkthrough across cantilevered hanging gardens and bioclimatic residential facades." },
-  5: { title: "Grand Resort & Wellness Spa", location: "Polignano a Mare, Puglia", desc: "High-impact coastal luxury hospitality visualization with custom Mediterranean foliage and sea water caustics." },
+  5: { title: "Riva Rivarama — Nautical Yacht Spot 4K", location: "Polignano Coastal Bay · Product Design", desc: "Cinema commercial showcasing our 3D visualization of the iconic Riva Rivarama mahogany runabout: sweeping from the twilight coastal cliffs down into an intimate tracking close-up across glossy cherry decks, chrome hardware, and glowing cockpit details." },
   6: { title: "Restored Traditional Masseria", location: "Valle d'Itria, Puglia", desc: "Lime-washed Puglian limestone paired with Corten steel and microcement architectural insertions." },
   7: { title: "Royal Avenue Luxury Penthouse", location: "London, Kensington", desc: "High-profile residential interior featuring fluted wood paneling, honed Calacatta marble, and balanced daylighting." },
   8: { title: "Panoramic Seafront Penthouse", location: "Bari Waterfront", desc: "Bespoke interior styling with smoked oak chevron flooring, custom millwork, and grazing linear lighting." },
@@ -465,7 +467,7 @@ function shuffleAndDisplay() {
       pickOne([10, 4, 3, 26], used),
       pickOne([19, 18, 20], used),
       pickOne([1, 2], used),
-      pickOne([5, 7, 13, 25], used),
+      pickOne([5], used),
       pickOne([20, 19, 24, 15], used),
       pickOne([25, 22, 23, 8], used)
     ].filter(Boolean);
