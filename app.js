@@ -1711,7 +1711,7 @@ const teamAvatarData = {
     waPhone: "393478631379",
     voicePitch: 1.0,
     voiceRate: 0.98,
-    intro: "Benvenuto in OE Visual! Sono Benny Brattoli. Il nostro segreto è saper leggere l'architettura prima ancora del 3D: orientamento solare, contrasto materico e pulizia geometrica. Clicca sulle domande o scrivimi direttamente su WhatsApp per analizzare insieme i tuoi disegni.",
+    intro: "Benvenuto in OE Visual! Sono Benedetto Brattoli. Il nostro segreto è saper leggere l'architettura prima ancora del 3D: orientamento solare, contrasto materico e pulizia geometrica. Clicca sulle domande o scrivimi direttamente su WhatsApp per analizzare insieme i tuoi disegni.",
     answers: {
       segreto: "Il segreto di un render vincente non è l'effetto speciale, ma la sensibilità architettonica. Studiamo la vera orografia del luogo, la luce solare all'ora esatta del giorno e l'anima dei materiali — che sia pietra di Trani o microcemento. È questo che emoziona il cliente e chiude la trattativa immobiliare.",
       tempi: "Per le prime bozze d'inquadratura volumetrica e studio luce Clay bastano solitamente 48–72 ore. La consegna finale del set completo in altissima risoluzione avviene entro 5–7 giorni lavorativi, con tutte le revisioni intermedie incluse fino alla tua piena approvazione."
