@@ -1840,9 +1840,6 @@ function setupTeamAvatars() {
       // Voices loaded
     };
   }
-
-  // Initialize 60fps Biomechanical Canvas Rig for Benny (v3.5)
-  initBennyBiomechanicalRig();
 }
 
 /**

@@ -1829,63 +1829,49 @@ body.theme-dark .reel-featured-card:hover .play-circle svg polygon {
   z-index: 2;
 }
 
-/* 1. BENNY: 60fps Biomechanical Canvas Rig walking & pausing along the top border line */
+/* 1. BENNY: Real-Time 3D WebGL Model walking & pausing along top border line (v4.0) */
 #avatar-card-benedetto .avatar-card-perch {
-  width: 84px;
+  width: 112px;
+  height: 136px;
   bottom: 100%;
-  margin-bottom: -1px;
-  left: 16px;
+  margin-bottom: -7px;
+  left: 10px;
   top: auto;
   right: auto;
   will-change: transform;
 }
 
-/* 2. MICHELE: Seated directly on the top border line, unrolling & reading CAD blueprints */
+/* 2. MICHELE: Real-Time 3D WebGL Model seated directly on top border line with blueprint */
 #avatar-card-michele .avatar-card-perch {
-  width: 92px;
+  width: 112px;
+  height: 136px;
   bottom: 100%;
-  margin-bottom: -39px;
-  right: 118px;
+  margin-bottom: -41px;
+  right: 112px;
   top: auto;
-  animation: micheleSeatedIdle 5.2s ease-in-out infinite;
-}
-#avatar-card-michele .avatar-perch-img.frame-1 {
-  animation: blueprintRollF1 5.2s ease-in-out infinite;
-}
-#avatar-card-michele .avatar-perch-img.frame-2 {
-  animation: blueprintOpenF2 5.2s ease-in-out infinite;
+  will-change: transform;
 }
 
-/* 3. MARCO: Moving along the top border line while measuring & checking swatches */
+/* 3. MARCO: Real-Time 3D WebGL Model inspecting material swatches along the line */
 #avatar-card-marco .avatar-card-perch {
-  width: 104px;
+  width: 112px;
+  height: 136px;
   bottom: 100%;
-  margin-bottom: -1px;
-  right: 22px;
+  margin-bottom: -7px;
+  right: 16px;
   top: auto;
-  animation: marcoMoveLine 9.5s ease-in-out infinite;
-}
-#avatar-card-marco .avatar-perch-img.frame-1 {
-  animation: marcoTapeF1 3.2s ease-in-out infinite;
-}
-#avatar-card-marco .avatar-perch-img.frame-2 {
-  animation: marcoTapeF2 3.2s ease-in-out infinite;
+  will-change: transform;
 }
 
-/* 4. ANGELO: Walking along the top border line holding a 3D Architectural Villa Model */
+/* 4. ANGELO: Real-Time 3D WebGL Model walking with 3D Architectural Villa Maquette */
 #avatar-card-angelo .avatar-card-perch {
-  width: 84px;
+  width: 112px;
+  height: 136px;
   bottom: 100%;
-  margin-bottom: -1px;
-  right: 18px;
+  margin-bottom: -7px;
+  right: 12px;
   top: auto;
-  animation: angeloWalkLine 13s linear infinite;
-}
-#avatar-card-angelo .avatar-perch-img.frame-1 {
-  animation: spriteStepF1 0.72s steps(1, end) infinite;
-}
-#avatar-card-angelo .avatar-perch-img.frame-2 {
-  animation: spriteStepF2 0.72s steps(1, end) infinite;
+  will-change: transform;
 }
 #avatar-card-angelo .avatar-photo {
   object-position: center 18%;

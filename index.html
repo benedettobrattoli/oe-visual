@@ -8,6 +8,16 @@
   <meta name="author" content="Arch. Benedetto Brattoli — OE Visual">
   <meta name="theme-color" content="#ffffff">
 
+  <!-- Three.js Local Import Map (v4.0 — Real-Time 3D WebGL Team Models) -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./assets/vendor/three.module.min.js",
+      "three/addons/": "./assets/vendor/"
+    }
+  }
+  </script>
+
   <!-- Open Graph & Social Cards -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="OE VISUAL">
@@ -262,9 +272,9 @@
           
           <!-- AVATAR 1: BENNY BRATTOLI -->
           <div class="avatar-card" id="avatar-card-benedetto" data-member="benedetto">
-            <!-- MINIATURE PERCHED FIGURE: 10-FRAME BIOMECHANICAL RIG ON THE LINE (v3.5) -->
-            <div class="avatar-card-perch" id="benny-perch-rig" data-member="benedetto" title="Arch. Benedetto Brattoli — Clicca per interagire">
-              <canvas id="benny-perch-canvas" class="avatar-perch-canvas" width="100" height="114"></canvas>
+            <!-- 3D WEBGL RIGGED MODEL: WALKING & INTERACTING ON THE LINE (v4.0) -->
+            <div class="avatar-card-perch" id="perch-3d-benedetto" data-member="benedetto" title="Arch. Benedetto Brattoli — Modello 3D Interattivo">
+              <canvas id="canvas-3d-benedetto" class="avatar-perch-canvas" width="280" height="340"></canvas>
             </div>
             <div class="avatar-card-header">
               <div class="avatar-header-info">
@@ -305,10 +315,9 @@
 
           <!-- AVATAR 2: MICHELE DE PINTO -->
           <div class="avatar-card" id="avatar-card-michele" data-member="michele">
-            <!-- MINIATURE PERCHED FIGURE: SEATED & UNROLLING BLUEPRINTS (v3.4) -->
-            <div class="avatar-card-perch" data-member="michele" title="Ing. Michele De Pinto — Clicca per interagire">
-              <img src="assets/team/figures/figure-michele-1.png?v=3.4" alt="Ing. Michele De Pinto" class="avatar-perch-img frame-1">
-              <img src="assets/team/figures/figure-michele-2.png?v=3.4" alt="" aria-hidden="true" class="avatar-perch-img frame-2">
+            <!-- 3D WEBGL RIGGED MODEL: SEATED & OPENING CAD BLUEPRINT ON THE LINE (v4.0) -->
+            <div class="avatar-card-perch" id="perch-3d-michele" data-member="michele" title="Ing. Michele De Pinto — Modello 3D Interattivo">
+              <canvas id="canvas-3d-michele" class="avatar-perch-canvas" width="280" height="340"></canvas>
             </div>
             <div class="avatar-card-header">
               <div class="avatar-header-info">
@@ -347,10 +356,9 @@
 
           <!-- AVATAR 3: MARCO BRUNORI -->
           <div class="avatar-card" id="avatar-card-marco" data-member="marco">
-            <!-- MINIATURE PERCHED FIGURE: MOVING & MEASURING ON THE LINE (v3.4) -->
-            <div class="avatar-card-perch" data-member="marco" title="Arch. Marco Brunori — Clicca per interagire">
-              <img src="assets/team/figures/figure-marco-1.png?v=3.4" alt="Arch. Marco Brunori" class="avatar-perch-img frame-1">
-              <img src="assets/team/figures/figure-marco-2.png?v=3.4" alt="" aria-hidden="true" class="avatar-perch-img frame-2">
+            <!-- 3D WEBGL RIGGED MODEL: INSPECTING MATERIALS ON THE LINE (v4.0) -->
+            <div class="avatar-card-perch" id="perch-3d-marco" data-member="marco" title="Arch. Marco Brunori — Modello 3D Interattivo">
+              <canvas id="canvas-3d-marco" class="avatar-perch-canvas" width="280" height="340"></canvas>
             </div>
             <div class="avatar-card-header">
               <div class="avatar-header-info">
@@ -389,10 +397,9 @@
 
           <!-- AVATAR 4: ANGELO CROCE -->
           <div class="avatar-card" id="avatar-card-angelo" data-member="angelo">
-            <!-- MINIATURE PERCHED FIGURE: WALKING & INSPECTING 3D HOLOGRAM ON THE LINE (v3.4) -->
-            <div class="avatar-card-perch" data-member="angelo" title="Angelo Croce — Clicca per interagire">
-              <img src="assets/team/figures/figure-angelo-1.png?v=3.4" alt="Angelo Croce" class="avatar-perch-img frame-1">
-              <img src="assets/team/figures/figure-angelo-2.png?v=3.4" alt="" aria-hidden="true" class="avatar-perch-img frame-2">
+            <!-- 3D WEBGL RIGGED MODEL: WALKING WITH 3D ARCHITECTURAL VILLA MAQUETTE (v4.0) -->
+            <div class="avatar-card-perch" id="perch-3d-angelo" data-member="angelo" title="Angelo Croce — Modello 3D Interattivo">
+              <canvas id="canvas-3d-angelo" class="avatar-perch-canvas" width="280" height="340"></canvas>
             </div>
             <div class="avatar-card-header">
               <div class="avatar-header-info">
@@ -825,6 +832,7 @@
     </div>
   </footer>
 
-  <script src="app.js?v=3.5"></script>
+  <script src="app.js?v=4.0"></script>
+  <script type="module" src="team3d.js?v=4.0"></script>
 </body>
 </html>
