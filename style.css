@@ -1831,20 +1831,21 @@ body.theme-dark .reel-featured-card:hover .play-circle svg polygon {
   display: block;
 }
 
-/* Tall Pop-Out 3D Figures: max sharpness, aligned with text block & uniform grey margin above QA buttons (v6.6) */
+/* Tall Pop-Out 3D Figures: proportional to real heights (1.75m / 1.87m / 1.76m / 1.74m), soles aligned at y=294px */
 #avatar-card-benedetto .avatar-card-perch,
 #avatar-card-michele .avatar-card-perch,
 #avatar-card-marco .avatar-card-perch,
 #avatar-card-angelo .avatar-card-perch {
-  width: 296px;
-  height: 395px;
-  top: -88px;
   bottom: auto;
   right: -28px;
   left: auto;
   margin-bottom: 0;
   will-change: transform, opacity;
 }
+#avatar-card-benedetto .avatar-card-perch { width: 288px; height: 384px; top: -77px; }
+#avatar-card-michele .avatar-card-perch   { width: 308px; height: 411px; top: -108px; }
+#avatar-card-marco .avatar-card-perch     { width: 290px; height: 387px; top: -82px; }
+#avatar-card-angelo .avatar-card-perch    { width: 280px; height: 373px; top: -73px; }
 #avatar-card-angelo .avatar-photo {
   object-position: center 18%;
 }
