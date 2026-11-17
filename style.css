@@ -3110,6 +3110,7 @@ body.theme-dark .lb-btn.active {
 
 .lb-slide {
   height: 100vh;
+  height: 100dvh;
   flex: 0 0 auto;
   display: flex;
   align-items: center;
@@ -3125,6 +3126,7 @@ body.theme-dark .lb-btn.active {
 /* 1. STILL RENDERS: A TUTTA ALTEZZA SENZA FASCE */
 .lb-slide-render .lb-img-wrapper {
   height: 100vh;
+  height: 100dvh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -3137,9 +3139,10 @@ body.theme-dark .lb-btn.active {
 
 .lb-fullscreen-img {
   height: 100vh;
+  height: 100dvh;
   width: 100%;
   max-width: none;
-  max-height: 100vh;
+  max-height: 100dvh;
   object-fit: cover;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   user-select: none;
@@ -3152,28 +3155,30 @@ body.theme-dark .lb-btn.active {
   z-index: 25;
 }
 
-/* 2. VIDEOS: A TUTTA ALTEZZA (100vh) */
+/* 2. VIDEOS: A TUTTA ALTEZZA (100dvh) */
 .lb-slide-video .lb-video-wrapper {
   height: 100vh;
+  height: 100dvh;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
   margin: 0;
-  background-color: #ffffff;
+  background-color: #050608;
   overflow: hidden;
 }
 
 .lb-fullscreen-video {
   height: 100vh;
+  height: 100dvh;
   width: 100%;
-  max-width: none;
-  max-height: 100vh;
+  max-width: 100%;
+  max-height: 100dvh;
   object-fit: cover;
   outline: none;
   display: block;
-  background-color: #0b0d10;
+  background-color: #050608;
 }
 
 /* 3. COMPARE SLIDER: A TUTTA ALTEZZA (100vh) */
@@ -3875,6 +3880,10 @@ body.theme-dark .lb-slide-seasons .lb-season-progress {
     height: 360px;
   }
 
+  .gallery-row .render-card.card-video-card {
+    height: clamp(235px, 60vw, 340px);
+  }
+
 
 
   .lightbox-seasons-wrapper {
@@ -4167,5 +4176,46 @@ body.theme-dark .lb-quote-btn:hover {
   .lb-desc {
     max-width: 100%;
     font-size: 0.8rem;
+  }
+}
+
+/* Mobile & Tablet Portrait Lightbox Video/Media: full uncropped frame + controls above bottom bar */
+@media (max-width: 1024px) and (max-aspect-ratio: 4/3), (max-width: 768px) {
+  .lb-slide-video .lb-video-wrapper {
+    padding: 72px 0 140px 0;
+    box-sizing: border-box;
+    background-color: var(--bg-color, #ffffff);
+  }
+
+  .lb-fullscreen-video {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+    background-color: #050608;
+  }
+
+  .lb-fullscreen-img {
+    object-fit: contain;
+    background-color: var(--bg-color, #ffffff);
+  }
+
+  .lb-slide-render .lb-img-wrapper {
+    background-color: var(--bg-color, #ffffff);
+  }
+}
+
+@media (max-width: 768px) {
+  .lightbox-top-bar {
+    padding: 0.65rem 0.9rem;
+  }
+
+  #lb-title {
+    font-size: 0.96rem;
+    line-height: 1.2;
+  }
+
+  #lb-meta {
+    font-size: 0.68rem;
   }
 }

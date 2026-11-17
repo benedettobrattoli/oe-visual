@@ -60,9 +60,9 @@ const portfolioData = [
     title: "Riva Rivarama — Nautical Yacht Spot 4K",
     category: "commercial",
     location: "Polignano Coastal Bay · Product Design",
-    videoSrc: "assets/videos/rivarama-yacht-spot.mp4?v=9.4",
-    poster: "assets/portfolio/rivarama-spot-poster.jpg?v=9.4",
-    image: "assets/portfolio/rivarama-spot-poster.jpg?v=9.4",
+    videoSrc: "assets/videos/rivarama-yacht-spot.mp4?v=9.5",
+    poster: "assets/portfolio/rivarama-spot-poster.jpg?v=9.5",
+    image: "assets/portfolio/rivarama-spot-poster.jpg?v=9.5",
     flex: 1.5,
     desc: "Spot televisivo 3D dedicato al motoscafo di lusso Riva Rivarama: lenta arretrata panoramica dalle scogliere al crepuscolo per agganciare lo yacht da poppa e affiancarlo con elegante carrellata laterale in planata sul mare, esaltando mogano lucido, acciai e plancia illuminata."
   },
@@ -539,6 +539,38 @@ function renderPortfolioGrid() {
 
   // Attach continuous cross-fade autoplay & tab listeners to seasons cards
   setupSeasonsSliders();
+
+  // Attach invisible video pause/resume observer to preserve hardware decoder pool on mobile/tablet
+  setupGridVideoObserver();
+}
+
+let gridVideoObserver = null;
+function setupGridVideoObserver() {
+  if (!gridContainer || typeof IntersectionObserver === 'undefined') return;
+  if (gridVideoObserver) {
+    gridVideoObserver.disconnect();
+  }
+  const videos = gridContainer.querySelectorAll('video.card-video:not(.card-hover-video)');
+  if (!videos.length) return;
+
+  gridVideoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const vid = entry.target;
+      if (lightbox && lightbox.classList.contains('active')) {
+        vid.pause();
+        return;
+      }
+      if (entry.isIntersecting) {
+        vid.muted = true;
+        const p = vid.play();
+        if (p && typeof p.catch === 'function') p.catch(() => {});
+      } else {
+        vid.pause();
+      }
+    });
+  }, { threshold: 0.12 });
+
+  videos.forEach(v => gridVideoObserver.observe(v));
 }
 
 /**
@@ -627,8 +659,8 @@ function createCardElement(rawItem, index) {
       <div class="render-img-wrapper">
         ${isHoverPlay
           ? `<img src="${item.poster || item.image || ''}" alt="${item.title}" class="render-img card-hover-poster" loading="lazy">
-             <video class="card-video card-hover-video" src="${item.videoSrc}" poster="${item.poster || ''}" loop muted playsinline preload="auto"></video>`
-          : `<video class="card-video" src="${item.videoSrc}" poster="${item.poster || ''}" autoplay loop muted playsinline preload="auto"></video>`
+             <video class="card-video card-hover-video" src="${item.videoSrc}" poster="${item.poster || ''}" loop muted playsinline webkit-playsinline preload="metadata"></video>`
+          : `<video class="card-video" src="${item.videoSrc}" poster="${item.poster || ''}" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>`
         }
       </div>
       <div class="render-overlay">
@@ -1281,6 +1313,10 @@ function setupLightbox() {
 
 function openLightbox(index) {
   currentLightboxIndex = index;
+  // Pause background grid videos to free mobile/tablet hardware decoders
+  if (gridContainer) {
+    gridContainer.querySelectorAll('video').forEach(v => v.pause());
+  }
   renderLightboxTrack();
   lightbox.classList.add('active');
   document.body.style.overflow = 'hidden';
@@ -1307,6 +1343,17 @@ function closeLightbox() {
   }
   stopLightboxSeasons();
   resetZoom();
+  // Resume visible flagship grid autoplay videos
+  if (gridContainer) {
+    gridContainer.querySelectorAll('video.card-video:not(.card-hover-video)').forEach(v => {
+      const rect = v.getBoundingClientRect();
+      if (rect.bottom > 0 && rect.top < window.innerHeight) {
+        v.muted = true;
+        const p = v.play();
+        if (p && typeof p.catch === 'function') p.catch(() => {});
+      }
+    });
+  }
 }
 
 function stepLightbox(direction) {
@@ -1322,10 +1369,17 @@ function goToLightboxSlide(index, isInstant = false) {
   if (displayedItems.length === 0) return;
   index = Math.max(0, Math.min(index, displayedItems.length - 1));
 
-  // Stop prior video or seasons
+  // Stop prior video or seasons and constrain preload to current/adjacent slides
   stopLightboxSeasons();
   if (lbStageTrack) {
-    lbStageTrack.querySelectorAll('video').forEach(v => v.pause());
+    Array.from(lbStageTrack.children).forEach((slideEl, sIdx) => {
+      const v = slideEl.querySelector('video');
+      if (!v) return;
+      if (sIdx !== index) {
+        v.pause();
+        v.preload = Math.abs(sIdx - index) <= 1 ? 'metadata' : 'none';
+      }
+    });
   }
   resetZoom();
 
@@ -1384,8 +1438,20 @@ function goToLightboxSlide(index, isInstant = false) {
     if (activeSlide) {
       const vid = activeSlide.querySelector('video');
       if (vid) {
+        vid.preload = 'auto';
+        vid.playsInline = true;
         vid.muted = isAudioMuted;
-        vid.play().catch(() => {});
+        const playPromise = vid.play();
+        if (playPromise && typeof playPromise.catch === 'function') {
+          playPromise.catch(() => {
+            // Mobile Safari / Chrome fallback if unmuted autoplay is blocked after swipe
+            vid.muted = true;
+            isAudioMuted = true;
+            updateAudioIcon();
+            const retry = vid.play();
+            if (retry && typeof retry.catch === 'function') retry.catch(() => {});
+          });
+        }
       }
     }
     updateAudioIcon();
@@ -1446,8 +1512,9 @@ function createRenderSlide(item, index) {
   slide.className = 'lb-slide lb-slide-render';
   slide.dataset.index = index;
   const flexVal = item.flex || 1.35;
-  slide.style.flex = `0 0 calc(100vh * ${flexVal})`;
-  slide.style.width = `calc(100vh * ${flexVal})`;
+  const slideSize = `min(100vw, calc(100dvh * ${flexVal}))`;
+  slide.style.flex = `0 0 ${slideSize}`;
+  slide.style.width = slideSize;
   slide.innerHTML = `
     <div class="lb-img-wrapper">
       <img src="${item.image}" alt="${item.title}" class="lb-fullscreen-img" loading="lazy" />
@@ -1463,11 +1530,12 @@ function createVideoSlide(item, index) {
   slide.className = 'lb-slide lb-slide-video';
   slide.dataset.index = index;
   const flexVal = item.flex || 1.4;
-  slide.style.flex = `0 0 calc(100vh * ${flexVal})`;
-  slide.style.width = `calc(100vh * ${flexVal})`;
+  const slideSize = `min(100vw, calc(100dvh * ${flexVal}))`;
+  slide.style.flex = `0 0 ${slideSize}`;
+  slide.style.width = slideSize;
   slide.innerHTML = `
     <div class="lb-video-wrapper">
-      <video src="${item.videoSrc}" poster="${item.poster || item.image || ''}" playsinline loop controls class="lb-fullscreen-video"></video>
+      <video src="${item.videoSrc}" poster="${item.poster || item.image || ''}" playsinline webkit-playsinline muted loop controls preload="none" class="lb-fullscreen-video"></video>
     </div>
   `;
   return slide;
@@ -1478,8 +1546,9 @@ function createCompareSlide(item, index) {
   slide.className = 'lb-slide lb-slide-compare';
   slide.dataset.index = index;
   const flexVal = item.flex || 1.5;
-  slide.style.flex = `0 0 calc(100vh * ${flexVal})`;
-  slide.style.width = `calc(100vh * ${flexVal})`;
+  const slideSize = `min(100vw, calc(100dvh * ${flexVal}))`;
+  slide.style.flex = `0 0 ${slideSize}`;
+  slide.style.width = slideSize;
   slide.innerHTML = `
     <div class="lb-compare-wrapper">
       <div class="lb-compare-slider">
@@ -1553,8 +1622,9 @@ function createSeasonsSlide(item, index) {
   slide.className = 'lb-slide lb-slide-seasons';
   slide.dataset.index = index;
   const flexVal = item.flex || 1.6;
-  slide.style.flex = `0 0 calc(100vh * ${flexVal})`;
-  slide.style.width = `calc(100vh * ${flexVal})`;
+  const slideSize = `min(100vw, calc(100dvh * ${flexVal}))`;
+  slide.style.flex = `0 0 ${slideSize}`;
+  slide.style.width = slideSize;
   slide.innerHTML = `
     <div class="lb-seasons-wrapper">
       <div class="lb-seasons-slider">
