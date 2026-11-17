@@ -1,6 +1,7 @@
 /**
- * OE VISUAL — Photorealistic Living Studio Loops (v6.2)
- * Smooth 0.45s cross-fade Idle <-> Talking, calm realistic talking speed (0.75x)
+ * OE VISUAL — Photorealistic Living Studio Loops (v6.3)
+ * Single seamless video per member: continues smoothly from exact current pose (zero jump, zero ghosting).
+ * Calm slow idle (0.4x) -> natural active motion (1.15x) when speaking.
  */
 (() => {
   'use strict';
@@ -9,53 +10,40 @@
   const perches = document.querySelectorAll('.avatar-card-perch');
   if (!perches.length) return;
 
-  perches.forEach((perch) => {
-    const idleVideo = perch.querySelector('.avatar-perch-video.is-idle');
-    const talkVideo = perch.querySelector('.avatar-perch-video.is-talk');
-    const card = perch.closest('.avatar-card');
-    if (!idleVideo) return;
+  const IDLE_RATE = 0.42;
+  const ACTIVE_RATE = 1.15;
 
-    const canPlayVp9 = !isSafari && idleVideo.canPlayType('video/webm; codecs="vp9"') !== '';
+  perches.forEach((perch) => {
+    const video = perch.querySelector('.avatar-perch-video');
+    const card = perch.closest('.avatar-card');
+    if (!video) return;
+
+    const canPlayVp9 = !isSafari && video.canPlayType('video/webm; codecs="vp9"') !== '';
     if (!canPlayVp9) {
       perch.classList.add('is-fallback');
       return;
     }
 
-    idleVideo.playbackRate = 0.90;
-    if (talkVideo) talkVideo.playbackRate = 0.72;
+    video.playbackRate = IDLE_RATE;
 
-    idleVideo.addEventListener('error', () => {
+    video.addEventListener('error', () => {
       perch.classList.add('is-fallback');
     });
 
-    const syncState = () => {
+    const syncRate = () => {
       const isTalking = card && card.classList.contains('is-talking');
-      if (isTalking && talkVideo) {
-        if (talkVideo.paused) {
-          talkVideo.play().catch(() => {});
-        }
-        // Keep idle playing briefly during 0.45s cross-fade, then pause cleanly
-        setTimeout(() => {
-          if (card && card.classList.contains('is-talking') && !idleVideo.paused) {
-            idleVideo.pause();
-          }
-        }, 460);
-      } else {
-        if (idleVideo.paused) {
-          idleVideo.play().catch(() => perch.classList.add('is-fallback'));
-        }
-        if (talkVideo && !talkVideo.paused) {
-          setTimeout(() => {
-            if (!card || !card.classList.contains('is-talking')) {
-              talkVideo.pause();
-            }
-          }, 460);
-        }
+      video.playbackRate = isTalking ? ACTIVE_RATE : IDLE_RATE;
+    };
+
+    const tryPlay = () => {
+      syncRate();
+      if (video.paused) {
+        video.play().catch(() => perch.classList.add('is-fallback'));
       }
     };
 
     if (card) {
-      const mo = new MutationObserver(syncState);
+      const mo = new MutationObserver(syncRate);
       mo.observe(card, { attributes: true, attributeFilter: ['class'] });
     }
 
@@ -63,16 +51,15 @@
       const io = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            syncState();
-          } else {
-            if (!idleVideo.paused) idleVideo.pause();
-            if (talkVideo && !talkVideo.paused) talkVideo.pause();
+            tryPlay();
+          } else if (!video.paused) {
+            video.pause();
           }
         });
       }, { rootMargin: '120px' });
       io.observe(perch);
     } else {
-      syncState();
+      tryPlay();
     }
   });
 })();
