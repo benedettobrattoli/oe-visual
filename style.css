@@ -1830,15 +1830,15 @@ body.theme-dark .reel-featured-card:hover .play-circle svg polygon {
   display: block;
 }
 
-/* 1. BENNY: Photorealistic Transparent Loop walking with tablet along top border line (v5.0) */
+/* 1. BENNY: Photorealistic Transparent Loop walking with tablet along top border line (v5.1) */
 #avatar-card-benedetto .avatar-card-perch {
   width: 114px;
   height: 152px;
   bottom: 100%;
   margin-bottom: -18px;
-  left: 10px;
+  right: 18px;
+  left: auto;
   top: auto;
-  right: auto;
   will-change: transform;
 }
 
@@ -1939,27 +1939,22 @@ body.theme-dark .reel-featured-card:hover .play-circle svg polygon {
   100%  { transform: translateX(0px) scaleX(1); }
 }
 
-/* Card Hover Reactions */
+/* Card Hover & Active Reactions (no artificial bouncing/swinging) */
 .avatar-card:hover .avatar-perch-img,
-.avatar-card-perch:hover .avatar-perch-img {
-  filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.22)) drop-shadow(0 2px 5px rgba(224, 90, 43, 0.24));
+.avatar-card:hover .avatar-perch-video,
+.avatar-card-perch:hover .avatar-perch-img,
+.avatar-card-perch:hover .avatar-perch-video {
+  filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.20)) drop-shadow(0 2px 5px rgba(224, 90, 43, 0.22));
 }
 
-/* Active Speaker State: Expressive Speaking / Gesturing Animation */
+/* Active Speaker State: Subtle warm highlight only, feet stay firmly grounded */
 .avatar-card.active-speaker .avatar-card-perch {
-  animation: figureActiveSpeaking 1.6s ease-in-out infinite alternate !important;
-  transform: translateY(-8px) scale(1.08);
+  animation: none !important;
+  transform: none;
 }
-.avatar-card.active-speaker .avatar-perch-img {
-  filter: drop-shadow(0 14px 24px rgba(224, 90, 43, 0.38)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
-}
-
-@keyframes figureActiveSpeaking {
-  0% { transform: translateY(-7px) scale(1.08) rotate(0deg); }
-  25% { transform: translateY(-11px) scale(1.09) rotate(1.4deg); }
-  50% { transform: translateY(-6px) scale(1.07) rotate(-0.8deg); }
-  75% { transform: translateY(-10px) scale(1.09) rotate(0.8deg); }
-  100% { transform: translateY(-7px) scale(1.08) rotate(0deg); }
+.avatar-card.active-speaker .avatar-perch-img,
+.avatar-card.active-speaker .avatar-perch-video {
+  filter: drop-shadow(0 12px 20px rgba(224, 90, 43, 0.34)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.18));
 }
 
 .avatar-card:hover {
@@ -3924,16 +3919,17 @@ body.theme-dark .lb-slide-seasons .lb-season-progress {
   }
 
   #avatar-card-benedetto .avatar-card-perch,
-  #avatar-card-angelo .avatar-card-perch {
-    width: 72px;
+  #avatar-card-angelo .avatar-card-perch,
+  #avatar-card-marco .avatar-card-perch {
+    width: 90px;
+    height: 120px;
+    margin-bottom: -14px;
   }
   #avatar-card-michele .avatar-card-perch {
-    width: 78px;
-    margin-bottom: -33px;
-    right: 98px;
-  }
-  #avatar-card-marco .avatar-card-perch {
-    width: 88px;
+    width: 90px;
+    height: 120px;
+    margin-bottom: -46px;
+    right: 92px;
   }
 
   .avatar-card {
