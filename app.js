@@ -213,6 +213,17 @@ const portfolioData = [
     ]
   },
   {
+    id: 18,
+    type: 'render',
+    title: "Masseria San Nicola — Pergola & Pool Lounge",
+    category: "exterior",
+    location: "Fasano, Valle d'Itria",
+    image: "assets/portfolio/masseria-pergola-pool.jpg",
+    hoverVideoSrc: "assets/videos/masseria-pergola-pool-motion.mp4",
+    flex: 1.45,
+    desc: "Visualizzazione fotorealistica a luce solare naturale zenitale: pergola bioclimatica in legno bianco, vasi in terracotta pugliese e specchio d'acqua a sfioro."
+  },
+  {
     id: 19,
     type: 'render',
     title: "Tenuta Pugliese — Traditional Estate & Pool",
@@ -235,15 +246,14 @@ const portfolioData = [
   {
     id: 21,
     type: 'video',
-    hoverPlay: true,
-    title: "Masseria San Nicola — Pergola & Pool Lounge",
+    title: "Cinematic Motion Reel — Masseria al Sole",
     category: "exterior",
-    location: "Fasano, Valle d'Itria",
+    location: "Puglia Luxury Estate",
     videoSrc: "assets/videos/masseria-cinematic-loop.mp4",
-    poster: "assets/portfolio/masseria-pergola-pool.jpg",
-    image: "assets/portfolio/masseria-pergola-pool.jpg",
+    poster: "assets/portfolio/masseria-pugliese-estate.jpg",
+    image: "assets/portfolio/masseria-pugliese-estate.jpg",
     flex: 1.5,
-    desc: "Visualizzazione fotorealistica 4K a luce solare naturale con animazione cinematografica al passaggio del mouse."
+    desc: "Animazione cinematografica in loop 4K: simulazione dinamica delle increspature dell'acqua in piscina, fronde degli ulivi mosse dal vento e riflessi solari in tempo reale."
   },
   {
     id: 22,
@@ -605,11 +615,15 @@ function createCardElement(item, index) {
     return card;
   }
 
-  // TYPE 4: STILL PHOTOREALISTIC RENDERING CARD (PULITO, ZERO SOTTOSCRITTE RIDONDANTI)
-  card.className = 'render-card card-render';
+  // TYPE 4: STILL PHOTOREALISTIC RENDERING CARD (CON SUPPORTO OPZIONALE VIDEO ON HOVER)
+  const hasHoverVideo = Boolean(item.hoverVideoSrc);
+  card.className = hasHoverVideo
+    ? 'render-card card-render card-video-hover'
+    : 'render-card card-render';
   card.innerHTML = `
     <div class="render-img-wrapper">
-      <img src="${item.image}" alt="${item.title}" class="render-img" loading="lazy">
+      <img src="${item.image}" alt="${item.title}" class="render-img ${hasHoverVideo ? 'card-hover-poster' : ''}" loading="lazy">
+      ${hasHoverVideo ? `<video class="card-video card-hover-video" src="${item.hoverVideoSrc}" poster="${item.image}" loop muted playsinline preload="metadata"></video>` : ''}
     </div>
     <div class="render-overlay">
       <div class="overlay-corner-icon" title="Apri a tutta pagina">
@@ -624,6 +638,21 @@ function createCardElement(item, index) {
       <h3 class="overlay-title">${item.title}</h3>
     </div>
   `;
+
+  if (hasHoverVideo) {
+    const hoverVideo = card.querySelector('.card-hover-video');
+    if (hoverVideo) {
+      card.addEventListener('mouseenter', () => {
+        card.classList.add('is-hover-playing');
+        hoverVideo.play().catch(() => {});
+      });
+      card.addEventListener('mouseleave', () => {
+        card.classList.remove('is-hover-playing');
+        hoverVideo.pause();
+        hoverVideo.currentTime = 0;
+      });
+    }
+  }
 
   card.addEventListener('click', () => openLightbox(index));
   return card;
