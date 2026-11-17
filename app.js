@@ -213,16 +213,6 @@ const portfolioData = [
     ]
   },
   {
-    id: 18,
-    type: 'render',
-    title: "Masseria San Nicola — Pergola & Pool Lounge",
-    category: "exterior",
-    location: "Fasano, Valle d'Itria",
-    image: "assets/portfolio/masseria-pergola-pool.jpg",
-    flex: 1.45,
-    desc: "Visualizzazione fotorealistica a luce solare naturale zenitale: pergola bioclimatica in legno bianco, vasi in terracotta pugliese e specchio d'acqua a sfioro."
-  },
-  {
     id: 19,
     type: 'render',
     title: "Tenuta Pugliese — Traditional Estate & Pool",
@@ -246,14 +236,14 @@ const portfolioData = [
     id: 21,
     type: 'video',
     hoverPlay: true,
-    title: "Cinematic Motion Reel — Masseria al Sole",
+    title: "Masseria San Nicola — Pergola & Pool Lounge",
     category: "exterior",
-    location: "Puglia Luxury Estate",
+    location: "Fasano, Valle d'Itria",
     videoSrc: "assets/videos/masseria-cinematic-loop.mp4",
     poster: "assets/portfolio/masseria-pergola-pool.jpg",
     image: "assets/portfolio/masseria-pergola-pool.jpg",
     flex: 1.5,
-    desc: "Animazione cinematografica in loop 4K: simulazione dinamica delle increspature dell'acqua in piscina, fronde degli ulivi mosse dal vento e riflessi solari in tempo reale."
+    desc: "Visualizzazione fotorealistica 4K a luce solare naturale con animazione cinematografica al passaggio del mouse."
   },
   {
     id: 22,
