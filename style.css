@@ -1814,7 +1814,7 @@ body.theme-dark .reel-featured-card:hover .play-circle svg polygon {
   object-fit: contain;
   object-position: bottom center;
   filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.16));
-  transition: opacity 0.18s ease, filter 0.35s ease;
+  transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1), filter 0.35s ease;
   pointer-events: none;
 }
 
@@ -1847,19 +1847,19 @@ body.theme-dark .reel-featured-card:hover .play-circle svg polygon {
   opacity: 1;
 }
 
-/* 1. BENNY: Tall Pop-Out 3D Figure standing on top of the action buttons (v6.1) */
+/* Tall Pop-Out 3D Figures: feet reach right above the white QA buttons, head pops out top (v6.2) */
 #avatar-card-benedetto .avatar-card-perch,
 #avatar-card-michele .avatar-card-perch,
 #avatar-card-marco .avatar-card-perch,
 #avatar-card-angelo .avatar-card-perch {
-  width: 224px;
-  height: 298px;
-  top: -102px;
+  width: 276px;
+  height: 368px;
+  top: -78px;
   bottom: auto;
-  right: -14px;
+  right: -24px;
   left: auto;
   margin-bottom: 0;
-  will-change: transform;
+  will-change: transform, opacity;
 }
 #avatar-card-angelo .avatar-photo {
   object-position: center 18%;
@@ -3925,10 +3925,10 @@ body.theme-dark .lb-slide-seasons .lb-season-progress {
   #avatar-card-angelo .avatar-card-perch,
   #avatar-card-marco .avatar-card-perch,
   #avatar-card-michele .avatar-card-perch {
-    width: 162px;
-    height: 216px;
-    top: -66px;
-    right: -10px;
+    width: 196px;
+    height: 262px;
+    top: -48px;
+    right: -16px;
     margin-bottom: 0;
   }
 
@@ -3938,13 +3938,13 @@ body.theme-dark .lb-slide-seasons .lb-season-progress {
 
   .avatar-card-header {
     gap: 1rem;
-    padding-right: 112px;
-    min-height: 90px;
+    padding-right: 126px;
+    min-height: 96px;
     margin-bottom: 0.65rem;
   }
   .avatar-quote {
-    padding-right: 112px !important;
-    min-height: 64px;
+    padding-right: 126px !important;
+    min-height: 82px;
   }
 
   .avatar-photo-frame {

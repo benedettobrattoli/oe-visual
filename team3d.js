@@ -1,6 +1,6 @@
 /**
- * OE VISUAL — Photorealistic Living Studio Loops (v6.0)
- * Dual-state transparent VP9 WebM (Idle <-> Talking) + Animated WebP Alpha Fallback (Safari/iOS)
+ * OE VISUAL — Photorealistic Living Studio Loops (v6.2)
+ * Smooth 0.45s cross-fade Idle <-> Talking, calm realistic talking speed (0.75x)
  */
 (() => {
   'use strict';
@@ -21,8 +21,8 @@
       return;
     }
 
-    idleVideo.playbackRate = 1.0;
-    if (talkVideo) talkVideo.playbackRate = 1.15;
+    idleVideo.playbackRate = 0.90;
+    if (talkVideo) talkVideo.playbackRate = 0.72;
 
     idleVideo.addEventListener('error', () => {
       perch.classList.add('is-fallback');
@@ -34,12 +34,23 @@
         if (talkVideo.paused) {
           talkVideo.play().catch(() => {});
         }
-        if (!idleVideo.paused) idleVideo.pause();
+        // Keep idle playing briefly during 0.45s cross-fade, then pause cleanly
+        setTimeout(() => {
+          if (card && card.classList.contains('is-talking') && !idleVideo.paused) {
+            idleVideo.pause();
+          }
+        }, 460);
       } else {
         if (idleVideo.paused) {
           idleVideo.play().catch(() => perch.classList.add('is-fallback'));
         }
-        if (talkVideo && !talkVideo.paused) talkVideo.pause();
+        if (talkVideo && !talkVideo.paused) {
+          setTimeout(() => {
+            if (!card || !card.classList.contains('is-talking')) {
+              talkVideo.pause();
+            }
+          }, 460);
+        }
       }
     };
 
