@@ -4,7 +4,7 @@
  * Renders 4 articulated 3D architectural scale figures via Three.js onto card border lines
  */
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { GLTFLoader } from './assets/vendor/GLTFLoader.js';
 
 const RENDER_W = 280;
 const RENDER_H = 340;
