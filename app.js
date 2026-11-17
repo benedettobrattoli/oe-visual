@@ -1763,6 +1763,8 @@ const teamAvatarData = {
 
 let activeSpeakerKey = 'benedetto';
 let currentSpeechText = teamAvatarData.benedetto.intro;
+let currentQuestionKey = 'intro';
+let currentAudio = null;
 let currentUtterance = null;
 let isSpeaking = false;
 let typewriterInterval = null;
@@ -1788,14 +1790,14 @@ function setupTeamAvatars() {
     });
   });
 
-  // Question buttons
+  // Question buttons: select, show answer & speak directly with neural voice
   askBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const member = btn.getAttribute('data-member');
       const question = btn.getAttribute('data-q');
       if (member && question) {
-        activateAvatarSpeaker(member, question, false);
+        activateAvatarSpeaker(member, question, true);
       }
     });
   });
@@ -1829,7 +1831,7 @@ function setupTeamAvatars() {
       if (isSpeaking) {
         stopVoiceSpeech();
       } else {
-        playVoiceSpeech(currentSpeechText, activeSpeakerKey);
+        playVoiceSpeech(currentSpeechText, activeSpeakerKey, currentQuestionKey);
       }
     });
   }
@@ -1961,8 +1963,10 @@ function activateAvatarSpeaker(memberKey, questionKey = null, autoSpeak = false)
 
   // Determine message
   let text = member.intro;
+  currentQuestionKey = 'intro';
   if (questionKey && member.answers && member.answers[questionKey]) {
     text = member.answers[questionKey];
+    currentQuestionKey = questionKey;
   }
   currentSpeechText = text;
 
@@ -1979,7 +1983,7 @@ function activateAvatarSpeaker(memberKey, questionKey = null, autoSpeak = false)
 
   // Audio Playback
   if (autoSpeak) {
-    playVoiceSpeech(text, memberKey);
+    playVoiceSpeech(text, memberKey, currentQuestionKey);
   } else {
     stopVoiceSpeech();
   }
@@ -2007,63 +2011,91 @@ function typewriterSpeech(targetEl, text, speed = 14) {
 }
 
 /**
- * Natural Italian Web Speech API (€0.00 local browser voice)
+ * Real Neural Italian Voice MP3 Playback (Gemini Pro TTS) + Talking Figure State
  */
-function playVoiceSpeech(text, memberKey) {
-  if (!('speechSynthesis' in window)) {
-    alert("La sintesi vocale non è supportata da questo browser. Leggi pure la risposta nel riquadro.");
-    return;
-  }
+function setTalkingVisualState(memberKey, talking) {
+  document.querySelectorAll('.avatar-card').forEach(card => {
+    if (talking && card.getAttribute('data-member') === memberKey) {
+      card.classList.add('is-talking');
+    } else {
+      card.classList.remove('is-talking');
+    }
+  });
+}
 
+function playVoiceSpeech(text, memberKey, questionKey = 'intro') {
   stopVoiceSpeech();
 
+  const voiceWave = document.getElementById('voice-wave');
+  const readBtn = document.getElementById('console-read-btn');
+  const audioLabel = document.getElementById('console-audio-label');
+
+  const onTalkStart = () => {
+    isSpeaking = true;
+    setTalkingVisualState(memberKey, true);
+    if (voiceWave) voiceWave.classList.add('speaking');
+    if (readBtn) readBtn.classList.add('active-speaking');
+    if (audioLabel) audioLabel.textContent = "Pausa / Interrompi";
+  };
+
+  const onTalkEnd = () => {
+    isSpeaking = false;
+    setTalkingVisualState(memberKey, false);
+    if (voiceWave) voiceWave.classList.remove('speaking');
+    if (readBtn) readBtn.classList.remove('active-speaking');
+    if (audioLabel) audioLabel.textContent = "Riascolta la risposta";
+  };
+
+  const audioSrc = `assets/team/audio/${memberKey}_${questionKey || 'intro'}.mp3`;
+  const audio = new Audio(audioSrc);
+  currentAudio = audio;
+
+  audio.addEventListener('play', onTalkStart);
+  audio.addEventListener('ended', onTalkEnd);
+  audio.addEventListener('error', () => {
+    // Fallback to browser Web Speech API if MP3 missing/offline
+    fallbackWebSpeech(text, memberKey, onTalkStart, onTalkEnd);
+  });
+
+  audio.play().catch(() => {
+    fallbackWebSpeech(text, memberKey, onTalkStart, onTalkEnd);
+  });
+}
+
+function fallbackWebSpeech(text, memberKey, onTalkStart, onTalkEnd) {
+  if (!('speechSynthesis' in window)) {
+    onTalkEnd();
+    return;
+  }
   const member = teamAvatarData[memberKey] || teamAvatarData.benedetto;
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = 'it-IT';
   utterance.rate = member.voiceRate || 0.98;
   utterance.pitch = member.voicePitch || 1.0;
 
-  // Select Italian voice
   const voices = window.speechSynthesis.getVoices();
   const itVoice = voices.find(v => v.lang.startsWith('it') || v.lang === 'it_IT');
-  if (itVoice) {
-    utterance.voice = itVoice;
-  }
+  if (itVoice) utterance.voice = itVoice;
 
-  const voiceWave = document.getElementById('voice-wave');
-  const readBtn = document.getElementById('console-read-btn');
-  const audioLabel = document.getElementById('console-audio-label');
-
-  utterance.onstart = () => {
-    isSpeaking = true;
-    if (voiceWave) voiceWave.classList.add('speaking');
-    if (readBtn) readBtn.classList.add('active-speaking');
-    if (audioLabel) audioLabel.textContent = "Pausa / Interrompi";
-  };
-
-  utterance.onend = () => {
-    isSpeaking = false;
-    if (voiceWave) voiceWave.classList.remove('speaking');
-    if (readBtn) readBtn.classList.remove('active-speaking');
-    if (audioLabel) audioLabel.textContent = "Riascolta la risposta";
-  };
-
-  utterance.onerror = () => {
-    isSpeaking = false;
-    if (voiceWave) voiceWave.classList.remove('speaking');
-    if (readBtn) readBtn.classList.remove('active-speaking');
-    if (audioLabel) audioLabel.textContent = "Ascolta la risposta";
-  };
+  utterance.onstart = onTalkStart;
+  utterance.onend = onTalkEnd;
+  utterance.onerror = onTalkEnd;
 
   currentUtterance = utterance;
   window.speechSynthesis.speak(utterance);
 }
 
 function stopVoiceSpeech() {
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+    currentAudio = null;
+  }
   if ('speechSynthesis' in window) {
     window.speechSynthesis.cancel();
   }
   isSpeaking = false;
+  setTalkingVisualState(null, false);
   const voiceWave = document.getElementById('voice-wave');
   const readBtn = document.getElementById('console-read-btn');
   const audioLabel = document.getElementById('console-audio-label');

@@ -1813,9 +1813,16 @@ body.theme-dark .reel-featured-card:hover .play-circle svg polygon {
   height: 100%;
   object-fit: contain;
   object-position: bottom center;
-  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.16));
-  transition: filter 0.35s ease;
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.16));
+  transition: opacity 0.18s ease, filter 0.35s ease;
   pointer-events: none;
+}
+
+.avatar-perch-video.is-talk,
+.avatar-perch-fallback.is-talk {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
 }
 
 .avatar-perch-fallback {
@@ -1830,48 +1837,61 @@ body.theme-dark .reel-featured-card:hover .play-circle svg polygon {
   display: block;
 }
 
-/* 1. BENNY: Photorealistic Transparent Loop walking with tablet along top border line (v5.2) */
+.avatar-card.is-talking .avatar-perch-video.is-idle,
+.avatar-card.is-talking .avatar-card-perch.is-fallback .avatar-perch-fallback.is-idle {
+  opacity: 0;
+}
+
+.avatar-card.is-talking .avatar-perch-video.is-talk,
+.avatar-card.is-talking .avatar-card-perch.is-fallback .avatar-perch-fallback.is-talk {
+  opacity: 1;
+}
+
+/* 1. BENNY: Large Pop-Out 3D Photorealistic Figure (v6.0) */
 #avatar-card-benedetto .avatar-card-perch {
-  width: 144px;
-  height: 192px;
-  bottom: 100%;
-  margin-bottom: -22px;
-  right: 14px;
+  width: 176px;
+  height: 235px;
+  top: -102px;
+  bottom: auto;
+  right: -6px;
   left: auto;
-  top: auto;
+  margin-bottom: 0;
   will-change: transform;
 }
 
-/* 2. MICHELE: Photorealistic Transparent Loop seated on top border line with blueprint (v5.2) */
+/* 2. MICHELE: Large Pop-Out 3D Photorealistic Seated Figure (v6.0) */
 #avatar-card-michele .avatar-card-perch {
-  width: 144px;
-  height: 192px;
-  bottom: 100%;
-  margin-bottom: -74px;
-  right: 102px;
-  top: auto;
+  width: 176px;
+  height: 235px;
+  top: -84px;
+  bottom: auto;
+  right: -4px;
+  left: auto;
+  margin-bottom: 0;
   will-change: transform;
 }
 
-/* 3. MARCO: Photorealistic Transparent Loop inspecting material swatches (v5.2) */
+/* 3. MARCO: Large Pop-Out 3D Photorealistic Figure (v6.0) */
 #avatar-card-marco .avatar-card-perch {
-  width: 144px;
-  height: 192px;
-  bottom: 100%;
-  margin-bottom: -22px;
-  right: 12px;
-  top: auto;
+  width: 176px;
+  height: 235px;
+  top: -102px;
+  bottom: auto;
+  right: -6px;
+  left: auto;
+  margin-bottom: 0;
   will-change: transform;
 }
 
-/* 4. ANGELO: Photorealistic Transparent Loop with 3D Architectural Villa Maquette (v5.2) */
+/* 4. ANGELO: Large Pop-Out 3D Photorealistic Figure with 3D Villa Maquette (v6.0) */
 #avatar-card-angelo .avatar-card-perch {
-  width: 144px;
-  height: 192px;
-  bottom: 100%;
-  margin-bottom: -22px;
-  right: 10px;
-  top: auto;
+  width: 176px;
+  height: 235px;
+  top: -102px;
+  bottom: auto;
+  right: -6px;
+  left: auto;
+  margin-bottom: 0;
   will-change: transform;
 }
 #avatar-card-angelo .avatar-photo {
@@ -1972,7 +1992,22 @@ body.theme-dark .reel-featured-card:hover .play-circle svg polygon {
   align-items: flex-start;
   justify-content: space-between;
   gap: 1.25rem;
+  padding-right: 128px;
+  min-height: 122px;
   margin-bottom: 1.35rem;
+}
+
+.avatar-live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #059669;
+  font-weight: 600;
 }
 
 .avatar-header-info {
@@ -2049,16 +2084,15 @@ body.theme-dark .reel-featured-card:hover .play-circle svg polygon {
 }
 
 .avatar-status-dot {
-  position: absolute;
-  bottom: 3px;
-  right: 3px;
-  width: 14px;
-  height: 14px;
+  position: relative;
+  display: inline-block;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background-color: #10b981;
-  border: 2px solid var(--bg-surface);
-  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
   animation: pulseDot 2.4s infinite ease-in-out;
+  flex-shrink: 0;
 }
 
 @keyframes pulseDot {
@@ -3921,15 +3955,18 @@ body.theme-dark .lb-slide-seasons .lb-season-progress {
   #avatar-card-benedetto .avatar-card-perch,
   #avatar-card-angelo .avatar-card-perch,
   #avatar-card-marco .avatar-card-perch {
-    width: 108px;
-    height: 144px;
-    margin-bottom: -17px;
+    width: 132px;
+    height: 176px;
+    top: -68px;
+    right: -4px;
+    margin-bottom: 0;
   }
   #avatar-card-michele .avatar-card-perch {
-    width: 108px;
-    height: 144px;
-    margin-bottom: -55px;
-    right: 88px;
+    width: 132px;
+    height: 176px;
+    top: -54px;
+    right: -2px;
+    margin-bottom: 0;
   }
 
   .avatar-card {
@@ -3938,6 +3975,8 @@ body.theme-dark .lb-slide-seasons .lb-season-progress {
 
   .avatar-card-header {
     gap: 1rem;
+    padding-right: 96px;
+    min-height: 98px;
     margin-bottom: 1.15rem;
   }
 

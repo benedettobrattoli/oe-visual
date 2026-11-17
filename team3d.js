@@ -1,7 +1,6 @@
 /**
- * OE VISUAL — Photorealistic Team Perch Loops (v5.2)
- * Transparent VP9 WebM (Chrome/Edge/Firefox) + Animated WebP Alpha Fallback (Safari/iOS)
- * Balanced per-member speeds: slower calm walk for Benedetto, livelier micro-actions for Michele/Marco/Angelo.
+ * OE VISUAL — Photorealistic Living Studio Loops (v6.0)
+ * Dual-state transparent VP9 WebM (Idle <-> Talking) + Animated WebP Alpha Fallback (Safari/iOS)
  */
 (() => {
   'use strict';
@@ -10,60 +9,42 @@
   const perches = document.querySelectorAll('.avatar-card-perch');
   if (!perches.length) return;
 
-  const SPEED_PROFILE = {
-    benedetto: { idle: 1.05, hover: 1.30, active: 1.60 },
-    michele:   { idle: 1.05, hover: 1.30, active: 1.60 },
-    marco:     { idle: 1.05, hover: 1.30, active: 1.60 },
-    angelo:    { idle: 1.05, hover: 1.30, active: 1.60 }
-  };
-
   perches.forEach((perch) => {
-    const member = perch.dataset.member || 'marco';
-    const rates = SPEED_PROFILE[member] || SPEED_PROFILE.marco;
-    const video = perch.querySelector('.avatar-perch-video');
+    const idleVideo = perch.querySelector('.avatar-perch-video.is-idle');
+    const talkVideo = perch.querySelector('.avatar-perch-video.is-talk');
     const card = perch.closest('.avatar-card');
-    if (!video) return;
+    if (!idleVideo) return;
 
-    const canPlayVp9 = !isSafari && video.canPlayType('video/webm; codecs="vp9"') !== '';
+    const canPlayVp9 = !isSafari && idleVideo.canPlayType('video/webm; codecs="vp9"') !== '';
     if (!canPlayVp9) {
       perch.classList.add('is-fallback');
       return;
     }
 
-    video.playbackRate = rates.idle;
+    idleVideo.playbackRate = 1.0;
+    if (talkVideo) talkVideo.playbackRate = 1.15;
 
-    video.addEventListener('error', () => {
+    idleVideo.addEventListener('error', () => {
       perch.classList.add('is-fallback');
     });
 
-    const syncRate = () => {
-      if (card && card.classList.contains('active-speaker')) {
-        video.playbackRate = rates.active;
+    const syncState = () => {
+      const isTalking = card && card.classList.contains('is-talking');
+      if (isTalking && talkVideo) {
+        if (talkVideo.paused) {
+          talkVideo.play().catch(() => {});
+        }
+        if (!idleVideo.paused) idleVideo.pause();
       } else {
-        video.playbackRate = rates.idle;
-      }
-    };
-
-    const tryPlay = () => {
-      syncRate();
-      const p = video.play();
-      if (p && typeof p.catch === 'function') {
-        p.catch(() => perch.classList.add('is-fallback'));
+        if (idleVideo.paused) {
+          idleVideo.play().catch(() => perch.classList.add('is-fallback'));
+        }
+        if (talkVideo && !talkVideo.paused) talkVideo.pause();
       }
     };
 
     if (card) {
-      card.addEventListener('mouseenter', () => {
-        if (!card.classList.contains('active-speaker')) {
-          video.playbackRate = rates.hover;
-        }
-      });
-      card.addEventListener('mouseleave', syncRate);
-      card.addEventListener('click', () => {
-        video.playbackRate = rates.active;
-      });
-
-      const mo = new MutationObserver(syncRate);
+      const mo = new MutationObserver(syncState);
       mo.observe(card, { attributes: true, attributeFilter: ['class'] });
     }
 
@@ -71,15 +52,16 @@
       const io = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            tryPlay();
-          } else if (!video.paused) {
-            video.pause();
+            syncState();
+          } else {
+            if (!idleVideo.paused) idleVideo.pause();
+            if (talkVideo && !talkVideo.paused) talkVideo.pause();
           }
         });
       }, { rootMargin: '120px' });
       io.observe(perch);
     } else {
-      tryPlay();
+      syncState();
     }
   });
 })();
