@@ -1830,16 +1830,16 @@ body.theme-dark .reel-featured-card:hover .play-circle svg polygon {
   display: block;
 }
 
-/* Tall Pop-Out 3D Figures: feet reach right above the white QA buttons, head pops out top (v6.2) */
+/* Tall Pop-Out 3D Figures: max sharpness, aligned with text block & uniform grey margin above QA buttons (v6.6) */
 #avatar-card-benedetto .avatar-card-perch,
 #avatar-card-michele .avatar-card-perch,
 #avatar-card-marco .avatar-card-perch,
 #avatar-card-angelo .avatar-card-perch {
-  width: 276px;
-  height: 368px;
-  top: -78px;
+  width: 296px;
+  height: 395px;
+  top: -88px;
   bottom: auto;
-  right: -24px;
+  right: -28px;
   left: auto;
   margin-bottom: 0;
   will-change: transform, opacity;
@@ -2058,9 +2058,9 @@ body.theme-dark .reel-featured-card:hover .play-circle svg polygon {
   color: var(--text-secondary);
   border-left: 2px solid var(--border-medium);
   padding-left: 0.85rem;
-  padding-right: 148px;
-  min-height: 76px;
-  margin-bottom: 1.5rem;
+  padding-right: 156px;
+  min-height: 120px;
+  margin-bottom: 1.85rem;
   flex-grow: 1;
 }
 
