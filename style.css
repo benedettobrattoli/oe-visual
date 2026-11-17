@@ -1939,22 +1939,22 @@ body.theme-dark .reel-featured-card:hover .play-circle svg polygon {
   100%  { transform: translateX(0px) scaleX(1); }
 }
 
-/* Card Hover & Active Reactions (no artificial bouncing/swinging) */
+/* Card Hover & Active Reactions (no artificial bouncing/swinging or orange halo) */
 .avatar-card:hover .avatar-perch-img,
 .avatar-card:hover .avatar-perch-video,
 .avatar-card-perch:hover .avatar-perch-img,
 .avatar-card-perch:hover .avatar-perch-video {
-  filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.20)) drop-shadow(0 2px 5px rgba(224, 90, 43, 0.22));
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.18));
 }
 
-/* Active Speaker State: Subtle warm highlight only, feet stay firmly grounded */
+/* Active Speaker State: Keep clean neutral studio shadow, feet stay firmly grounded */
 .avatar-card.active-speaker .avatar-card-perch {
   animation: none !important;
   transform: none;
 }
 .avatar-card.active-speaker .avatar-perch-img,
 .avatar-card.active-speaker .avatar-perch-video {
-  filter: drop-shadow(0 12px 20px rgba(224, 90, 43, 0.34)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.18));
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.16));
 }
 
 .avatar-card:hover {
