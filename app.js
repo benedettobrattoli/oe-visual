@@ -245,6 +245,7 @@ const portfolioData = [
   {
     id: 21,
     type: 'video',
+    hoverPlay: true,
     title: "Cinematic Motion Reel — Masseria al Sole",
     category: "exterior",
     location: "Puglia Luxury Estate",
@@ -482,10 +483,17 @@ function createCardElement(item, index) {
 
   // TYPE 1: LOOPING VIDEO CARD (PULITO, ZERO BADGE FLOTTANTI)
   if (item.type === 'video') {
-    card.className = 'render-card card-video-card';
+    const isHoverPlay = Boolean(item.hoverPlay);
+    card.className = isHoverPlay
+      ? 'render-card card-video-card card-video-hover'
+      : 'render-card card-video-card';
     card.innerHTML = `
       <div class="render-img-wrapper">
-        <video class="card-video" src="${item.videoSrc}" poster="${item.poster || ''}" autoplay loop muted playsinline preload="auto"></video>
+        ${isHoverPlay
+          ? `<img src="${item.poster || item.image || ''}" alt="${item.title}" class="render-img card-hover-poster" loading="lazy">
+             <video class="card-video card-hover-video" src="${item.videoSrc}" poster="${item.poster || ''}" loop muted playsinline preload="metadata"></video>`
+          : `<video class="card-video" src="${item.videoSrc}" poster="${item.poster || ''}" autoplay loop muted playsinline preload="auto"></video>`
+        }
       </div>
       <div class="render-overlay">
         <div class="overlay-corner-icon" title="Riproduci a tutta pagina">
@@ -497,6 +505,21 @@ function createCardElement(item, index) {
         <h3 class="overlay-title">${item.title}</h3>
       </div>
     `;
+
+    if (isHoverPlay) {
+      const hoverVideo = card.querySelector('.card-hover-video');
+      if (hoverVideo) {
+        card.addEventListener('mouseenter', () => {
+          card.classList.add('is-hover-playing');
+          hoverVideo.play().catch(() => {});
+        });
+        card.addEventListener('mouseleave', () => {
+          card.classList.remove('is-hover-playing');
+          hoverVideo.pause();
+          hoverVideo.currentTime = 0;
+        });
+      }
+    }
 
     card.addEventListener('click', () => openLightbox(index));
     return card;
