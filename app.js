@@ -60,11 +60,11 @@ const portfolioData = [
     title: "Riva Rivarama — Nautical Yacht Spot 4K",
     category: "commercial",
     location: "Polignano Coastal Bay · Product Design",
-    videoSrc: "assets/videos/rivarama-yacht-spot.mp4?v=9.2",
-    poster: "assets/portfolio/rivarama-spot-poster.jpg?v=9.2",
-    image: "assets/portfolio/rivarama-spot-poster.jpg?v=9.2",
+    videoSrc: "assets/videos/rivarama-yacht-spot.mp4?v=9.3",
+    poster: "assets/portfolio/rivarama-spot-poster.jpg?v=9.3",
+    image: "assets/portfolio/rivarama-spot-poster.jpg?v=9.3",
     flex: 1.5,
-    desc: "Spot cinematografico per la presentazione 3D del motoscafo di lusso Riva Rivarama: dalle scogliere al crepuscolo alla planata ravvicinata sul mare, esaltando mogano lucido, acciai, cuscineria trapuntata e plancia illuminata."
+    desc: "Spot televisivo 3D dedicato al motoscafo di lusso Riva Rivarama: lenta arretrata panoramica dalle scogliere al crepuscolo per agganciare lo yacht da poppa e affiancarlo con elegante carrellata laterale in planata sul mare, esaltando mogano lucido, acciai e plancia illuminata."
   },
   {
     id: 6,
@@ -322,7 +322,7 @@ const PORTFOLIO_EN = {
   2: { title: "Modern Living — Mesh & Light Study", location: "Turin Hills, Italy", desc: "Geometric and indirect light bounce validation in Clay before final material sampling of textiles, timber, and metals." },
   3: { title: "Executive Tower at Dusk — Motion Reel", location: "Rome Business District", desc: "Looping 3D architectural film with volumetric twilight lighting across curtain-wall executive towers." },
   4: { title: "Green Terraces Residence — Architectural Motion", location: "Milan, Porta Nuova", desc: "Cinematic walkthrough across cantilevered hanging gardens and bioclimatic residential facades." },
-  5: { title: "Riva Rivarama — Nautical Yacht Spot 4K", location: "Polignano Coastal Bay · Product Design", desc: "Cinema commercial showcasing our 3D visualization of the iconic Riva Rivarama mahogany runabout: sweeping from the twilight coastal cliffs down into an intimate tracking close-up across glossy cherry decks, chrome hardware, and glowing cockpit details." },
+  5: { title: "Riva Rivarama — Nautical Yacht Spot 4K", location: "Polignano Coastal Bay · Product Design", desc: "Broadcast-style 3D commercial for the iconic Riva Rivarama mahogany runabout: a calm pullback from the twilight coastal cliffs catches the yacht from astern before gliding alongside it in a smooth lateral cruising tracking shot across glossy cherry decks, chrome hardware, and glowing helm details." },
   6: { title: "Restored Traditional Masseria", location: "Valle d'Itria, Puglia", desc: "Lime-washed Puglian limestone paired with Corten steel and microcement architectural insertions." },
   7: { title: "Royal Avenue Luxury Penthouse", location: "London, Kensington", desc: "High-profile residential interior featuring fluted wood paneling, honed Calacatta marble, and balanced daylighting." },
   8: { title: "Panoramic Seafront Penthouse", location: "Bari Waterfront", desc: "Bespoke interior styling with smoked oak chevron flooring, custom millwork, and grazing linear lighting." },
