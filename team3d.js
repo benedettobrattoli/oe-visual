@@ -1,7 +1,7 @@
 /**
- * OE VISUAL — Photorealistic Team Perch Loops (v5.1)
+ * OE VISUAL — Photorealistic Team Perch Loops (v5.2)
  * Transparent VP9 WebM (Chrome/Edge/Firefox) + Animated WebP Alpha Fallback (Safari/iOS)
- * Calm slow idle by default; realistic livelier motion when card is clicked/active.
+ * Balanced per-member speeds: slower calm walk for Benedetto, livelier micro-actions for Michele/Marco/Angelo.
  */
 (() => {
   'use strict';
@@ -10,11 +10,16 @@
   const perches = document.querySelectorAll('.avatar-card-perch');
   if (!perches.length) return;
 
-  const IDLE_RATE = 0.65;
-  const HOVER_RATE = 0.95;
-  const ACTIVE_RATE = 1.35;
+  const SPEED_PROFILE = {
+    benedetto: { idle: 0.38, hover: 0.55, active: 0.72 },
+    michele:   { idle: 1.05, hover: 1.30, active: 1.60 },
+    marco:     { idle: 1.05, hover: 1.30, active: 1.60 },
+    angelo:    { idle: 1.05, hover: 1.30, active: 1.60 }
+  };
 
   perches.forEach((perch) => {
+    const member = perch.dataset.member || 'marco';
+    const rates = SPEED_PROFILE[member] || SPEED_PROFILE.marco;
     const video = perch.querySelector('.avatar-perch-video');
     const card = perch.closest('.avatar-card');
     if (!video) return;
@@ -25,7 +30,7 @@
       return;
     }
 
-    video.playbackRate = IDLE_RATE;
+    video.playbackRate = rates.idle;
 
     video.addEventListener('error', () => {
       perch.classList.add('is-fallback');
@@ -33,9 +38,9 @@
 
     const syncRate = () => {
       if (card && card.classList.contains('active-speaker')) {
-        video.playbackRate = ACTIVE_RATE;
+        video.playbackRate = rates.active;
       } else {
-        video.playbackRate = IDLE_RATE;
+        video.playbackRate = rates.idle;
       }
     };
 
@@ -50,12 +55,12 @@
     if (card) {
       card.addEventListener('mouseenter', () => {
         if (!card.classList.contains('active-speaker')) {
-          video.playbackRate = HOVER_RATE;
+          video.playbackRate = rates.hover;
         }
       });
       card.addEventListener('mouseleave', syncRate);
       card.addEventListener('click', () => {
-        video.playbackRate = ACTIVE_RATE;
+        video.playbackRate = rates.active;
       });
 
       const mo = new MutationObserver(syncRate);
