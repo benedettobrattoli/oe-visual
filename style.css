@@ -3995,3 +3995,177 @@ body.theme-dark .lb-slide-seasons .lb-season-progress {
   .lb-nav-btn.prev { left: 0.5rem; }
   .lb-nav-btn.next { right: 0.5rem; }
 }
+
+/* ==========================================================================
+   V8.0: HEADER IT / EN SWITCH, CAD/BIM TECH STRIP & LIGHTBOX QUOTE CTA
+   ========================================================================== */
+.lang-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  height: 32px;
+  padding: 0 0.72rem;
+  border-radius: 999px;
+  border: 1px solid rgba(11, 13, 16, 0.22);
+  background-color: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: rgba(11, 13, 16, 0.55);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.lang-toggle-btn:hover {
+  border-color: rgba(11, 13, 16, 0.55);
+  background-color: rgba(11, 13, 16, 0.05);
+}
+
+.lang-toggle-btn .lang-opt.is-active {
+  color: #0b0d10;
+  font-weight: 700;
+}
+
+.lang-toggle-btn .lang-sep {
+  opacity: 0.35;
+}
+
+body.theme-dark .lang-toggle-btn {
+  border-color: rgba(255, 255, 255, 0.22);
+  background-color: rgba(20, 22, 27, 0.72);
+  color: rgba(255, 255, 255, 0.55);
+}
+
+body.theme-dark .lang-toggle-btn:hover {
+  border-color: rgba(255, 255, 255, 0.55);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+body.theme-dark .lang-toggle-btn .lang-opt.is-active {
+  color: #ffffff;
+}
+
+/* CAD/BIM Formats & 3-Step Workflow Strip */
+.studio-tech-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  padding: 1.65rem 2rem;
+  margin-top: -3.2rem;
+  margin-bottom: 5rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+}
+
+.tech-strip-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.tech-strip-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-tertiary);
+}
+
+.tech-formats-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.tech-pill {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.32rem 0.68rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-medium);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.tech-steps-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+}
+
+.tech-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.step-idx {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-color);
+}
+
+.step-arrow {
+  color: var(--text-tertiary);
+  font-size: 0.85rem;
+}
+
+/* Lightbox Quote Bridge Button */
+.lb-quote-btn {
+  pointer-events: auto;
+  flex-shrink: 0;
+  padding: 0.55rem 1.05rem;
+  border-radius: 999px;
+  border: 1px solid rgba(11, 13, 16, 0.22);
+  background-color: #0b0d10;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+}
+
+.lb-quote-btn:hover {
+  transform: translateY(-1px);
+  background-color: #1f242d;
+}
+
+body.theme-dark .lb-quote-btn {
+  background-color: #ffffff;
+  color: #0b0d10;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+body.theme-dark .lb-quote-btn:hover {
+  background-color: #e5e9f0;
+}
+
+@media (max-width: 900px) {
+  .studio-tech-strip {
+    grid-template-columns: 1fr;
+    margin-top: -2.2rem;
+    padding: 1.35rem 1.25rem;
+  }
+
+  .lightbox-bottom-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.65rem;
+  }
+
+  .lb-desc {
+    max-width: 100%;
+    font-size: 0.8rem;
+  }
+}

@@ -99,41 +99,54 @@
             <div class="work-dropdown-menu" id="work-dropdown-menu">
               <button class="dropdown-item active" data-filter="all">
                 <span class="dropdown-indicator"></span>
-                <span class="dropdown-label">All Selected Works</span>
+                <span class="dropdown-label" data-i18n="filter_all">All Selected Works</span>
               </button>
               <button class="dropdown-item" data-filter="exterior">
                 <span class="dropdown-indicator"></span>
-                <span class="dropdown-label">Exteriors</span>
+                <span class="dropdown-label" data-i18n="filter_exterior">Exteriors</span>
               </button>
               <button class="dropdown-item" data-filter="interior">
                 <span class="dropdown-indicator"></span>
-                <span class="dropdown-label">Interiors</span>
+                <span class="dropdown-label" data-i18n="filter_interior">Interiors</span>
               </button>
               <button class="dropdown-item" data-filter="commercial">
                 <span class="dropdown-indicator"></span>
-                <span class="dropdown-label">Retail & Hospitality</span>
+                <span class="dropdown-label" data-i18n="filter_commercial">Retail &amp; Hospitality</span>
+              </button>
+              <button class="dropdown-item" data-filter="catalog">
+                <span class="dropdown-indicator"></span>
+                <span class="dropdown-label" data-i18n="filter_catalog">Cataloghi &amp; Product Design</span>
+              </button>
+              <button class="dropdown-item" data-filter="engineering">
+                <span class="dropdown-indicator"></span>
+                <span class="dropdown-label" data-i18n="filter_engineering">Ingegneria, BIM &amp; Fotoinserimenti</span>
               </button>
               <button class="dropdown-item" data-filter="compare">
                 <span class="dropdown-indicator"></span>
-                <span class="dropdown-label">Wireframe / Clay Sliders</span>
+                <span class="dropdown-label" data-i18n="filter_compare">Wireframe / Clay Sliders</span>
               </button>
               <button class="dropdown-item" data-filter="video">
                 <span class="dropdown-indicator"></span>
-                <span class="dropdown-label">Cinema Reel (Video)</span>
+                <span class="dropdown-label" data-i18n="filter_video">Cinema Reel (Video)</span>
               </button>
               <button class="dropdown-item" data-filter="seasons">
                 <span class="dropdown-indicator"></span>
-                <span class="dropdown-label">Studio Bioclimatico</span>
+                <span class="dropdown-label" data-i18n="filter_seasons">Studio Bioclimatico</span>
               </button>
             </div>
           </li>
-          <li><a href="#studio" class="nav-item" data-target="studio">Studio</a></li>
-          <li><a href="#contact" class="nav-item" data-target="contact">Contact</a></li>
+          <li><a href="#studio" class="nav-item" data-target="studio" data-i18n="nav_studio">Studio</a></li>
+          <li><a href="#contact" class="nav-item" data-target="contact" data-i18n="nav_contact">Contact</a></li>
         </ul>
       </nav>
 
-      <!-- RIGHT UTILITIES: THEME TOGGLE -->
+      <!-- RIGHT UTILITIES: LANGUAGE SWITCH + THEME TOGGLE -->
       <div class="header-actions">
+        <button id="lang-toggle" class="lang-toggle-btn" type="button" aria-label="Cambia lingua IT / EN" title="Italiano / English">
+          <span class="lang-opt is-active" data-lang="it">IT</span>
+          <span class="lang-sep">/</span>
+          <span class="lang-opt" data-lang="en">EN</span>
+        </button>
         <button id="theme-toggle" class="icon-btn" aria-label="Cambia tema chiaro/scuro" title="Tema Scuro / Chiaro">
           <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="5"></circle>
@@ -182,11 +195,11 @@
       <!-- STUDIO MANIFESTO & IDENTITY -->
       <div class="studio-header-block">
         <div class="studio-badge-row">
-          <span class="sub-label">02 — CHI SIAMO & COSA FACCIAMO</span>
-          <span class="studio-exp-tag">15+ Anni di Esperienza CGI</span>
+          <span class="sub-label" data-i18n="studio_sub">02 — CHI SIAMO &amp; COSA FACCIAMO</span>
+          <span class="studio-exp-tag" data-i18n="studio_exp">15+ Anni di Esperienza CGI</span>
         </div>
-        <h2 class="studio-headline">Saper leggere il progetto: architetti prima che artisti 3D.</h2>
-        <p class="studio-manifesto">
+        <h2 class="studio-headline" data-i18n="studio_headline">Saper leggere il progetto: architetti prima che artisti 3D.</h2>
+        <p class="studio-manifesto" data-i18n="studio_manifesto" data-i18n-html="true">
           Da oltre 15 anni ci occupiamo di Rendering 3D con elevato fotorealismo, animazioni cinematografiche e validazione geometrica per studi di architettura, società di ingegneria, sviluppatori immobiliari e brand d'arredo. Il nostro gruppo di lavoro è composto da architetti e ingegneri: il nostro vero punto di forza consiste nel <strong>saper leggere il tuo progetto</strong>, comprenderne l'orografia, la luce solare e le scelte materiche, per creare un'opera visiva che sappia emozionare e chiudere la trattativa.
         </p>
       </div>
@@ -195,54 +208,80 @@
       <div class="studio-services-grid">
         <div class="service-card">
           <div class="service-num">01</div>
-          <h3 class="service-title">Rendering 3D Fotorealistico</h3>
-          <p class="service-desc">
+          <h3 class="service-title" data-i18n="srv1_title">Rendering 3D Fotorealistico</h3>
+          <p class="service-desc" data-i18n="srv1_desc">
             Viste esterne ed interne ad altissimo impatto per committenze private, concorsi e commercializzazione immobiliare. Modellazione accurata di vegetazione autoctona, caustiche della luce e finiture tattili (pietra a secco, microcemento, essenze lignee, metalli).
           </p>
           <ul class="service-bullets">
-            <li>Esterni, ville & complessi residenziali</li>
-            <li>Interior design di lusso & retail</li>
-            <li>Studio fotometrico della luce naturale</li>
+            <li data-i18n="srv1_b1">Esterni, ville &amp; complessi residenziali</li>
+            <li data-i18n="srv1_b2">Interior design di lusso &amp; retail</li>
+            <li data-i18n="srv1_b3">Studio fotometrico della luce naturale</li>
           </ul>
         </div>
 
         <div class="service-card">
           <div class="service-num">02</div>
-          <h3 class="service-title">Cinema Reel & Video Motion 3D</h3>
-          <p class="service-desc">
+          <h3 class="service-title" data-i18n="srv2_title">Cinema Reel &amp; Video Motion 3D</h3>
+          <p class="service-desc" data-i18n="srv2_desc">
             Animazioni tridimensionali fluide a 60fps con movimenti di camera cinematografici per presentazioni di progetti complessi, bandi di gara, video marketing per investitori internazionali e campagne social d'alta gamma.
           </p>
           <ul class="service-bullets">
-            <li>Walkthrough d'interni ed esterni 4K</li>
-            <li>Simulazioni di cantiere & sequenze costruttive</li>
-            <li>Video teaser per landing page e investitori</li>
+            <li data-i18n="srv2_b1">Walkthrough d'interni ed esterni 4K</li>
+            <li data-i18n="srv2_b2">Simulazioni di cantiere &amp; sequenze costruttive</li>
+            <li data-i18n="srv2_b3">Video teaser per landing page e investitori</li>
           </ul>
         </div>
 
         <div class="service-card">
           <div class="service-num">03</div>
-          <h3 class="service-title">Validazione Geometrica & Clay Study</h3>
-          <p class="service-desc">
+          <h3 class="service-title" data-i18n="srv3_title">Validazione Geometrica &amp; Clay Study</h3>
+          <p class="service-desc" data-i18n="srv3_desc">
             Prima del fotorealismo, convalidiamo i volumi attraverso render Clay a contrasto puro. Analizziamo l'orientamento solare, la pulizia dei nodi costruttivi e il corretto rimbalzo della luce indiretta negli ambienti.
           </p>
           <ul class="service-bullets">
-            <li>Controllo volumi e nodi prima della posa</li>
-            <li>Studio comparativo Wireframe ↔ Rendering</li>
-            <li>Ottimizzazione geometrie BIM (Revit, IFC, Rhino)</li>
+            <li data-i18n="srv3_b1">Controllo volumi e nodi prima della posa</li>
+            <li data-i18n="srv3_b2">Studio comparativo Wireframe ↔ Rendering</li>
+            <li data-i18n="srv3_b3">Ottimizzazione geometrie BIM (Revit, IFC, Rhino)</li>
           </ul>
         </div>
 
         <div class="service-card">
           <div class="service-num">04</div>
-          <h3 class="service-title">Cataloghi & Set Virtuali per l'Industria</h3>
-          <p class="service-desc">
+          <h3 class="service-title" data-i18n="srv4_title">Cataloghi &amp; Set Virtuali per l'Industria</h3>
+          <p class="service-desc" data-i18n="srv4_desc">
             Rendering per aziende ed industrie finalizzati alla stampa di cataloghi, brochure ed e-commerce. Progettiamo gli ambienti e le ambientazioni attorno al prodotto, con una versatilità superiore alla fotografia tradizionale e costi contenuti.
           </p>
           <ul class="service-bullets">
-            <li>Arredo bagno, cucine, contract & ufficio</li>
-            <li>Close-up macro su dettagli e finiture</li>
-            <li>Flessibilità totale su varianti colore e texture</li>
+            <li data-i18n="srv4_b1">Arredo bagno, cucine, contract &amp; ufficio</li>
+            <li data-i18n="srv4_b2">Close-up macro su dettagli e finiture</li>
+            <li data-i18n="srv4_b3">Flessibilità totale su varianti colore e texture</li>
           </ul>
+        </div>
+      </div>
+
+      <!-- CAD / BIM FORMATS & 3-STEP WORKFLOW STRIP -->
+      <div class="studio-tech-strip">
+        <div class="tech-strip-col">
+          <span class="tech-strip-label" data-i18n="tech_formats_label">Formati CAD / BIM Supportati</span>
+          <div class="tech-formats-list">
+            <span class="tech-pill">Revit (.RVT)</span>
+            <span class="tech-pill">IFC / BIM</span>
+            <span class="tech-pill">Rhino (.3DM)</span>
+            <span class="tech-pill">3ds Max</span>
+            <span class="tech-pill">SketchUp</span>
+            <span class="tech-pill">Archicad</span>
+            <span class="tech-pill">DWG / DXF</span>
+          </div>
+        </div>
+        <div class="tech-strip-col tech-workflow-col">
+          <span class="tech-strip-label" data-i18n="tech_workflow_label">Metodo Operativo in 3 Step</span>
+          <div class="tech-steps-row">
+            <div class="tech-step"><span class="step-idx">01</span> <span data-i18n="tech_step1">Invio Modello o Tavole DWG</span></div>
+            <span class="step-arrow">→</span>
+            <div class="tech-step"><span class="step-idx">02</span> <span data-i18n="tech_step2">Bozze Clay, Camere &amp; Luce</span></div>
+            <span class="step-arrow">→</span>
+            <div class="tech-step"><span class="step-idx">03</span> <span data-i18n="tech_step3">Master 4K / Motion Reel</span></div>
+          </div>
         </div>
       </div>
 
@@ -252,9 +291,9 @@
            ================================================================== -->
       <div class="team-avatars-section" id="team-avatars">
         <div class="avatars-header">
-          <span class="sub-label">IL TEAM DI OE VISUAL</span>
-          <h3 class="avatars-title">Interagisci con noi.</h3>
-          <p class="avatars-subtitle">Clicca su un avatar per dialogare, porre una domanda di progetto o ascoltare la nostra voce in tempo reale.</p>
+          <span class="sub-label" data-i18n="avatars_sub">IL TEAM DI OE VISUAL</span>
+          <h3 class="avatars-title" data-i18n="avatars_title">Interagisci con noi.</h3>
+          <p class="avatars-subtitle" data-i18n="avatars_subtitle">Clicca su un avatar per dialogare, porre una domanda di progetto o ascoltare la nostra voce in tempo reale.</p>
         </div>
 
         <!-- 4 AVATAR CARDS (v3.4) -->
@@ -454,10 +493,10 @@
                 <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
                 <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
               </svg>
-              <span id="console-audio-label">Ascolta la risposta</span>
+              <span id="console-audio-label" data-i18n="console_listen">Ascolta la risposta</span>
             </button>
             <a id="console-wa-btn" href="https://wa.me/393478631379?text=Buongiorno,%20ho%20visitato%20OE%20Visual%20e%20vorrei%20maggiori%20informazioni" target="_blank" rel="noopener" class="console-btn-wa">
-              <span>Approfondisci su WhatsApp con noi →</span>
+              <span data-i18n="console_wa">Approfondisci su WhatsApp con noi →</span>
             </a>
           </div>
         </div>
@@ -477,9 +516,9 @@
         
         <!-- SECTION TITLE & LEAD -->
         <div class="contact-header-block">
-          <span class="sub-label">03 — INIZIAMO UN PROGETTO</span>
-          <h2 class="contact-headline">Il tuo progetto merita di essere visto al massimo.</h2>
-          <p class="contact-lead">
+          <span class="sub-label" data-i18n="contact_sub">03 — INIZIAMO UN PROGETTO</span>
+          <h2 class="contact-headline" data-i18n="contact_headline">Il tuo progetto merita di essere visto al massimo.</h2>
+          <p class="contact-lead" data-i18n="contact_lead">
             Risposta con preventivo dettagliato e tempi di consegna garantiti entro 24 ore. Tutte le revisioni sono incluse nel prezzo pattuito.
           </p>
         </div>
@@ -492,9 +531,9 @@
               <span class="wa-dot-live"></span>
             </div>
             <div class="wa-card-text">
-              <span class="wa-card-badge">Canale Diretto Prioritario</span>
-              <h4>Hai un'urgenza o vuoi un parere immediato sul tuo progetto?</h4>
-              <p>Invia il link al file o scrivi direttamente all'Arch. Benedetto Brattoli (riscontro garantito entro 2 ore).</p>
+              <span class="wa-card-badge" data-i18n="wa_badge">Canale Diretto Prioritario</span>
+              <h4 data-i18n="wa_title">Hai un'urgenza o vuoi un parere immediato sul tuo progetto?</h4>
+              <p data-i18n="wa_desc">Invia il link al file o scrivi direttamente all'Arch. Benedetto Brattoli (riscontro garantito entro 2 ore).</p>
             </div>
           </div>
           <div class="wa-card-right">
@@ -502,7 +541,7 @@
               <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
                 <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.693.078-2.202-.55-1.927-.803-3.148-2.774-3.244-2.902-.097-.129-.778-1.036-.778-1.975 0-.94.492-1.403.667-1.595.175-.193.382-.241.51-.241.127 0 .255.002.366.007.117.006.273-.044.428.328.16.386.549 1.341.597 1.439.049.097.081.211.016.339-.065.129-.098.209-.194.321-.097.113-.205.251-.293.338-.098.097-.201.203-.086.401.114.197.509.841 1.092 1.36.751.67 1.384.877 1.58.974.196.097.311.081.425-.05.114-.131.488-.567.618-.761.13-.194.26-.162.438-.097.178.065 1.134.535 1.329.633.195.097.325.146.374.228.049.081.049.471-.095.876z"/>
               </svg>
-              <span>Scrivi su WhatsApp in 1-Click</span>
+              <span data-i18n="wa_cta">Scrivi su WhatsApp in 1-Click</span>
             </a>
           </div>
         </div>
@@ -514,26 +553,39 @@
           <div class="contact-form-panel">
             <form id="project-inquiry-form" class="inquiry-form">
               
+              <!-- STEP 0: CLIENT PROFILE / TARGET SECTOR -->
+              <div class="form-step-group">
+                <label class="step-label" data-i18n="form_step0">0. Chi sei / Settore</label>
+                <div class="choice-pills-row" id="sector-pills">
+                  <button type="button" class="choice-pill active" data-val="Studio di Architettura" data-i18n="sec_arch">Studio Architettura</button>
+                  <button type="button" class="choice-pill" data-val="Ingegnere / Geometra" data-i18n="sec_eng">Ingegnere / Geometra</button>
+                  <button type="button" class="choice-pill" data-val="Real Estate / Immobiliare" data-i18n="sec_re">Real Estate / Developer</button>
+                  <button type="button" class="choice-pill" data-val="Azienda / Cataloghi Prodotto" data-i18n="sec_cat">Azienda / Cataloghi</button>
+                </div>
+              </div>
+
               <!-- STEP 1: INTERACTIVE SERVICE SELECTOR -->
               <div class="form-step-group">
-                <label class="step-label">1. Tipologia di Progetto / Servizio</label>
+                <label class="step-label" data-i18n="form_step1">1. Tipologia di Progetto / Servizio</label>
                 <div class="choice-pills-row" id="service-pills">
-                  <button type="button" class="choice-pill active" data-val="Villa Unifamiliare">Villa Unifamiliare</button>
-                  <button type="button" class="choice-pill" data-val="Residenziale Pluripiano">Residenziale Pluripiano</button>
-                  <button type="button" class="choice-pill" data-val="Interni & Living">Interni & Living</button>
-                  <button type="button" class="choice-pill" data-val="Retail & Hospitality">Retail & Hospitality</button>
-                  <button type="button" class="choice-pill" data-val="Video Animazione 3D">Video Animazione 3D</button>
-                  <button type="button" class="choice-pill" data-val="Bando / Concorso">Bando / Concorso</button>
+                  <button type="button" class="choice-pill active" data-val="Villa Unifamiliare" data-i18n="srv_villa">Villa Unifamiliare</button>
+                  <button type="button" class="choice-pill" data-val="Residenziale Pluripiano" data-i18n="srv_res">Residenziale Pluripiano</button>
+                  <button type="button" class="choice-pill" data-val="Interni & Living" data-i18n="srv_int">Interni &amp; Living</button>
+                  <button type="button" class="choice-pill" data-val="Retail & Hospitality" data-i18n="srv_ret">Retail &amp; Hospitality</button>
+                  <button type="button" class="choice-pill" data-val="Cataloghi & Product Design" data-i18n="srv_cat">Cataloghi &amp; Product Design</button>
+                  <button type="button" class="choice-pill" data-val="Ingegneria / BIM / Fotoinserimento" data-i18n="srv_eng">Ingegneria / BIM / Fotoinserimento</button>
+                  <button type="button" class="choice-pill" data-val="Video Animazione 3D" data-i18n="srv_vid">Video Animazione 3D</button>
+                  <button type="button" class="choice-pill" data-val="Bando / Concorso" data-i18n="srv_comp">Bando / Concorso</button>
                 </div>
               </div>
 
               <!-- STEP 2: TIMELINE SELECTOR -->
               <div class="form-step-group">
-                <label class="step-label">2. Tempistiche di Consegna Desiderate</label>
+                <label class="step-label" data-i18n="form_step2">2. Tempistiche di Consegna Desiderate</label>
                 <div class="choice-pills-row" id="timeline-pills">
-                  <button type="button" class="choice-pill" data-val="Urgente (< 7 giorni)">⚡ Urgente (&lt; 7 giorni)</button>
-                  <button type="button" class="choice-pill active" data-val="Standard (2-3 settimane)">Standard (2–3 settimane)</button>
-                  <button type="button" class="choice-pill" data-val="In Programmazione">In Programmazione</button>
+                  <button type="button" class="choice-pill" data-val="Urgente (< 7 giorni)" data-i18n="time_urg">⚡ Urgente (&lt; 7 giorni)</button>
+                  <button type="button" class="choice-pill active" data-val="Standard (2-3 settimane)" data-i18n="time_std">Standard (2–3 settimane)</button>
+                  <button type="button" class="choice-pill" data-val="In Programmazione" data-i18n="time_plan">In Programmazione</button>
                 </div>
               </div>
 
@@ -541,28 +593,28 @@
               <div class="form-inputs-matrix">
                 <div class="form-row-duo">
                   <div class="input-block">
-                    <label for="f-name">Nome e Cognome / Studio *</label>
+                    <label for="f-name" data-i18n="lbl_name">Nome e Cognome / Studio *</label>
                     <input type="text" id="f-name" placeholder="Es. Arch. Marco Bianchi" required>
                   </div>
                   <div class="input-block">
-                    <label for="f-email">Email Diretta per il Preventivo *</label>
+                    <label for="f-email" data-i18n="lbl_email">Email Diretta per il Preventivo *</label>
                     <input type="email" id="f-email" placeholder="architetto@studio.it" required>
                   </div>
                 </div>
 
                 <div class="form-row-duo">
                   <div class="input-block">
-                    <label for="f-phone">Telefono / WhatsApp</label>
+                    <label for="f-phone" data-i18n="lbl_phone">Telefono / WhatsApp</label>
                     <input type="tel" id="f-phone" placeholder="+39 340 ...">
                   </div>
                   <div class="input-block">
-                    <label for="f-city">Città del Progetto</label>
+                    <label for="f-city" data-i18n="lbl_city">Città del Progetto</label>
                     <input type="text" id="f-city" placeholder="Es. Roma, Milano, Bari...">
                   </div>
                 </div>
 
                 <div class="input-block full">
-                  <label for="f-notes">Dettagli del Progetto & Link Modelli 3D / DWG</label>
+                  <label for="f-notes" data-i18n="lbl_notes">Dettagli del Progetto &amp; Link Modelli 3D / DWG</label>
                   <textarea id="f-notes" rows="4" placeholder="Descrivi brevemente il progetto (numero viste stimate, stile desiderato) oppure incolla il link WeTransfer / Google Drive ai file..."></textarea>
                 </div>
               </div>
@@ -570,23 +622,23 @@
               <!-- SUBMIT BUTTON -->
               <div class="form-submit-row">
                 <button type="submit" class="submit-inquiry-btn" id="submit-inquiry-btn">
-                  <span>Richiedi Preventivo Dettagliato in 24h</span>
+                  <span data-i18n="form_submit">Richiedi Preventivo Dettagliato in 24h</span>
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                     <polyline points="12 5 19 12 12 19"></polyline>
                   </svg>
                 </button>
-                <span class="submit-guarantee-note">🔒 Riservatezza garantita: non condividiamo mai i tuoi dati o disegni.</span>
+                <span class="submit-guarantee-note" data-i18n="form_nda">🔒 Riservatezza garantita: non condividiamo mai i tuoi dati o disegni.</span>
               </div>
             </form>
 
             <!-- SUBMISSION CONFIRMATION MESSAGE (HIDDEN INITIALLY) -->
             <div id="form-success-banner" class="form-success-banner" style="display: none;">
               <div class="success-icon-box">✓</div>
-              <h4>Richiesta Ricevuta con Successo!</h4>
-              <p>Grazie Architetto. Il team di OE Visual ha preso in carico la tua richiesta e ti risponderà con un'offerta economica dettagliata e tempistiche certe entro 24 ore.</p>
+              <h4 data-i18n="form_ok_title">Richiesta Ricevuta con Successo!</h4>
+              <p data-i18n="form_ok_desc">Grazie. Il team di OE Visual ha preso in carico la tua richiesta e ti risponderà con un'offerta economica dettagliata e tempistiche certe entro 24 ore.</p>
               <a id="success-wa-forward" href="#" target="_blank" rel="noopener" class="success-wa-btn">
-                <span>Invia subito la richiesta anche su WhatsApp a Benny →</span>
+                <span data-i18n="form_ok_wa">Invia subito la richiesta anche su WhatsApp a Benny →</span>
               </a>
             </div>
           </div>
@@ -596,7 +648,7 @@
             
             <!-- DIRECT EMAIL WITH COPY BUTTON -->
             <div class="contact-card-box">
-              <span class="box-tag">Email Diretta Atelier</span>
+              <span class="box-tag" data-i18n="box_email_tag">Email Diretta Atelier</span>
               <div class="email-copy-wrapper">
                 <span class="email-address-text" id="studio-email-text">visual@oevisual.it</span>
                 <button type="button" class="copy-email-btn" id="copy-email-btn" title="Copia email negli appunti">
@@ -604,22 +656,22 @@
                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                   </svg>
-                  <span id="copy-btn-label">Copia</span>
+                  <span id="copy-btn-label" data-i18n="copy_lbl">Copia</span>
                 </button>
               </div>
-              <span class="email-subtext">Per invio capitolati, bandi di concorso e perizie tecniche: studio@oevisual.it</span>
+              <span class="email-subtext" data-i18n="box_email_sub">Per invio capitolati, bandi di concorso e perizie tecniche: studio@oevisual.it</span>
             </div>
 
             <!-- STUDIO ROMA -->
             <div class="contact-card-box">
               <div class="box-header-location">
-                <span class="box-tag">Sede Roma Capitale</span>
-                <span class="location-badge">Centro Italia</span>
+                <span class="box-tag" data-i18n="box_rm_tag">Sede Roma Capitale</span>
+                <span class="location-badge" data-i18n="box_rm_badge">Centro Italia</span>
               </div>
               <h4 class="location-address">Via Casale delle Grazie, 42</h4>
               <p class="location-city">00066 Manziana (Roma)</p>
               <div class="location-phone-row">
-                <span class="phone-label">Telefono Diretto:</span>
+                <span class="phone-label" data-i18n="lbl_direct_tel">Telefono Diretto:</span>
                 <a href="tel:+393478631379" class="phone-link">+39 347 863 1379</a>
               </div>
             </div>
@@ -627,13 +679,13 @@
             <!-- STUDIO PUGLIA -->
             <div class="contact-card-box">
               <div class="box-header-location">
-                <span class="box-tag">Sede Puglia & Adriatico</span>
-                <span class="location-badge">Sud Italia</span>
+                <span class="box-tag" data-i18n="box_ba_tag">Sede Puglia &amp; Adriatico</span>
+                <span class="location-badge" data-i18n="box_ba_badge">Sud Italia</span>
               </div>
               <h4 class="location-address">Via Mario Pagano, 10</h4>
               <p class="location-city">70033 Corato (Bari)</p>
               <div class="location-phone-row">
-                <span class="phone-label">Telefono Ufficio:</span>
+                <span class="phone-label" data-i18n="lbl_office_tel">Telefono Ufficio:</span>
                 <a href="tel:+390808725722" class="phone-link">+39 080 872 5722</a>
               </div>
             </div>
@@ -643,22 +695,22 @@
               <div class="guarantee-item">
                 <span class="guarantee-check">✓</span>
                 <div>
-                  <strong>Preventivo Garantito in 24h</strong>
-                  <p>Prezzo chiaro a corpo, senza voci impreviste.</p>
+                  <strong data-i18n="g1_title">Preventivo Garantito in 24h</strong>
+                  <p data-i18n="g1_desc">Prezzo chiaro a corpo, senza voci impreviste.</p>
                 </div>
               </div>
               <div class="guarantee-item">
                 <span class="guarantee-check">✓</span>
                 <div>
-                  <strong>Tutte le Revisioni Incluse</strong>
-                  <p>Bozze intermedie di inquadratura e luce fino al tuo OK.</p>
+                  <strong data-i18n="g2_title">Tutte le Revisioni Incluse</strong>
+                  <p data-i18n="g2_desc">Bozze intermedie di inquadratura e luce fino al tuo OK.</p>
                 </div>
               </div>
               <div class="guarantee-item">
                 <span class="guarantee-check">✓</span>
                 <div>
-                  <strong>Accordo di Riservatezza NDA</strong>
-                  <p>I tuoi modelli e brevetti sono tutelati legalmente al 100%.</p>
+                  <strong data-i18n="g3_title">Accordo di Riservatezza NDA</strong>
+                  <p data-i18n="g3_desc">I tuoi modelli e brevetti sono tutelati legalmente al 100%.</p>
                 </div>
               </div>
             </div>
@@ -773,6 +825,7 @@
       <!-- BOTTOM BAR: FLOATING GLASS OVERLAY -->
       <div class="lightbox-bottom-bar">
         <div class="lb-desc" id="lb-desc">Descrizione tecnica del progetto.</div>
+        <button id="lb-quote-btn" class="lb-quote-btn" type="button" data-i18n="lb_quote_btn">Preventivo per progetto simile →</button>
       </div>
 
     </div>
@@ -811,14 +864,14 @@
           <a href="#contact">Contact</a>
           <a href="https://wa.me/393478631379" target="_blank" rel="noopener">WhatsApp Atelier</a>
         </div>
-        <div class="footer-rights">
+        <div class="footer-rights" data-i18n="footer_rights">
           © 2026 OE Visual · Arch. Benedetto Brattoli · Tutti i diritti riservati (L. 633/1941).
         </div>
       </div>
     </div>
   </footer>
 
-  <script src="app.js?v=7.5"></script>
-  <script src="team3d.js?v=7.0"></script>
+  <script src="app.js?v=8.0"></script>
+  <script src="team3d.js?v=8.0"></script>
 </body>
 </html>
