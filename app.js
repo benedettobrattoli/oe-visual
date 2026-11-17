@@ -60,7 +60,7 @@ const portfolioData = [
     title: "Grand Resort & Wellness Spa",
     category: "commercial",
     location: "Polignano a Mare, Puglia",
-    image: "assets/portfolio/hotel-resort.jpg",
+    image: "assets/portfolio/hotel-resort.jpg?v=8.1",
     flex: 1.1,
     desc: "Visualizzazione ad altissimo impatto per resort di lusso a picco sul mare. Modellazione dettagliata di vegetazione autoctona foglia per foglia e rifrazione caustica dell'acqua marina."
   },
@@ -90,7 +90,7 @@ const portfolioData = [
     title: "Attico Panoramico sul Lungomare",
     category: "interior",
     location: "Bari Centro",
-    image: "assets/portfolio/apt-bari.jpg",
+    image: "assets/portfolio/apt-bari.jpg?v=8.1",
     flex: 1.0,
     desc: "Restyling d'interni con parquet in rovere affumicato posato a spina di pesce ungherese, arredi custom su disegno e illuminazione lineare a scomparsa radente."
   },
@@ -110,7 +110,7 @@ const portfolioData = [
     title: "Villa Monolitica in Pietra",
     category: "exterior",
     location: "Trani, Costa Adriatica",
-    image: "assets/portfolio/villa-trani.jpg",
+    image: "assets/portfolio/villa-trani.jpg?v=8.1",
     flex: 1.2,
     desc: "Residenza privata unifamiliare con setti murari in pietra di Trani bocciardata e terrazzamenti solarium a sbalzo affacciati sul litorale adriatico."
   },
@@ -218,7 +218,7 @@ const portfolioData = [
     title: "Masseria San Nicola — Pergola & Pool Lounge",
     category: "exterior",
     location: "Fasano, Valle d'Itria",
-    image: "assets/portfolio/masseria-pergola-pool.jpg",
+    image: "assets/portfolio/masseria-pergola-pool.jpg?v=8.1",
     hoverVideoSrc: "assets/videos/masseria-pergola-pool-motion.mp4",
     flex: 1.45,
     desc: "Visualizzazione fotorealistica a luce solare naturale zenitale: pergola bioclimatica in legno bianco, vasi in terracotta pugliese e specchio d'acqua a sfioro."
@@ -229,7 +229,7 @@ const portfolioData = [
     title: "Tenuta Pugliese — Traditional Estate & Pool",
     category: "exterior",
     location: "Ostuni, Puglia",
-    image: "assets/portfolio/masseria-pugliese-estate.jpg",
+    image: "assets/portfolio/masseria-pugliese-estate.jpg?v=8.1",
     flex: 1.4,
     desc: "Architettura rurale pugliese di pregio: intonaco bianco a calce viva, infissi tradizionali verde salvia, ulivi secolari e calcolo fotometrico delle ombre pomeridiane."
   },
@@ -239,7 +239,7 @@ const portfolioData = [
     title: "Viale dei Cipressi & Lavanda — Masseria Entryway",
     category: "exterior",
     location: "Monopoli, Puglia",
-    image: "assets/portfolio/masseria-viale-accesso.jpg",
+    image: "assets/portfolio/masseria-viale-accesso.jpg?v=8.1",
     flex: 1.35,
     desc: "Prospettiva assiale monumentale con pavimentazione in chianche antiche bocciardate, aiuole di lavanda autoctona e maestoso portale con arco d'ingresso."
   },
@@ -250,8 +250,8 @@ const portfolioData = [
     category: "exterior",
     location: "Puglia Luxury Estate",
     videoSrc: "assets/videos/masseria-cinematic-loop.mp4",
-    poster: "assets/portfolio/masseria-cinematic-poster.jpg",
-    image: "assets/portfolio/masseria-cinematic-poster.jpg",
+    poster: "assets/portfolio/masseria-cinematic-poster.jpg?v=8.1",
+    image: "assets/portfolio/masseria-cinematic-poster.jpg?v=8.1",
     flex: 1.5,
     desc: "Animazione cinematografica in loop 4K: simulazione dinamica delle increspature dell'acqua in piscina, fronde degli ulivi mosse dal vento e riflessi solari in tempo reale."
   },
@@ -271,7 +271,7 @@ const portfolioData = [
     title: "Residenza Materica — Pioggia, Corten & Cemento",
     category: "exterior",
     location: "Valle d'Itria, Puglia",
-    image: "assets/portfolio/villa-pioggia-corten.jpg",
+    image: "assets/portfolio/villa-pioggia-corten.jpg?v=8.1",
     flex: 1.35,
     desc: "Atmosfera temporalesca fotometricamente complessa: riflessi diffusi sulle superfici bagnate, gocce su vetrate a tutta altezza, setti in corten ossidato e piscina a sfioro."
   },
