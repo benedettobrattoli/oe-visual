@@ -241,7 +241,7 @@ const portfolioData = [
     title: "Viale dei Cipressi & Lavanda — Stato di Fatto → Restauro 4K",
     category: "exterior",
     location: "Monopoli, Puglia",
-    videoSrc: "assets/videos/masseria-viale-aging.mp4?v=8.8",
+    videoSrc: "assets/videos/masseria-viale-aging.mp4?v=8.9",
     poster: "assets/portfolio/masseria-viale-accesso.jpg?v=8.1",
     image: "assets/portfolio/masseria-viale-accesso.jpg?v=8.1",
     flex: 1.45,
