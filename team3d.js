@@ -23,7 +23,7 @@
     }
 
     video.removeAttribute('autoplay');
-    video.playbackRate = 0.72;
+    video.playbackRate = 1.0;
 
     video.addEventListener('error', () => {
       perch.classList.add('is-fallback');
